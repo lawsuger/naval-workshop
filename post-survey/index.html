@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>納瓦爾工作坊 · 第一部分課後回饋</title>
+<meta name="description" content="納瓦爾個人商品化工作坊 第一部分 課後回饋問卷" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#082743; --gold:#E9B627; --gold-soft:#f4d76a; --gold-deep:#b98a16;
+  --ink:#eaf1f8; --muted:#aebccb; --faint:#7f95ab; --card:#0c3258; --card2:#0a2c4e;
+  --line:#16395e; --line2:#1f4a78;
+  --serif:'Noto Serif TC',serif; --sans:'Noto Sans TC',sans-serif; --play:'Playfair Display',serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:
+  radial-gradient(900px 520px at 80% -5%,rgba(233,182,39,.13),transparent 60%),
+  radial-gradient(760px 560px at 0% 110%,rgba(233,182,39,.07),transparent 55%),var(--bg);
+  color:var(--ink);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:30px 18px 60px}
+.head{text-align:center;padding:26px 0 8px}
+.pno{font-family:var(--play);letter-spacing:3px;color:var(--gold-soft);font-size:13px}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(26px,5vw,38px);color:var(--gold-soft);margin:10px 0 6px;letter-spacing:2px}
+.lead{color:var(--muted);font-size:15px;max-width:560px;margin:0 auto}
+.block{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:16px;padding:20px 22px;margin:16px 0}
+.block h3{font-family:var(--serif);font-weight:700;color:#fff;font-size:19px;margin:0 0 4px}
+.block .sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+.q{margin:16px 0}
+.q .label{color:var(--gold-soft);font-size:14.5px;font-weight:500;margin-bottom:9px;display:block}
+.rate{display:flex;gap:8px;flex-wrap:wrap}
+.rate button{flex:1;min-width:46px;background:var(--card);border:1px solid var(--line2);color:var(--muted);
+  border-radius:11px;padding:11px 0;font-size:16px;font-family:var(--play);font-weight:700;cursor:pointer;transition:.15s}
+.rate button:hover{border-color:var(--gold-deep);color:var(--gold-soft)}
+.rate button.on{background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:#082743;border-color:var(--gold);box-shadow:0 4px 16px rgba(233,182,39,.25)}
+.ends{display:flex;justify-content:space-between;color:var(--faint);font-size:11.5px;margin-top:5px}
+textarea,input[type=text]{width:100%;background:var(--card);border:1px solid var(--line2);color:var(--ink);
+  border-radius:11px;padding:11px 13px;font-family:var(--sans);font-size:14.5px;resize:vertical}
+textarea{min-height:74px}
+textarea:focus,input:focus{outline:none;border-color:var(--gold-deep)}
+.two{display:flex;gap:12px}.two>div{flex:1}
+@media(max-width:560px){.two{flex-direction:column;gap:0}}
+.nps .rate button{min-width:38px;padding:9px 0;font-size:14px}
+.submit{display:block;width:100%;margin:24px 0 8px;background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));
+  color:#082743;border:none;border-radius:14px;padding:16px;font-size:17px;font-weight:700;font-family:var(--serif);cursor:pointer;letter-spacing:1px}
+.submit:hover{filter:brightness(1.06)}
+.note{color:var(--faint);font-size:12.5px;text-align:center;margin-top:6px}
+.thanks{display:none;text-align:center;padding:50px 20px}
+.thanks.on{display:block}
+.thanks .big{font-family:var(--serif);font-weight:900;color:var(--gold-soft);font-size:30px;margin-bottom:10px}
+.thanks p{color:var(--muted)}
+.foot{text-align:center;color:var(--faint);font-size:12px;margin-top:30px;border-top:1px solid var(--line);padding-top:16px}
+.foot .eq{font-family:var(--play);color:var(--gold-deep);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap" id="form">
+  <div class="head">
+    <div class="pno">NAVAL WORKSHOP · PART I · FEEDBACK</div>
+    <h1>第一部分 · 課後回饋</h1>
+    <p class="lead">你的每一句話，都是下一場更好的養分。約 3 分鐘，匿名亦可。</p>
+  </div>
+
+  <div class="block">
+    <h3>關於你（選填）</h3>
+    <div class="two">
+      <div class="q"><span class="label">稱呼</span><input type="text" id="name" placeholder="想具名可填，留白＝匿名"></div>
+      <div class="q"><span class="label">單位</span><input type="text" id="unit" placeholder="例：中十八"></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>① 讀書會 × 工作坊這個形式</h3>
+    <p class="sub">邊讀納瓦爾、邊動手做工作簿的形式。</p>
+    <div class="q"><span class="label">整體滿意度</span>
+      <div class="rate" data-field="q1_format_score" data-max="5"></div>
+      <div class="ends"><span>1 很不滿意</span><span>5 非常滿意</span></div></div>
+    <div class="q"><span class="label">哪邊可以再改進？（節奏／互動／時間／場地／分組…）</span>
+      <textarea id="q1_format_improve" placeholder="越具體越好"></textarea></div>
+  </div>
+
+  <div class="block">
+    <h3>② 你有多願意推薦（NPS）</h3>
+    <div class="q"><span class="label">把這場工作坊推薦給同行扛霸子的意願</span>
+      <div class="rate nps" data-field="q2_nps" data-min="0" data-max="10"></div>
+      <div class="ends"><span>0 完全不會</span><span>10 非常願意</span></div></div>
+    <div class="q"><span class="label">主要原因是？</span>
+      <textarea id="q2_nps_reason" placeholder="是什麼讓你給這個分數"></textarea></div>
+  </div>
+
+  <div class="block">
+    <h3>③ 網頁 × 納瓦爾選書 × 整體架構</h3>
+    <p class="sub">39 金句、互動網頁、六模組的整體設計。</p>
+    <div class="q"><span class="label">對你的幫助程度</span>
+      <div class="rate" data-field="q3_web_score" data-max="5"></div>
+      <div class="ends"><span>1 幫助不大</span><span>5 幫助很大</span></div></div>
+    <div class="q"><span class="label">對網頁或選書的具體想法？</span>
+      <textarea id="q3_web_comment" placeholder="哪個分頁最有用／選書是否到位"></textarea></div>
+  </div>
+
+  <div class="block">
+    <h3>④ 造運引擎（四種幸運）</h3>
+    <div class="q"><span class="label">這段對你的啟發程度</span>
+      <div class="rate" data-field="q4_luck_score" data-max="5"></div>
+      <div class="ends"><span>1 還好</span><span>5 很有感</span></div></div>
+    <div class="q"><span class="label">哪個點最有感？或最想多了解什麼？</span>
+      <textarea id="q4_luck_comment" placeholder="盲運／動量運／識別運／獨特運…"></textarea></div>
+  </div>
+
+  <div class="block">
+    <h3>⑤ 做個人使用說明書 · 尋找天賦熱情</h3>
+    <p class="sub">好時光日誌 ＋ 三圈交集 ＋ 唯一性。</p>
+    <div class="q"><span class="label">這段幫你找到天賦／熱情了嗎？</span>
+      <div class="rate" data-field="q5_talent_score" data-max="5"></div>
+      <div class="ends"><span>1 還很模糊</span><span>5 清晰許多</span></div></div>
+    <div class="q"><span class="label">你挖到的天賦是什麼？或卡在哪？</span>
+      <textarea id="q5_talent_comment" placeholder="寫下你的發現或卡點"></textarea></div>
+  </div>
+
+  <div class="block">
+    <h3>⑥ 做個人使用說明書 · 專屬特定知識</h3>
+    <p class="sub">把天賦嫁接成別人複製不了的特定知識。</p>
+    <div class="q"><span class="label">「天賦 → 特定知識」這段清楚嗎？</span>
+      <div class="rate" data-field="q6_sk_score" data-max="5"></div>
+      <div class="ends"><span>1 還是抽象</span><span>5 很清楚</span></div></div>
+    <div class="q"><span class="label">你的特定知識方向？或還想釐清什麼？</span>
+      <textarea id="q6_sk_comment" placeholder="你打算嫁接的方向"></textarea></div>
+  </div>
+
+  <div class="block">
+    <h3>⑦ 給講者 ＋ 其他</h3>
+    <div class="q"><span class="label">給講者（孟修）的一句話／建議</span>
+      <textarea id="q7_speaker" placeholder="鼓勵、提醒、期待都歡迎"></textarea></div>
+    <div class="q"><span class="label">其他任何想說的</span>
+      <textarea id="q7_other" placeholder="自由發揮"></textarea></div>
+  </div>
+
+  <button class="submit" onclick="submitSurvey()">送出回饋 →</button>
+  <div class="note" id="note">送出後資料直接進講師的 Google 試算表，作為下一場的檢討依據。</div>
+
+  <div class="foot">
+    <div class="eq">個人商品力 ＝ ［(獨特性 × 特定知識) × 當責 × 槓桿］<sup>時間複利 × 造運引擎</sup></div>
+    納瓦爾工作坊 · 第一部分課後回饋 · v1.0
+  </div>
+</div>
+
+<div class="wrap thanks" id="thanks">
+  <div class="big">謝謝你 🙏</div>
+  <p id="thanksMsg">你的回饋已送出，這會讓下一場更好。</p>
+</div>
+
+<script>
+const CONFIG = {
+  appsScriptUrl: "",          // ← 部署 Apps Script 後，把 .../exec 網址貼這裡
+  appVersion: "post-1.0"
+};
+
+// 動態產生評分按鈕
+document.querySelectorAll('.rate').forEach(box=>{
+  const min=parseInt(box.dataset.min||'1'), max=parseInt(box.dataset.max||'5');
+  for(let i=min;i<=max;i++){
+    const b=document.createElement('button');
+    b.textContent=i; b.dataset.val=i;
+    b.onclick=()=>{ box.querySelectorAll('button').forEach(x=>x.classList.remove('on')); b.classList.add('on'); box.dataset.value=i; };
+    box.appendChild(b);
+  }
+});
+
+function val(id){ const el=document.getElementById(id); return el?el.value.trim():""; }
+function rate(field){ const box=document.querySelector('.rate[data-field="'+field+'"]'); return box&&box.dataset.value?box.dataset.value:""; }
+
+function collect(){
+  return {
+    submission_id: "POST-"+Date.now(),
+    submitted_at: new Date().toISOString(),
+    app_version: CONFIG.appVersion,
+    name: val('name'), unit: val('unit'),
+    q1_format_score: rate('q1_format_score'), q1_format_improve: val('q1_format_improve'),
+    q2_nps: rate('q2_nps'), q2_nps_reason: val('q2_nps_reason'),
+    q3_web_score: rate('q3_web_score'), q3_web_comment: val('q3_web_comment'),
+    q4_luck_score: rate('q4_luck_score'), q4_luck_comment: val('q4_luck_comment'),
+    q5_talent_score: rate('q5_talent_score'), q5_talent_comment: val('q5_talent_comment'),
+    q6_sk_score: rate('q6_sk_score'), q6_sk_comment: val('q6_sk_comment'),
+    q7_speaker: val('q7_speaker'), q7_other: val('q7_other')
+  };
+}
+
+function showThanks(msg){
+  document.getElementById('form').style.display='none';
+  if(msg) document.getElementById('thanksMsg').textContent=msg;
+  document.getElementById('thanks').classList.add('on');
+  window.scrollTo({top:0});
+}
+function downloadJSON(data){
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='課後回饋-'+(data.name||'匿名')+'.json'; document.body.appendChild(a); a.click(); a.remove();
+}
+
+function submitSurvey(){
+  const data=collect();
+  if(!CONFIG.appsScriptUrl){
+    downloadJSON(data);
+    showThanks('（講師後台尚未啟用，已先把你的回饋存成檔案，可回傳給講師）');
+    return;
+  }
+  fetch(CONFIG.appsScriptUrl, {
+    method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify(data)
+  }).then(()=>showThanks()).catch(()=>{ downloadJSON(data); showThanks('（送出遇到問題，已先存成檔案，可回傳給講師）'); });
+}
+</script>
+</body>
+</html>
