@@ -259,6 +259,23 @@ table.t td b{color:#fff;font-weight:500}
 .scn .lb{font-family:var(--play);font-style:italic;font-size:13.5px}
 .scn .res{font-family:var(--play);font-weight:700;font-size:21px;margin:6px 0}
 .libcat{color:var(--gold);font-family:var(--serif);font-weight:700;font-size:16px;letter-spacing:2px;margin:26px 0 4px;border-bottom:1px solid var(--line2);padding-bottom:6px}
+/* quiz */
+.qzhint{display:flex;justify-content:space-between;color:var(--faint);font-size:11.5px;margin:2px 2px 8px}
+.qzq{padding:11px 0;border-bottom:1px dotted var(--line)}
+.qzq .qt2{color:#eef4fb;font-size:14.5px;margin-bottom:8px;line-height:1.5}
+.qzq .qt2 .qn2{color:var(--gold-soft);font-family:var(--play);font-weight:700;margin-right:7px}
+.qzq .fc{float:right;font-size:10.5px;color:var(--faint);border:1px solid var(--line2);border-radius:5px;padding:1px 7px;margin-left:6px}
+.likert{display:flex;gap:6px}
+.likert button{flex:1;background:var(--inset);border:1px solid var(--line2);color:var(--muted);border-radius:8px;padding:9px 0;cursor:pointer;font-family:var(--play);font-weight:700;font-size:15px;transition:.15s}
+.likert button:hover{border-color:var(--gold-deep);color:var(--gold-soft)}
+.likert button.sel{background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:#082743;border-color:var(--gold)}
+.qzbar{margin:11px 0}
+.qzbar .row{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;margin-bottom:5px}
+.qzbar .row b{color:#fff;font-weight:500}
+.qzbar .row .v{font-family:var(--play);font-weight:700;color:var(--gold)}
+.qztrack{height:13px;background:#123a5f;border:1px solid var(--line2);border-radius:99px;overflow:hidden}
+.qzfill{height:100%;border-radius:99px;transition:width .6s}
+.qzscore{font-family:var(--play);font-weight:900;font-size:clamp(40px,9vw,58px);color:var(--gold);text-align:center;line-height:1}
 .footer{padding:48px 0 80px;text-align:center;color:var(--faint);font-size:12.5px;border-top:1px solid var(--line);margin-top:40px}
 .footer .f{font-family:var(--serif);color:var(--gold-soft);font-size:14px;margin-bottom:8px}
 .footer sup{font-size:.6em;color:var(--gold)}
@@ -506,7 +523,19 @@ table.t td b{color:#fff;font-weight:500}
         <div class="card"><h4 style="color:var(--gold)">③ 打造磁力</h4><p class="muted">C → K：把自己「產品化」。長期主義＋高品質＋可被發現，讓機會自己上門。</p></div>
         <div class="card"><h4 style="color:var(--gold)">④ 加裝防護罩</h4><p class="muted">維持 R > 0：反事實思考＋反脆弱結構＋止血機制，別讓一次衝擊歸零。</p></div>
       </div>
-      <p class="muted" style="font-size:13.5px">現場：掃 QR 填 <b style="color:var(--gold-soft)">22 題造運值測驗</b>，3 分鐘拿到造運值、四構面雷達（U/C/K/R）與最弱變數——決定你 30 天先補哪一層。</p>
+      <p class="muted" style="font-size:13.5px">3 分鐘填完 <b style="color:var(--gold-soft)">22 題造運值測驗</b>（下方直接測），拿到造運值、四構面雷達（U/C/K/R）與最弱變數——決定你 30 天先補哪一層。</p>
+    </div>
+
+    <div class="block" id="quizblock">
+      <h3>✍️ 22 題造運值測驗 <span class="badge">當場測 · 約 3 分鐘</span></h3>
+      <div class="card" id="quizCard">
+        <div id="quizIntro">
+          <p class="muted">依符合程度選 1（完全不符合）～ 5（完全符合）。22 題分四構面：機會察覺(U)／直覺察覺(C)／自我實現(K)／韌性(R)。結果只算在你這台裝置、不上傳。</p>
+          <button class="btn primary" onclick="startQuiz()">開始測驗 →</button>
+        </div>
+        <div id="quizForm" style="display:none"></div>
+        <div id="quizResult" style="display:none"></div>
+      </div>
     </div>
 
     <div class="block">
@@ -938,6 +967,71 @@ function initChecks(){
     });
   });
 }
+
+/* ---------- 22 題造運值測驗（移植自 luck-engine-web/quiz-22.ts）---------- */
+const QZ=[
+ {f:'A',t:'我經常嘗試不同的通勤路線、餐廳、活動，而不是固定走老路。'},
+ {f:'A',t:'參加社交活動時，我會主動跟陌生人或我不熟悉的類型聊天。'},
+ {f:'A',t:'即使有明確目標，我也會留意目標之外突然出現的機會。'},
+ {f:'A',t:'我相信新體驗（即使看似無用）會帶來意想不到的好處。'},
+ {f:'A',t:'我傾向把行事曆留 20% 以上的空白時間，不把自己塞滿。'},
+ {f:'A',t:'當有「臨時起意」的念頭出現時，我會跟隨而不是壓抑。'},
+ {f:'B',t:'做重要決定時，我會聽從直覺，即使邏輯分析不完全支持。'},
+ {f:'B',t:'我有至少一個專精領域，能比一般人看到更多細微的訊號。'},
+ {f:'B',t:'我會用冥想、散步、寫日記等方式主動培養直覺。'},
+ {f:'B',t:'看到一則新聞或對話，我會立刻聯想到與我相關的機會或威脅。'},
+ {f:'B',t:'我能區分「直覺」與「焦慮」這兩種看似類似的內在訊號。'},
+ {f:'C',t:'我相信我想要的未來會發生，並用這個預期指導今天的行動。'},
+ {f:'C',t:'我有清楚的「個人定位」，能用一句話讓陌生人記住我是誰。'},
+ {f:'C',t:'別人常因為我的某個特質或專業，主動來找我（而非我去找他們）。'},
+ {f:'C',t:'我願意為「長期信任的累積」放棄短期利益。'},
+ {f:'C',t:'我有持續的內容輸出（寫作 / 影片 / 演講），讓別人能找到我。'},
+ {f:'C',t:'過去一年，至少有 3 個機會是「別人主動帶到我面前」。'},
+ {f:'D',t:'遇到壞事時，我的第一反應通常是「這本來可以更糟」而非「真衰」。'},
+ {f:'D',t:'從失敗中我能很快找到「至少學到 ____」這樣的觀點。'},
+ {f:'D',t:'我相信壞運氣最終會以某種方式變成好的轉折。'},
+ {f:'D',t:'我能在情緒低潮時主動使用「重新框架」的工具或思考方式。'},
+ {f:'D',t:'過去一年最大的挫折，我現在能說出 3 個它帶給我的好處。'},
+];
+const QF={
+ A:{u:'U',full:'U 主動奔走 · 機會察覺',col:'#83c083',dom:'L2 行動派',adv:'製造變異——換路線、換場合、行事曆留白，擴大你的幸運表面積。'},
+ B:{u:'C',full:'C 敏銳察覺 · 直覺',col:'#f4d76a',dom:'L3 觀察派',adv:'深耕一個領域、用散步／寫日記培養訊號辨識，把機會「看出來」。'},
+ C:{u:'K',full:'K 打造命運 · 自我實現',col:'#d6a36a',dom:'L4 命運派',adv:'一句話定位＋持續內容輸出，把人設立起來，讓機會主動來找你。'},
+ D:{u:'R',full:'R 韌性 · 反事實',col:'#e08d86',dom:'韌性派',adv:'練反事實——壞事先問「本來可以更糟」、寫下挫折帶給你的 3 個好處。'},
+};
+const QZANS=new Array(22).fill(0);
+function startQuiz(){
+  document.getElementById('quizIntro').style.display='none';
+  document.getElementById('quizResult').style.display='none';
+  for(let i=0;i<22;i++)QZANS[i]=0;
+  const f=document.getElementById('quizForm'); f.style.display='block';
+  f.innerHTML='<div class="qzhint"><span>← 1 完全不符合</span><span>完全符合 5 →</span></div>'+
+    QZ.map((q,i)=>`<div class="qzq"><div class="qt2"><span class="fc">${QF[q.f].u}</span><span class="qn2">${i+1}</span>${q.t}</div><div class="likert">${[1,2,3,4,5].map(v=>`<button onclick="ansQ(${i},${v},this)">${v}</button>`).join('')}</div></div>`).join('')+
+    '<div style="text-align:center;margin-top:16px"><button class="btn primary" onclick="submitQuiz()">看我的造運值 →</button> <span class="muted" id="qzcount" style="font-size:13px;margin-left:8px">0 / 22</span></div>';
+}
+function ansQ(i,v,btn){
+  QZANS[i]=v;
+  [...btn.parentNode.children].forEach(b=>b.classList.remove('sel')); btn.classList.add('sel');
+  document.getElementById('qzcount').textContent=QZANS.filter(x=>x>0).length+' / 22';
+}
+function submitQuiz(){
+  const done=QZANS.filter(x=>x>0).length;
+  if(done<22){ toast('還有 '+(22-done)+' 題沒填～'); return; }
+  const sum=(a,b)=>QZANS.slice(a,b).reduce((s,v)=>s+v,0);
+  const norm=(s,n)=>Math.round(((s-n)/(n*4))*100);
+  const sc={A:norm(sum(0,6),6),B:norm(sum(6,11),5),C:norm(sum(11,17),6),D:norm(sum(17,22),5)};
+  const total=Math.round((sc.A+sc.B+sc.C+sc.D)/4);
+  let dom='A',wk='A';
+  ['A','B','C','D'].forEach(k=>{ if(sc[k]>sc[dom])dom=k; if(sc[k]<sc[wk])wk=k; });
+  const bars=['A','B','C','D'].map(k=>{const F=QF[k];return `<div class="qzbar"><div class="row"><b>${F.full}</b><span class="v">${sc[k]}</span></div><div class="qztrack"><div class="qzfill" style="width:${sc[k]}%;background:${F.col}"></div></div></div>`;}).join('');
+  document.getElementById('quizForm').style.display='none';
+  const r=document.getElementById('quizResult'); r.style.display='block';
+  r.innerHTML=`<div class="qzscore">${total}</div><p class="muted" style="text-align:center;margin:2px 0 14px">造運值（0–100）</p>${bars}
+    <div class="card" style="margin-top:14px;border-left:4px solid ${QF[dom].col}"><p class="muted">主導層次：<b style="color:#fff;font-weight:500">${QF[dom].dom}</b>（${QF[dom].full}）。最弱：<b style="color:${QF[wk].col}">${QF[wk].full}</b>。</p><p class="muted" style="margin-top:7px"><b style="color:var(--gold-soft)">你的 30 天先補這一格 ↓</b><br>${QF[wk].adv}</p></div>
+    <div style="text-align:center;margin-top:14px"><button class="btn" onclick="startQuiz()">↻ 重新測</button></div>`;
+  document.getElementById('quizblock').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function toast(m){ alert(m); }
 
 renderFilter();renderGrid();renderLib();initChecks();
 </script>
