@@ -869,10 +869,10 @@ table.t td b{color:#fff;font-weight:500}
    兩個都留空 = 顯示「預留中」佔位卡。
    ============================================================ */
 const ADVISOR = {
-  url: "",          // 例： "https://你的顧問團網址"
-  embedHTML: "",    // 例： "<iframe src='...'></iframe>"（有就用這個）
-  title: "AI 顧問團",
-  height: 660       // 嵌入視窗高度(px)，可調
+  url: "https://thinker-advisory-panel.onrender.com",   // 思想家顧問團（Render 部署）
+  embedHTML: "",    // 若平台給你嵌入碼貼這裡（會優先於 url）
+  title: "思想家顧問團",
+  height: 680       // 嵌入視窗高度(px)，可調
 };
 function renderAdvisor(){
   const el = document.getElementById('advisorSlot'); if(!el) return;
@@ -886,7 +886,7 @@ function renderAdvisor(){
       `<a class="btn" href="${url}" target="_blank" rel="noopener">在新分頁開啟顧問團 ↗</a></div>`+
       `<iframe src="${url}" title="${ADVISOR.title}" loading="lazy" allow="microphone; clipboard-write" `+
       `style="width:100%;height:${ADVISOR.height}px;border:1px solid var(--line2);border-radius:14px;background:#0a1a2f"></iframe>`+
-      `<p class="muted" style="font-size:12px;margin-top:8px">＊若上方空白，多半是該平台禁止被嵌入——請改用「在新分頁開啟」。</p>`;
+      `<p class="muted" style="font-size:12px;margin-top:8px">＊首次開啟可能要等十幾秒喚醒伺服器（Render 免費版會休眠）；若一直空白才是被禁止內嵌，請按上方「在新分頁開啟」。</p>`;
     return;
   }
   el.innerHTML =
