@@ -696,10 +696,8 @@ table.t td b{color:#fff;font-weight:500}
     </div>
     <div class="block">
       <h3>🤖 AI 顧問團</h3>
-      <div class="holder">
-        <div class="big2">此區預留 — 你已在 Mac 端製作中</div>
-        <p class="muted">召喚你的隨身 AI 顧問團：把納瓦爾、生命設計師、斯多葛……變成可隨時對話的顧問。<br>完成後把連結／嵌入碼貼進這裡即可接上。</p>
-      </div>
+      <p class="muted">召喚你的隨身顧問團：把納瓦爾、生命設計師、斯多葛……變成可隨時對話的顧問。</p>
+      <div id="advisorSlot"></div>
     </div>
   </div>
 </section>
@@ -864,6 +862,39 @@ table.t td b{color:#fff;font-weight:500}
 </div>
 
 <script>
+/* ============================================================
+   ★ AI 顧問團設定 —— 只要改這裡 ★
+   方式 A（最簡單）：把你的顧問團網址貼進 url，存檔／git push 就會自動嵌入。
+   方式 B：若平台給你一段嵌入碼（<iframe>/<script>…），貼進 embedHTML（會優先於 url）。
+   兩個都留空 = 顯示「預留中」佔位卡。
+   ============================================================ */
+const ADVISOR = {
+  url: "",          // 例： "https://你的顧問團網址"
+  embedHTML: "",    // 例： "<iframe src='...'></iframe>"（有就用這個）
+  title: "AI 顧問團",
+  height: 660       // 嵌入視窗高度(px)，可調
+};
+function renderAdvisor(){
+  const el = document.getElementById('advisorSlot'); if(!el) return;
+  const emb = (ADVISOR.embedHTML||"").trim();
+  const url = (ADVISOR.url||"").trim();
+  if(emb){ el.innerHTML = emb; return; }
+  if(url){
+    el.innerHTML =
+      `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">`+
+      `<span class="muted" style="font-size:13.5px">在下方直接對話，或</span>`+
+      `<a class="btn" href="${url}" target="_blank" rel="noopener">在新分頁開啟顧問團 ↗</a></div>`+
+      `<iframe src="${url}" title="${ADVISOR.title}" loading="lazy" allow="microphone; clipboard-write" `+
+      `style="width:100%;height:${ADVISOR.height}px;border:1px solid var(--line2);border-radius:14px;background:#0a1a2f"></iframe>`+
+      `<p class="muted" style="font-size:12px;margin-top:8px">＊若上方空白，多半是該平台禁止被嵌入——請改用「在新分頁開啟」。</p>`;
+    return;
+  }
+  el.innerHTML =
+    `<div class="holder"><div class="big2">此區預留 — 貼上網址就會自動顯示</div>`+
+    `<p class="muted">在原始碼最上方把網址貼進 <code>ADVISOR.url</code>（或嵌入碼貼 <code>ADVISOR.embedHTML</code>），`+
+    `存檔／<code>git push</code> 後，這裡就會自動長出顧問團對話視窗。</p></div>`;
+}
+
 /* ---------- view switching ---------- */
 function show(id){
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id));
@@ -1095,7 +1126,7 @@ function submitQuiz(){
 }
 function toast(m){ alert(m); }
 
-renderFilter();renderGrid();renderLib();initChecks();
+renderFilter();renderGrid();renderLib();initChecks();renderAdvisor();
 </script>
 </body>
 </html>
