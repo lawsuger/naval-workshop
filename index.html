@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>納瓦爾工作坊 · 將個人商品化｜給扛霸子的致富之道</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23082743'/><text x='16' y='24' font-size='21' text-anchor='middle' fill='%23E9B627' font-family='serif' font-weight='700'>納</text></svg>">
+
+<meta name="description" content="保險不是你的身分，是你的商業模式。這場工作坊帶領你走向納瓦爾的致富之道——39 條金句、孟修 WIKI 大腦、造運引擎、將自己商品化。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#082743; --bg2:#0b3057; --card:#0c3258; --card2:#0f3a68;
+  --inset:#06243f; --chip:#0a2c4d;
+  --gold:#E9B627; --gold-soft:#f4d76a; --gold-deep:#b98a16;
+  --ink:#ffffff; --muted:#aebccb; --faint:#7e93a8;
+  --line:#16395e; --line2:#1f4a78;
+  --ok:#5fb87a; --cross:#9fc0e0; --mine:#6ad6a8;
+  --t3:#7fb3ff; --t4:#f4d76a; --t5:#8fd6a6;
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif; --play:"Playfair Display",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.8;font-size:17px}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(900px 520px at 80% -5%,rgba(233,182,39,.13),transparent 60%),
+  radial-gradient(760px 560px at 0% 110%,rgba(233,182,39,.07),transparent 55%);}
+a{color:var(--gold-soft);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.32;margin:0}
+.en{font-family:var(--play)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.g{color:var(--gold)}
+.gs{color:var(--gold-soft)}
+
+/* ===== top nav ===== */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(6,28,49,.93);backdrop-filter:blur(11px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:8px;height:60px;max-width:1280px}
+.brand{font-family:var(--serif);font-weight:900;color:var(--gold);font-size:19px;letter-spacing:1px;white-space:nowrap;cursor:pointer}
+.brand small{display:block;font-family:var(--sans);font-weight:300;color:var(--faint);font-size:10px;letter-spacing:.5px}
+.navlinks{margin-left:auto;display:flex;gap:2px;align-items:center;overflow-x:auto;scrollbar-width:none}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks button{flex:0 0 auto;background:transparent;border:1px solid transparent;color:var(--muted);border-radius:9px;padding:7px 10px;font-family:var(--sans);font-size:13px;cursor:pointer;transition:.18s;white-space:nowrap}
+.navlinks button:hover{color:var(--gold-soft);background:var(--chip)}
+.navlinks button.on{color:#082743;background:linear-gradient(180deg,var(--gold-soft),var(--gold));border-color:var(--gold);font-weight:500}
+@media(max-width:900px){.brand small{display:none}.navlinks button{padding:7px 8px;font-size:12.5px}}
+
+/* ===== views ===== */
+.view{display:none;animation:fade .45s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ===== hero (home) ===== */
+.hero{position:relative;text-align:center;padding:74px 0 48px;border-bottom:1px solid var(--line);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(640px 380px at 50% 8%,rgba(233,182,39,.18),transparent 62%)}
+.kicker{display:inline-block;color:var(--gold);letter-spacing:6px;font-size:12.5px;font-weight:500;border:1px solid var(--line2);border-radius:999px;padding:6px 18px}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(32px,5vw,50px);margin:16px 0 8px;color:var(--gold-soft);letter-spacing:3px;line-height:1.4;padding-bottom:4px;text-shadow:0 3px 20px rgba(233,182,39,.2)}
+.hero .ensub{font-family:var(--play);font-style:italic;font-size:clamp(18px,3vw,28px);color:#dce6f0;letter-spacing:1px}
+.hero .sub{color:#e7eef6;font-size:18px;max-width:680px;margin:18px auto 0;font-weight:400}
+.hero .sub .l2{display:block;color:var(--muted);font-size:16px;margin-top:4px;font-weight:300}
+
+/* formula card — one long line */
+.eq{margin:30px auto 6px;max-width:980px;background:linear-gradient(180deg,rgba(12,50,88,.88),rgba(8,36,63,.72));border:1px solid var(--line2);border-radius:16px;padding:22px 16px;backdrop-filter:blur(6px)}
+.eq .formula{font-family:var(--serif);font-weight:700;font-size:clamp(15px,2.7vw,27px);color:var(--gold);line-height:1.5;white-space:nowrap;overflow-x:auto;padding-bottom:4px}
+.eq .formula::-webkit-scrollbar{height:5px}
+.eq .formula::-webkit-scrollbar-thumb{background:var(--line2);border-radius:9px}
+.eq .formula sup{font-size:.52em;color:var(--gold-soft);font-weight:500}
+.eqlegend{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 18px;margin-top:16px;text-align:left}
+.eqlegend div{font-size:13px;color:var(--muted);display:flex;gap:7px;align-items:baseline;border-left:2px solid var(--gold-deep);padding-left:9px}
+.eqlegend b{color:var(--gold-soft);font-weight:500;white-space:nowrap}
+@media(max-width:680px){.eqlegend{grid-template-columns:1fr 1fr}.hero h1{letter-spacing:1px}}
+
+.herobtns{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{font-family:var(--sans);font-weight:500;font-size:15px;border-radius:11px;padding:13px 24px;cursor:pointer;border:1px solid var(--line2);background:var(--chip);color:var(--gold-soft);transition:.2s;white-space:nowrap}
+.btn:hover{border-color:var(--gold);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:#082743;border-color:var(--gold);font-weight:700}
+.stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.stat{min-width:92px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px}
+.stat .n{font-family:var(--play);font-weight:700;font-size:28px;color:var(--gold)}
+.stat .l{color:var(--faint);font-size:12.5px;margin-top:2px}
+
+/* journey map */
+.sectit{text-align:center;margin:52px 0 8px}
+.sectit .k{color:var(--gold);letter-spacing:4px;font-size:12.5px;font-weight:500}
+.sectit h2{font-size:clamp(24px,4vw,36px);color:#fff;margin:8px 0 6px}
+.sectit p{color:var(--muted);font-size:15.5px;max-width:660px;margin:0 auto}
+.journey{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:15px;margin:28px 0}
+.jcard{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:18px;padding:22px;cursor:pointer;transition:.22s;position:relative;overflow:hidden}
+.jcard:hover{transform:translateY(-4px);border-color:var(--gold-deep);box-shadow:0 12px 34px rgba(0,0,0,.34)}
+.jcard .ic{font-size:34px;line-height:1}
+.jcard .st{color:var(--gold);font-family:var(--play);font-weight:700;font-size:12.5px;letter-spacing:1px;margin:12px 0 2px}
+.jcard h4{font-size:20px;color:#fff;margin-bottom:7px}
+.jcard p{color:var(--muted);font-size:13.5px;margin:0}
+.jcard .arr{position:absolute;right:18px;bottom:13px;color:var(--gold-deep);font-size:19px;transition:.2s}
+.jcard:hover .arr{color:var(--gold);transform:translateX(4px)}
+.jrow2 .jcard{background:var(--inset)}
+
+.bookstrip{margin:22px 0;text-align:center}
+.bookstrip .lbl{color:var(--faint);font-size:12.5px;letter-spacing:2px;margin-bottom:10px}
+.bookstrip .books{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.bchip{background:var(--chip);border:1px solid var(--line2);border-radius:999px;padding:7px 15px;font-size:13.5px;color:var(--muted)}
+.dq{margin:30px auto;max-width:760px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 18px}
+.dq .q{font-family:var(--serif);font-weight:700;font-size:clamp(18px,3vw,24px);color:#f0e7d2;line-height:1.6}
+.dq .a{color:var(--gold);font-size:13.5px;margin-top:12px;letter-spacing:1px}
+
+/* ===== part page header ===== */
+.parthead{padding:46px 0 8px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.parthead .pno{font-family:var(--play);font-weight:700;color:var(--gold-soft);letter-spacing:3px;font-size:15px}
+.parthead h1{font-size:clamp(28px,4.6vw,44px);color:#fff;margin:8px 0 10px;font-weight:700;letter-spacing:2px;line-height:1.4}
+.parthead h1 .g{color:var(--gold)}
+.parthead .lead{color:var(--muted);font-size:16.5px;max-width:780px}
+.parthead .lead b{color:#fff;font-weight:500}
+
+/* generic blocks */
+.block{margin:30px 0}
+.block > h3{color:var(--gold);font-size:21px;margin-bottom:6px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.block > h3 .badge{font-family:var(--play);font-size:12px;background:var(--chip);border:1px solid var(--line2);color:var(--gold-soft);border-radius:6px;padding:2px 9px;font-weight:500}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:14px 0}
+.card h4{color:#fff;font-size:18px;margin-bottom:8px}
+.muted{color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:760px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.srcchip{display:inline-block;background:var(--chip);border:1px solid var(--line2);border-radius:6px;padding:3px 10px;margin:3px 5px 3px 0;font-size:12.5px;color:var(--muted)}
+table.t{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+table.t th,table.t td{text-align:left;padding:9px 12px;border:1px solid var(--line2);vertical-align:top}
+table.t th{background:var(--chip);color:#eef4fb;font-weight:500}
+table.t td{color:var(--muted)}
+table.t td b{color:#fff;font-weight:500}
+
+/* ===== 39 quote cards + modal ===== */
+.qfilter{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0 6px;justify-content:center}
+.qfilter button{background:var(--chip);border:1px solid var(--line2);color:var(--muted);border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--sans);transition:.18s}
+.qfilter button:hover{color:var(--gold-soft);border-color:var(--gold-deep)}
+.qfilter button.on{background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:#082743;border-color:var(--gold);font-weight:500}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:18px 0}
+.qc{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:13px;padding:15px 16px;cursor:pointer;transition:.2s;position:relative}
+.qc:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.qc .num{font-family:var(--play);font-weight:700;color:var(--gold);font-size:13px}
+.qc .gp{float:right;font-size:10.5px;color:var(--faint);border:1px solid var(--line2);border-radius:5px;padding:1px 7px}
+.qc .qt{color:#fff;font-size:16px;font-weight:500;font-family:var(--serif);margin:8px 0 4px;line-height:1.5}
+.qc .more{color:var(--gold-deep);font-size:11.5px}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(2,12,24,.84);backdrop-filter:blur(6px);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:34px 16px;overflow:auto}
+.modal.on{display:flex}
+.mcard{max-width:680px;width:100%;background:linear-gradient(180deg,var(--card2),#0a2c4e);border:1px solid var(--gold-deep);border-radius:18px;padding:26px 28px;box-shadow:0 24px 70px rgba(0,0,0,.6);animation:pop .3s ease}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.mcard .x{float:right;cursor:pointer;color:var(--faint);font-size:24px;line-height:1;border:none;background:none}
+.mcard .x:hover{color:var(--gold)}
+.mcard .mno{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;border:1.6px solid var(--gold);color:var(--gold-soft);font-family:var(--play);font-weight:700;font-size:18px}
+.mcard .men{font-family:var(--play);font-style:italic;color:var(--gold-soft);font-size:18px;line-height:1.5;margin:12px 0 6px}
+.mcard .mzh{font-family:var(--serif);font-weight:700;font-size:19px;color:#fff;margin-bottom:14px;line-height:1.6}
+.mcard .msrc{font-size:12.5px;color:var(--faint);border-top:1px dashed var(--line2);border-bottom:1px dashed var(--line2);padding:9px 0;margin-bottom:14px}
+.mcard .msrc b{color:var(--gold)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:5px;margin:10px 0 7px}
+.tag.t3{background:rgba(127,179,255,.16);color:var(--t3);border:1px solid rgba(127,179,255,.35)}
+.tag.t4{background:rgba(233,182,39,.16);color:var(--gold-soft);border:1px solid rgba(233,182,39,.4)}
+.tag.t5{background:rgba(143,214,166,.14);color:var(--t5);border:1px solid rgba(143,214,166,.35)}
+.mitem{font-size:14px;margin:5px 0;padding-left:14px;position:relative;color:var(--ink)}
+.mitem::before{content:"▸";position:absolute;left:0;color:var(--gold-deep)}
+.mitem .who{color:var(--gold-soft);font-weight:500}
+.mitem .bk{color:var(--faint);font-style:italic}
+
+/* ===== reading-method pipeline ===== */
+.pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+@media(max-width:760px){.pipeline{grid-template-columns:1fr 1fr}}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}
+.tool .ic{font-size:30px}
+.tool .nm{font-family:var(--play);font-weight:700;color:#fff;margin-top:8px}
+.tool .ro{color:var(--gold-soft);font-size:12.5px;margin:2px 0 6px}
+.tool .ds{color:var(--muted);font-size:13px;line-height:1.6}
+.steps{counter-reset:s;margin:16px 0}
+.step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.step::before{counter-increment:s;content:counter(s);flex:0 0 40px;height:40px;border-radius:50%;background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));color:#082743;font-family:var(--play);font-weight:700;font-size:18px;display:grid;place-items:center}
+.step .sc h4{color:#fff;font-size:17px;margin-bottom:3px}
+.step .sc p{color:var(--muted);font-size:14px;margin:0}
+.embed{margin:18px 0;border:1px solid var(--line2);border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9}
+.embed iframe{width:100%;height:100%;border:0;display:block}
+
+/* reasons */
+.reason{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:14px 0;border-left:4px solid var(--gold)}
+.reason .rn{flex:0 0 46px;height:46px;border-radius:12px;background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));color:#082743;font-family:var(--play);font-weight:900;font-size:22px;display:grid;place-items:center}
+.reason h4{color:#fff;font-size:19px;margin-bottom:6px}
+.reason p{color:var(--muted);font-size:14.5px;margin:0 0 8px}
+.reason .qt{font-size:13px;color:var(--gold-soft);border-left:2px solid var(--gold-deep);padding-left:10px;font-style:italic}
+
+/* modules */
+.modgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+@media(max-width:760px){.modgrid{grid-template-columns:1fr}}
+.modcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;border-left:4px solid var(--gold)}
+.modcard .mn{font-family:var(--play);color:var(--gold-soft);font-size:12.5px;letter-spacing:1px}
+.modcard h4{color:#fff;font-size:19px;margin:3px 0 7px}
+.modcard .letter{float:right;font-family:var(--play);font-weight:900;font-size:30px;color:var(--gold-deep);opacity:.6}
+.modcard p{color:var(--muted);font-size:14px;margin:0 0 8px}
+.modcard .take{color:var(--gold-soft);font-size:13px}
+
+/* luck quadrant + matrix */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.qcell{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:18px}
+.qcell .lv{font-family:var(--play);font-weight:700;color:var(--gold);font-size:13px}
+.qcell h4{color:#fff;font-size:17px;margin:4px 0 6px}
+.qcell p{color:var(--muted);font-size:13.5px;margin:0}
+.qcell.hl{border-color:var(--gold);box-shadow:0 0 20px rgba(233,182,39,.16)}
+.game{background:var(--inset);border:1px solid var(--line2);border-radius:13px;padding:16px 18px;margin:12px 0}
+.game .t{color:var(--gold);font-weight:700;font-size:15px;margin-bottom:4px}
+.game .t small{color:var(--faint);font-weight:400;font-size:12px;margin-left:6px}
+.game p{color:var(--muted);font-size:14px;margin:6px 0 0}
+.big{font-family:var(--serif);font-weight:700;color:#f0e7d2;font-size:18px;text-align:center;margin:10px 0;padding:12px;border-top:1px dashed var(--line2);border-bottom:1px dashed var(--line2)}
+
+/* 21-day / checklist */
+.phase{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:14px 0}
+.phase .ph{color:var(--gold);font-family:var(--play);font-weight:700;font-size:13px;letter-spacing:1px}
+.phase h4{color:#fff;font-size:18px;margin:3px 0 10px}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:7px 0;color:var(--muted);font-size:14.5px;cursor:pointer;border-bottom:1px dotted var(--line)}
+.chk:last-child{border-bottom:none}
+.chk .box{flex:0 0 20px;height:20px;border:1.5px solid var(--gold-deep);border-radius:5px;margin-top:2px;display:grid;place-items:center;color:transparent;font-size:13px;transition:.15s}
+.chk.done .box{background:var(--gold);color:#082743;border-color:var(--gold)}
+.chk.done span{color:var(--faint);text-decoration:line-through}
+.out{margin-top:10px;color:var(--gold-soft);font-size:13.5px;background:var(--inset);border:1px solid var(--line2);border-radius:9px;padding:9px 12px}
+
+/* time matrix */
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.mcell{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:18px}
+.mcell h4{color:#fff;font-size:16px;margin-bottom:5px}
+.mcell p{color:var(--muted);font-size:13.5px;margin:0 0 8px}
+.mcell .act{color:var(--gold-soft);font-size:13px;font-weight:500}
+.mcell.gold{border-color:var(--gold);box-shadow:0 0 18px rgba(233,182,39,.14)}
+.bignum{font-family:var(--play);font-weight:900;font-size:clamp(38px,8vw,64px);color:var(--gold);text-align:center;line-height:1}
+
+/* library */
+.libgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+@media(max-width:760px){.libgrid{grid-template-columns:1fr}}
+.libcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.libcard .bt{color:#fff;font-size:18px;font-family:var(--serif);font-weight:700}
+.libcard .au{color:var(--faint);font-size:12.5px;margin:2px 0 6px}
+.libcard .ds{color:var(--muted);font-size:13.5px;margin-bottom:10px}
+.libcard .res{display:flex;flex-wrap:wrap;gap:6px}
+.libcard .res a{font-size:12px;background:var(--chip);border:1px solid var(--line2);border-radius:7px;padding:4px 9px;color:var(--gold-soft)}
+
+/* placeholder */
+.holder{text-align:center;border:1px dashed var(--gold-deep);border-radius:16px;padding:30px 22px;background:#0d2742}
+.holder .big2{font-size:19px;color:#f1d79a;font-family:var(--serif);font-weight:700}
+
+/* luck layers + scenarios */
+.lyr5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0}
+@media(max-width:840px){.lyr5{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.lyr5{grid-template-columns:1fr}}
+.lyr{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold-deep);border-radius:12px;padding:15px 14px}
+.lyr .lc{font-family:var(--play);font-weight:700;font-size:26px;line-height:1}
+.lyr h5{color:#fff;font-size:15.5px;margin:7px 0 1px;font-family:var(--serif);font-weight:700}
+.lyr .e{color:var(--faint);font-size:11px;font-style:italic;font-family:var(--play)}
+.lyr p{color:var(--muted);font-size:12.5px;margin:7px 0 0;line-height:1.55}
+.lyr .ms{color:var(--gold-soft);font-size:11px;margin-top:7px;border-top:1px dashed var(--line2);padding-top:6px}
+.scn{text-align:center}
+.scn .lb{font-family:var(--play);font-style:italic;font-size:13.5px}
+.scn .res{font-family:var(--play);font-weight:700;font-size:21px;margin:6px 0}
+.libcat{color:var(--gold);font-family:var(--serif);font-weight:700;font-size:16px;letter-spacing:2px;margin:26px 0 4px;border-bottom:1px solid var(--line2);padding-bottom:6px}
+.footer{padding:48px 0 80px;text-align:center;color:var(--faint);font-size:12.5px;border-top:1px solid var(--line);margin-top:40px}
+.footer .f{font-family:var(--serif);color:var(--gold-soft);font-size:14px;margin-bottom:8px}
+.footer sup{font-size:.6em;color:var(--gold)}
+</style>
+</head>
+<body>
+
+<!-- ================= TOP NAV ================= -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand" onclick="show('home')">納瓦爾工作坊<small>PRODUCTIZE YOURSELF · 給扛霸子的致富之道</small></div>
+    <div class="navlinks" id="nav">
+      <button data-v="home" onclick="show('home')">🏔 首頁</button>
+      <button data-v="p1" onclick="show('p1')">📖 39 金句</button>
+      <button data-v="p2" onclick="show('p2')">🧠 孟修WIKI大腦</button>
+      <button data-v="p3" onclick="show('p3')">🎯 為什麼工作坊</button>
+      <button data-v="p4" onclick="show('p4')">🍀 造運引擎</button>
+      <button data-v="p5" onclick="show('p5')">🚀 將自己商品化</button>
+      <button data-v="p6" onclick="show('p6')">🤖 顧問團</button>
+      <button data-v="c21" onclick="show('c21')">🔥 21天挑戰</button>
+      <button data-v="tl" onclick="show('tl')">⏳ 時間槓桿</button>
+      <button data-v="lib" onclick="show('lib')">📚 圖書館</button>
+      <button data-v="man" onclick="show('man')">📋 使用手冊</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HOME ================= -->
+<section class="view on" id="home">
+  <header class="hero">
+    <div class="wrap">
+      <div class="kicker">NAVAL RAVIKANT · 個人商品化工作坊</div>
+      <h1>納瓦爾工作坊</h1>
+      <div class="ensub">Productize Yourself · Design Your Life</div>
+      <div class="sub">保險不是你的身分，是你的商業模式。<span class="l2">這場工作坊，帶領你走向納瓦爾的致富之道。</span></div>
+      <div class="eq">
+        <div class="formula">個人商品力 ＝ ［ ( 獨特性 × 特定知識 ) × 當責 × 槓桿 ］<sup>時間複利 × 造運引擎</sup></div>
+        <div class="eqlegend">
+          <div><b>獨特性</b><span>只有你的人生組合</span></div>
+          <div><b>特定知識</b><span>AI 取代不了的能力</span></div>
+          <div><b>當責</b><span>以真名承擔風險</span></div>
+          <div><b>槓桿</b><span>勞動／資本／程式／媒體</span></div>
+          <div><b>時間複利</b><span>一切回報來自複利</span></div>
+          <div><b>造運引擎</b><span>讓幸運主動找上你</span></div>
+        </div>
+      </div>
+      <div class="herobtns">
+        <button class="btn primary" onclick="show('p1')">開始六部曲 ↓</button>
+        <button class="btn" onclick="show('p4')">🍀 造運引擎</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">39</div><div class="l">納瓦爾金句</div></div>
+        <div class="stat"><div class="n">6</div><div class="l">工作坊部曲</div></div>
+        <div class="stat"><div class="n">21</div><div class="l">天行動挑戰</div></div>
+        <div class="stat"><div class="n">11</div><div class="l">核心公式</div></div>
+        <div class="stat"><div class="n">∞</div><div class="l">複利成長</div></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="sectit">
+      <div class="k">今天的路線圖</div>
+      <h2>六部曲 · 一條把自己變成品牌的生產線</h2>
+      <p>從「為什麼選這本書」走到「將自己商品化」，每一站都帶得走一個工具。點任一站直接進入。</p>
+    </div>
+    <div class="journey">
+      <div class="jcard" onclick="show('p1')"><div class="ic">📖</div><div class="st">第一部</div><h4>39 條金句</h4><p>點開每張卡，看中英對照＋書庫＋名人跨作者註解</p><span class="arr">→</span></div>
+      <div class="jcard" onclick="show('p2')"><div class="ic">🧠</div><div class="st">第二部</div><h4>孟修 WIKI 大腦</h4><p>把一本書讀進「第二大腦」——四工具一條生產線</p><span class="arr">→</span></div>
+      <div class="jcard" onclick="show('p3')"><div class="ic">🎯</div><div class="st">第三部</div><h4>為什麼是工作坊</h4><p>教就是最好的學習，做比學更重要——五個理由</p><span class="arr">→</span></div>
+      <div class="jcard" onclick="show('p4')"><div class="ic">🍀</div><div class="st">第四部</div><h4>造運引擎</h4><p>Λ 造運公式＋破冰遊戲，讓幸運主動找上你</p><span class="arr">→</span></div>
+      <div class="jcard" onclick="show('p5')"><div class="ic">🚀</div><div class="st">第五部</div><h4>將自己商品化</h4><p>六模組互動工作簿，當場產出你的定位與增員系統</p><span class="arr">→</span></div>
+      <div class="jcard" onclick="show('p6')"><div class="ic">🤖</div><div class="st">第六部</div><h4>顧問團</h4><p>結業小結＋召喚你的隨身 AI 顧問團</p><span class="arr">→</span></div>
+    </div>
+    <div class="sectit" style="margin-top:30px"><div class="k">加碼工具</div><h2 style="font-size:24px">帶回家的四件練功器</h2></div>
+    <div class="journey jrow2">
+      <div class="jcard" onclick="show('c21')"><div class="ic">🔥</div><h4>21 天挑戰</h4><p>三階段把自己產品化，每天 30 分鐘</p><span class="arr">→</span></div>
+      <div class="jcard" onclick="show('tl')"><div class="ic">⏳</div><h4>時間槓桿</h4><p>判斷力 × 複利，時間投資組合矩陣</p><span class="arr">→</span></div>
+      <div class="jcard" onclick="show('lib')"><div class="ic">📚</div><h4>圖書館</h4><p>七本經典的書／影片／Podcast 資源地圖</p><span class="arr">→</span></div>
+      <div class="jcard" onclick="show('man')"><div class="ic">📋</div><h4>使用手冊</h4><p>個人產品化行動清單，逐項打勾</p><span class="arr">→</span></div>
+    </div>
+
+    <div class="bookstrip">
+      <div class="lbl">底座經典</div>
+      <div class="books">
+        <span class="bchip">📘 納瓦爾寶典</span><span class="bchip">📗 做自己的生命設計師</span><span class="bchip">📕 致富心態</span>
+        <span class="bchip">📙 底層邏輯</span><span class="bchip">📓 低風險創業</span><span class="bchip">📒 一人公司</span><span class="bchip">📔 反脆弱</span>
+      </div>
+    </div>
+    <div class="dq">
+      <div class="q">「建立特定知識時，於你像玩、於別人像工作。」</div>
+      <div class="a">— Naval Ravikant · How to Get Rich 推文 15</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART 1 · 39 金句 ================= -->
+<section class="view" id="p1">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">PART I</div>
+      <h1>39 條 <span class="g">金句</span></h1>
+      <div class="lead">納瓦爾 2018-05-31《How to Get Rich》原始推文串，完整 <b>39 條</b>。<b>點任何一張卡</b>，看中英對照、四來源定位，以及你的書庫與名人經典的跨作者註解。</div>
+    </div>
+    <div class="block">
+      <div class="qfilter" id="qfilter"></div>
+      <div class="qgrid" id="qgrid"></div>
+      <p class="muted" style="text-align:center;font-size:13px">完整對照原檔：<code>naval-lab/2026-06-08-naval-htgr39/</code>　·　原文 <a href="https://nav.al/rich" target="_blank">nav.al/rich</a></p>
+    </div>
+
+    <div class="block">
+      <h3>👤 一手爛牌的人 — 納瓦爾是誰</h3>
+      <div class="card">
+        <p class="muted">1974 年生於印度新德里。9 歲那年，母親帶著他跟哥哥<b style="color:#fff;font-weight:500">身無分文</b>移民美國紐約。父親的藥劑師文憑不被承認，只能去五金行打工；父母在他國中時離婚。內向的他下課就鑽圖書館。</p>
+        <p class="muted" style="margin-top:8px">一手爛牌——但 40 歲時，他已是矽谷最有影響力的天使投資人之一，投了 <b style="color:#fff;font-weight:500">Uber、Twitter、Notion</b> 等 200 多家公司、70+ 成功出場，並創辦 <b style="color:#fff;font-weight:500">AngelList</b>。他被封為「哲學家投資人」——不講估值模型，講特定知識、槓桿、當責、四種幸運。</p>
+        <div style="margin-top:6px"><span class="srcchip">Dartmouth 經濟＋資工</span><span class="srcchip">AngelList 創辦人</span><span class="srcchip">@naval</span><span class="srcchip">nav.al/podcast</span></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>📘 《納瓦爾寶典》— 為什麼會有這本書</h3>
+      <div class="card">
+        <p class="muted">這本書<b style="color:#fff;font-weight:500">不是納瓦爾自己寫的</b>。是死忠粉絲 Eric Jorgenson 花了好幾年，把納瓦爾散落在 Twitter、Podcast、訪談、Blog 的所有金句收集、重編而成，2020 年出版（《The Almanack of Naval Ravikant》）。</p>
+        <p class="muted" style="margin-top:8px">最神奇的是——納瓦爾在序言說：「<b style="color:#fff;font-weight:500">這本書可以免費下載 PDF，因為知識應該是免費的。</b>」不收版稅、網路版永久免費（<a href="https://www.navalmanack.com" target="_blank">navalmanack.com</a>）。這本身就是「媒體槓桿 × 永久遊戲」的示範。書分兩大主軸：<b style="color:#fff;font-weight:500">致富</b> ＋ <b style="color:#fff;font-weight:500">幸福</b>。</p>
+      </div>
+      <div class="grid3">
+        <div class="card"><h4 style="color:var(--gold)">底層 · 特定知識</h4><p class="muted">挖出別人複製不了的你。對應第五部模組 2。</p></div>
+        <div class="card"><h4 style="color:var(--gold)">中層 · 當責×槓桿×判斷</h4><p class="muted">真名承擔、裝上四槓桿、靠判斷放大。對應模組 3-5。</p></div>
+        <div class="card"><h4 style="color:var(--gold)">頂層 · 幸福與主權</h4><p class="muted">財富不是終點，平靜才是。對應模組 1、6。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART 2 · 孟修WIKI大腦 ================= -->
+<section class="view" id="p2">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">PART II</div>
+      <h1>孟修 <span class="g">WIKI 大腦</span></h1>
+      <div class="lead">我不是「讀完」一本書——是把它一道一道工序，<b>煉</b>進大腦。把一本電子書，變成一張會自己生長的知識網。</div>
+    </div>
+    <div class="block">
+      <h3>🎬 動畫：把一本書讀進「第二大腦」</h3>
+      <p class="muted">約 70 秒。點一下開始播放，空白鍵暫停、← → 翻幕、F 全螢幕。</p>
+      <div class="embed"><iframe src="opening/2026-06-09-孟修讀書法-開場動畫.html" title="孟修 WIKI 大腦開場動畫" loading="lazy"></iframe></div>
+    </div>
+    <div class="block">
+      <h3>🛠 四個工具，一條生產線</h3>
+      <div class="pipeline">
+        <div class="tool"><div class="ic">🤖</div><div class="nm">Claude Code</div><div class="ro">編譯 · 萃取</div><div class="ds">把對話與素材編譯成有來源、有連結的 wiki 卡片</div></div>
+        <div class="tool"><div class="ic">🔗</div><div class="nm">Obsidian</div><div class="ro">知識網載體</div><div class="ds">每張卡片用 [[雙向連結]] 長成一張會生長的網</div></div>
+        <div class="tool"><div class="ic">🎧</div><div class="nm">NotebookLM</div><div class="ro">深度研讀</div><div class="ds">把長文本變成雙人對談、心智圖、重點摘要</div></div>
+        <div class="tool"><div class="ic">🔍</div><div class="nm">Gemini</div><div class="ro">混合查詢</div><div class="ds">跨來源追問、過濾，逼出一本書真正的重點</div></div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>📋 六個步驟</h3>
+      <div class="steps">
+        <div class="step"><div class="sc"><h4>先買電子書</h4><p>紙本舒服卻餵不進 AI。一律先買電子書——可劃線、可複製、可整本丟給工具。汲取，從「可被選取」開始。</p></div></div>
+        <div class="step"><div class="sc"><h4>看過、聽過相關的說書</h4><p>動手前先建地圖。用別人的廣度，快速抓到骨架、金句與爭點，再決定深挖哪裡。</p></div></div>
+        <div class="step"><div class="sc"><h4>把素材餵進工具</h4><p>電子書內文 + 說書筆記，全部倒進 raw 原始層——大腦的「進料口」。</p></div></div>
+        <div class="step"><div class="sc"><h4>跟 AI 對話，問出精華</h4><p>用 Gemini 跨來源混合查詢、用 NotebookLM 深度對談。不是被動讀，是主動「審問」這本書。</p></div></div>
+        <div class="step"><div class="sc"><h4>用 Claude Code 萃取成卡片</h4><p>對話精華交給 Claude Code 編譯——自動生成有 frontmatter、有來源、有 [[連結]] 的 wiki 卡片。</p></div></div>
+        <div class="step"><div class="sc"><h4>跨界理解</h4><p>同一個概念，連到別的作者、別的領域、自己的一生。讀別人的書，長自己的網。</p></div></div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>🕸 跨界 — 以「槓桿」一個概念為例</h3>
+      <div class="card">
+        <p class="muted">納瓦爾說：沒有槓桿，你永遠在用時間換錢。四種槓桿——勞動、資本、<span class="gs">程式碼</span>、<span class="gs">媒體</span>——後兩種零邊際成本。但我讀到的不只是納瓦爾。同一個「槓桿」，連到 <span class="gs">特定知識</span>、連到 <span class="gs">永久遊戲</span>，更連到我自己的人生：程式碼槓桿、媒體槓桿、還有保險增員。一個概念，連起四個領域、十位作者、和我的一生——這就是跨界。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART 3 · 為什麼工作坊 ================= -->
+<section class="view" id="p3">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">PART III</div>
+      <h1>為什麼是 <span class="g">工作坊</span></h1>
+      <div class="lead">讀書會讓你「聽懂」，工作坊讓你「帶走」。為什麼扛霸子值得花這個時間？五個理由。</div>
+    </div>
+    <div class="block">
+      <div class="reason"><div class="rn">1</div><div><h4>教，就是最好的學習；做，比學更重要</h4><p>你坐著聽，留下 5%；你動手做，留下 75%；你教給別人，留下 90%。這場工作坊不是要你「學會」納瓦爾，是要你把它<b style="color:#fff;font-weight:500">做出來、講出去、教下去</b>——這才是真的內化。</p><div class="qt">《禮記·學記》：「學然後知不足，教然後知困……教學相長也。」 · Seneca：「Docendo discimus（我們在教中學習）。」 · 納瓦爾推文 32：「動手做比看別人做快。」</div></div></div>
+      <div class="reason"><div class="rn">2</div><div><h4>落地落實到保險業</h4><p>納瓦爾講的不是矽谷科技，是「<b style="color:#fff;font-weight:500">無需許可的槓桿</b>」。在台灣保險業同樣適用：寫一篇文章、開一場小講座、做一集 Podcast、經營一個 LINE 群——全都是你睡覺時替你工作的媒體槓桿。理論不落地等於沒學，這場每一條都鉤回增員、開發、帶人。</p><div class="qt">納瓦爾推文 25：「程式與媒體是不需許可的槓桿，是新富階級背後的祕密。」</div></div></div>
+      <div class="reason"><div class="rn">3</div><div><h4>與客戶有了深度談資</h4><p>高端客戶買的不是保單，是「跟你聊得來」。當你能用納瓦爾的財富觀、致富心態的睡眠測試、底層邏輯的成功公式跟客戶對話——你就從「賣保險的」升級成「<b style="color:#fff;font-weight:500">值得請教的人</b>」。39 條金句＋七本經典，就是你的談資彈藥庫。</p><div class="qt">把硬知識降維、建立「智者」人設——這是你跨界標籤裡最強的一張。</div></div></div>
+      <div class="reason"><div class="rn">4</div><div><h4>個人成長 — 不只業績，是把自己活成品牌</h4><p>50 歲後，勞動槓桿（管人）的痛苦邊際成本越來越高。真正的成長來自把「你自己」變成市場上唯一的產品。這場工作坊給的不是話術，是一套<b style="color:#fff;font-weight:500">會自己複利下去的人生作業系統</b>。</p><div class="qt">納瓦爾推文 8：「人生所有回報——財富、關係、知識——都來自複利。」</div></div></div>
+      <div class="reason"><div class="rn">5</div><div><h4>看我表演，比較沒有壓力</h4><p>增員最難的不是話術，是「開口」。讓扛霸子先<b style="color:#fff;font-weight:500">示範一次</b>——你在台上把自己商品化的過程演一遍，學員在台下觀摩，零壓力。看懂了，再帶回團隊照著做。先看戲，再上場。</p><div class="qt">最高級的增員，是讓優秀的人「想跟你」——你先活成那個範本。</div></div></div>
+    </div>
+    <div class="block">
+      <h3>⚖️ 工作坊 vs 讀書會</h3>
+      <table class="t">
+        <tr><th>面向</th><th>一般讀書會</th><th>本工作坊</th></tr>
+        <tr><td><b>產出</b></td><td>筆記、心得、感動三天</td><td>一張個人定位圖 + 一套增員系統，當場帶走</td></tr>
+        <tr><td><b>比例</b></td><td>講師講 80%</td><td>3-7-3：30% 理論 + 70% 實戰 + 3 個結論</td></tr>
+        <tr><td><b>結束後</b></td><td>回到原本的日子</td><td>21 天行動挑戰 + 信物儀式 + 追蹤</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART 4 · 造運引擎 ================= -->
+<section class="view" id="p4">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">PART IV</div>
+      <h1>造運引擎 <span class="g">Luck Engine</span></h1>
+      <div class="lead">幸運不是運氣好，是<b>把行為訓練成性格，把性格活成命運</b>。這是主方程式最後那個乘數——也是今天投報率最高的一段。</div>
+    </div>
+    <div class="block">
+      <h3>🧮 造運公式：Λ 怎麼放大時間</h3>
+      <div class="eq" style="max-width:none">
+        <div class="formula" style="font-size:clamp(15px,2.7vw,24px)">個人商品力 B ＝ ［(獨特性 × 特定知識) × 當責 × 槓桿］<sup>時間 × 造運引擎 Λ</sup></div>
+        <p class="muted" style="margin-top:10px;white-space:normal">納瓦爾給你五元素、教你方向；造運引擎給你 <b style="color:var(--gold-soft)">Λ</b>，把幸運放到<b style="color:#fff;font-weight:500">指數位置</b>跟時間一起放大。<b style="color:var(--gold-soft)">沒有 Λ 的時間＝直線努力；有 Λ 的時間＝指數爆發。</b></p>
+      </div>
+      <div class="eq" style="max-width:none;margin-top:12px">
+        <div class="formula" style="font-size:clamp(17px,3.4vw,28px)">Λ ＝ L₀ ＋ ( U × C × K ) × R</div>
+        <div class="eqlegend" style="grid-template-columns:1fr 1fr">
+          <div><b>L₀ 用加號</b><span>背景常數、與努力無關</span></div>
+          <div><b>U·C·K·R 用乘號</b><span>任一為 0、整個 Λ 歸零</span></div>
+        </div>
+      </div>
+      <p class="muted" style="font-size:13.5px">出處：<code>naval-lab/syntheses/07-luck-engine-productize-merged</code>（Naval 四層 × Wiseman × Taleb 反脆弱整合）。</p>
+    </div>
+
+    <div class="block">
+      <h3>🍀 L.U.C.K. ＋ R：五個可訓練的層次</h3>
+      <div class="lyr5">
+        <div class="lyr" style="border-top-color:#5a7a9a"><div class="lc" style="color:#8fb0cc">L₀</div><h5>盲運氣</h5><div class="e">Lottery Luck</div><p>出生條件、剛好上門的客戶——不可訓練，但要承認它。</p><div class="ms">→ Naval L1</div></div>
+        <div class="lyr" style="border-top-color:#5a8a5a"><div class="lc" style="color:#83c083">U</div><h5>主動奔走</h5><div class="e">Hustle Luck</div><p>製造變異、擴大幸運表面積——業務員都卡在這。</p><div class="ms">→ L2 · Roberts · Taleb</div></div>
+        <div class="lyr" style="border-top-color:#E9B627"><div class="lc" style="color:#f4d76a">C</div><h5>敏銳察覺</h5><div class="e">Spotter's Luck</div><p>同樣線索別人看不見、你看見——技能疊加＋跨域連結。</p><div class="ms">→ L3 · Scott Adams</div></div>
+        <div class="lyr" style="border-top-color:#b9844c"><div class="lc" style="color:#d6a36a">K</div><h5>打造命運</h5><div class="e">Destined Luck</div><p>機會主動來找你——品格複利、好名聲、深海潛水員境界。</p><div class="ms">→ L4 · Housel</div></div>
+        <div class="lyr" style="border-top-color:#b9534c"><div class="lc" style="color:#e08d86">R</div><h5>韌性</h5><div class="e">Resilience</div><p>遇衝擊不歸零、甚至變更強——反脆弱。R＝0 全部歸零。</p><div class="ms">→ Collins · Wiseman · Taleb</div></div>
+      </div>
+      <div class="card"><p class="muted">保險走一遍：入行第一張保單多是親友（<b style="color:#8fb0cc">L₀</b>）→ 拚命跑同一棵樹（<b style="color:#83c083">U</b>）→ 看到別人沒看到的需求（<b style="color:var(--gold-soft)">C</b>）→「保險界值得託付的人」客戶自己來（<b style="color:#d6a36a">K</b>）→ 撐過市場崩盤反而更強（<b style="color:#e08d86">R</b>）。</p></div>
+    </div>
+
+    <div class="block">
+      <h3>🔧 造運四階段（怎麼一層層往上）</h3>
+      <div class="grid4">
+        <div class="card"><h4 style="color:var(--gold)">① 啟動引擎</h4><p class="muted">L → U：別停在等待。開始大量行動、敲更多門、擴大表面積。</p></div>
+        <div class="card"><h4 style="color:var(--gold)">② 安裝導航</h4><p class="muted">U → C：純勤奮會變瞎忙。用察覺提高轉化率——技能疊加＋跨域連結。</p></div>
+        <div class="card"><h4 style="color:var(--gold)">③ 打造磁力</h4><p class="muted">C → K：把自己「產品化」。長期主義＋高品質＋可被發現，讓機會自己上門。</p></div>
+        <div class="card"><h4 style="color:var(--gold)">④ 加裝防護罩</h4><p class="muted">維持 R > 0：反事實思考＋反脆弱結構＋止血機制，別讓一次衝擊歸零。</p></div>
+      </div>
+      <p class="muted" style="font-size:13.5px">現場：掃 QR 填 <b style="color:var(--gold-soft)">22 題造運值測驗</b>，3 分鐘拿到造運值、四構面雷達（U/C/K/R）與最弱變數——決定你 30 天先補哪一層。</p>
+    </div>
+
+    <div class="block">
+      <h3>📈 三種人，30 年後的差距（五元素都＝2）</h3>
+      <div class="grid3">
+        <div class="card scn" style="border-color:#b9534c"><div class="lb" style="color:#e08d86">脆弱型 · R＝0</div><p class="muted" style="font-size:13px">Λ ＝ …× 0 ＝ 0</p><div class="res" style="color:#e08d86">B ＝ 2⁰ ＝ 1</div><p class="muted" style="font-size:12.5px">30 年累積，一次毀滅性事件全部歸零。</p></div>
+        <div class="card scn"><div class="lb" style="color:var(--gold)">普通型 · Λ＝1</div><p class="muted" style="font-size:13px">基準線</p><div class="res" style="color:var(--gold-soft)">B ＝ 2³⁰ ≈ 10 億</div><p class="muted" style="font-size:12.5px">線性投入＋時間複利。</p></div>
+        <div class="card scn" style="border-color:#5a8a5a;box-shadow:0 0 16px rgba(90,138,90,.18)"><div class="lb" style="color:#88c488">反脆弱型 · Λ＝1.5</div><p class="muted" style="font-size:13px">高 U×C×K，R＝1.5</p><div class="res" style="color:#88c488">B ＝ 2⁴⁵ ≈ 35 兆</div><p class="muted" style="font-size:12.5px">時間×幸運雙重複利，領先普通人 35,000 倍。</p></div>
+      </div>
+      <div class="big">差距不在五元素——三人都是 2。差距全在「Λ 怎麼搭配時間」。</div>
+      <p class="muted" style="font-size:13.5px">心法：多數人花 99% 時間練「底數」（讀書、考證、學技能），只花 1% 練 Λ（造運引擎）。<b style="color:var(--gold-soft)">練 Λ 比練底數重要 10 倍。</b>巴菲特 99% 財富在 50 歲後——他從 11 歲就在練 Λ。</p>
+    </div>
+
+    <div class="block">
+      <h3>❄️ 破冰遊戲（現場體驗）</h3>
+      <div class="game"><div class="t">🗞 報紙照片實驗 <small>6 分 · Wiseman</small></div>
+        <p>「數一數這份報紙有幾張照片，數完舉手。」多數人埋頭數——其實第二頁半版印著一行大字：「<b style="color:var(--gold-soft)">別數了，共 43 張</b>」。</p>
+        <div class="big">機會一直都在。差別是「察覺機會的頻率」。</div>
+        <p style="font-size:13px">2003 年 Wiseman 實驗：自認倒霉的人花兩分鐘才數完；自認幸運的人幾秒就看到那行字。差別不是眼睛——是幸運的人開著周邊視覺。</p>
+      </div>
+      <div class="game"><div class="t">🎲 磨骰子 <small>3 分 · C 核心比喻</small></div>
+        <p>「擲到 6 是 1/6。但我把 6 那面磨平、其他五面磨成圓弧——擲到 6 變多少？」可能 1/2 甚至更高。</p>
+        <div class="big">幸運，不是擲骰子的人，是磨骰子的人。</div>
+        <p style="font-size:13px">你 25 年累積的專業，就是在磨骰子。你不是改機率，你是改骰子本身。</p>
+      </div>
+      <div class="game"><div class="t">📐 幸運表面積自評 <small>4 分 · U 行動量</small></div>
+        <p>幸運表面積 ＝ <b style="color:var(--gold-soft)">Doing × Telling</b>（做了多少 × 讓多少人知道）。乘號——其一為 0，表面積就是 0。</p>
+        <div class="big">99% 的保險人只做 Doing、不做 Telling。</div>
+        <p style="font-size:13px">埋頭服務客戶，但沒人知道「你」是誰。寫一篇貼文、開一場小講座、做一集 Podcast——這些都是 Telling，是你 Λ 最容易補的那一格。</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>🎯 給扛霸子：增員就是造運</h3>
+      <div class="card"><p class="muted">增員飽和，是因為你在 L2 跟所有人<b style="color:#fff;font-weight:500">搶同一棵樹的蘋果</b>。真正的增員在 L3——開周邊視覺，去別人沒在找的地方（換產業、換場域、原型對話）找人。而你要幫新人長出 <b style="color:#fff;font-weight:500">L4 獨特運</b>：當他有了自己的非標品人設，貴人自己上門，他就不會陣亡。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART 5 · 將自己商品化 ================= -->
+<section class="view" id="p5">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">PART V</div>
+      <h1>將自己 <span class="g">商品化</span></h1>
+      <div class="lead">六個模組，逐字母把主方程式裝進你身上。這是一份<b>互動工作簿</b>——邊讀公式與出處，邊填，最後當場產出一份專屬於你的使用說明書。</div>
+    </div>
+    <div class="block">
+      <h3>🚀 六模組總覽</h3>
+      <div class="modgrid">
+        <div class="modcard"><span class="letter">T</span><div class="mn">MODULE 01 · 診斷</div><h4>你為何有錢卻沒了熱情</h4><p>財富 vs 地位遊戲、四燈號儀表板、內在主權。把中年倦怠變成可拆解的結構問題。</p><div class="take">帶走：四燈號人生儀表板</div></div>
+        <div class="modcard"><span class="letter">U·SK</span><div class="mn">MODULE 02 · 發覺天賦</div><h4>找出你的特定知識</h4><p>好時光日誌 + AEIOU、三圈交集、唯一性公式。挖出別人複製不了的礦。</p><div class="take">帶走：好時光日誌 + 三圈交集圖</div></div>
+        <div class="modcard"><span class="letter">SK</span><div class="mn">MODULE 03 · 定位</div><h4>把天賦嫁接到保險業</h4><p>重新框定、橋接三法、奧德賽三計畫。把無關的熱情變成 0 競爭者護城河。</p><div class="take">帶走：奧德賽畫布 + 一句話定位</div></div>
+        <div class="modcard"><span class="letter">L</span><div class="mn">MODULE 04 · 產品化</div><h4>漏斗、MVP 與槓桿</h4><p>四種槓桿、三層漏斗、30 天 MVP、反脆弱槓鈴。停止零售時間。</p><div class="take">帶走：三層漏斗 + 30 天 MVP</div></div>
+        <div class="modcard"><span class="letter">A·運</span><div class="mn">MODULE 05 · 增員（靶心）</div><h4>把個人商品變造星系統</h4><p>四種幸運、心流破冰面試、准增員 IP 卡、永久遊戲選人。本場核心。</p><div class="take">帶走：心流破冰面試 + IP 訂製卡</div></div>
+        <div class="modcard"><span class="letter">T</span><div class="mn">MODULE 06 · 永續</div><h4>當責、複利與內在主權</h4><p>Enough Line、慾望合約撕毀、主權誓言。封印整條公式。</p><div class="take">帶走：Enough Line + 主權誓言卡</div></div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>📝 互動工作簿（掃 QR 當場填）</h3>
+      <div class="card">
+        <p class="muted">完整互動版可自動存檔、即時組成你的定位與漏斗，並產出 PDF 帶走。</p>
+        <div class="herobtns" style="justify-content:flex-start;margin-top:10px">
+          <a class="btn primary" href="webapp/index.html" target="_blank">開啟互動工作簿 →</a>
+          <a class="btn" href="https://lawsuger.github.io/naval-pm-workshop/" target="_blank">線上版（GitHub Pages）</a>
+        </div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>🔴 模組五 · 保險業實戰三痛點（扛霸子親授段）</h3>
+      <p class="muted">全場含金量最高、最無法被複製的 15 分鐘。骨架由系統搭好，三層具體內容（真實案例／你的判斷／給扛霸子的建議）<b style="color:#fff;font-weight:500">預留給你親自上場，AI 不代寫</b>。</p>
+      <div class="grid3">
+        <div class="card" style="border-style:dashed"><h4 style="color:var(--gold)">痛點 1 · 增員難＋組織停滯</h4><p class="muted" style="font-size:13.5px">⚠️ 預留親填：真實案例／你的判斷／下週怎麼開第一句增員對話。</p></div>
+        <div class="card" style="border-style:dashed"><h4 style="color:var(--gold)">痛點 2 · 市場飽和</h4><p class="muted" style="font-size:13.5px">⚠️ 預留親填：用資產配置重開需求／致富心態框架切高端。</p></div>
+        <div class="card" style="border-style:dashed"><h4 style="color:var(--gold)">痛點 3 · 帶人管理</h4><p class="muted" style="font-size:13.5px">⚠️ 預留親填：20 歲衝刺 vs 50 歲複利／分齡設計領先指標。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PART 6 · 顧問團 ================= -->
+<section class="view" id="p6">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">PART VI</div>
+      <h1>結業 ＋ <span class="g">AI 顧問團</span></h1>
+      <div class="lead">今天不是結束，是你跟自己簽的「長期合約」第一天。把六枚信物收齊，拼出完整的主方程式——然後，把顧問團帶回家。</div>
+    </div>
+    <div class="block">
+      <h3>🔑 回到主方程式</h3>
+      <div class="eq" style="max-width:none">
+        <div class="formula">個人商品力 ＝ ［ ( 獨特性 × 特定知識 ) × 當責 × 槓桿 ］<sup>時間複利 × 造運引擎</sup></div>
+        <p class="muted" style="margin-top:10px;white-space:normal">六模組六字母全部打勾。六枚信物收齊，換一張「個人商品化護照」。</p>
+      </div>
+    </div>
+    <div class="block">
+      <h3>🪙 六枚信物 = 一條公式</h3>
+      <table class="t">
+        <tr><th>模組</th><th>信物</th><th>一句話</th></tr>
+        <tr><td>① 診斷</td><td>小圓鏡</td><td>向內看儀表板，才是主權的起點</td></tr>
+        <tr><td>② 發覺天賦</td><td>原礦石／放大鏡</td><td>天賦是挖出來、被放大鏡看見的</td></tr>
+        <tr><td>③ 定位</td><td>小羅盤</td><td>方向是設計出來的，可有三個指北針</td></tr>
+        <tr><td>④ 產品化</td><td>槓桿積木／滑輪</td><td>找到支點，一個人撬動整個地球</td></tr>
+        <tr><td>⑤ 增員</td><td>「獨」字印章</td><td>真名承擔，社會用槓桿回報你</td></tr>
+        <tr><td>⑥ 永續</td><td>小沙漏</td><td>跟長期的人，玩長期的遊戲</td></tr>
+      </table>
+    </div>
+    <div class="block">
+      <h3>📜 主權誓言</h3>
+      <div class="card" style="border-left:4px solid var(--gold)">
+        <p style="color:#f1ead9;line-height:2;font-size:16px">
+          我是我內在基礎建設的唯一建築師。<br>
+          我拒絕再為了追逐地位，簽下任何讓自己不快樂的合約。<br>
+          我只把情緒與財務的資本，投注在我能控制的事情上。<br>
+          我用「貢獻」定義我的價值，不再活在忌妒者的眼光裡。<br>
+          我是格網思維的學生，也是我自己時間的主人。
+        </p>
+      </div>
+    </div>
+    <div class="block">
+      <h3>🤖 AI 顧問團</h3>
+      <div class="holder">
+        <div class="big2">此區預留 — 你已在 Mac 端製作中</div>
+        <p class="muted">召喚你的隨身 AI 顧問團：把納瓦爾、生命設計師、斯多葛……變成可隨時對話的顧問。<br>完成後把連結／嵌入碼貼進這裡即可接上。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 21 天挑戰 ================= -->
+<section class="view" id="c21">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">CHALLENGE</div>
+      <h1>21 天 <span class="g">行動挑戰</span></h1>
+      <div class="lead">三階段把自己產品化，對應公式三大核心：第一週挖掘特定知識，第二週建立當責，第三週啟動槓桿。<b>每天 30 分鐘</b>，點一下打勾，進度自動存。</div>
+    </div>
+    <div class="block">
+      <div class="phase"><div class="ph">DAY 1–7</div><h4>🧬 挖掘特定知識 — 找到不可替代性</h4>
+        <div class="chklist" data-key="c21a">
+          <div class="chk"><span class="box">✓</span><span>列出 10 件做起來像在玩的事</span></div>
+          <div class="chk"><span class="box">✓</span><span>畫出三圈交集圖：興趣 × 優勢 × 市場</span></div>
+          <div class="chk"><span class="box">✓</span><span>寫出你的底層邏輯公式</span></div>
+          <div class="chk"><span class="box">✓</span><span>訪問 3 位朋友：你最擅長什麼？</span></div>
+          <div class="chk"><span class="box">✓</span><span>定義一句話定位</span></div>
+          <div class="chk"><span class="box">✓</span><span>研究 3 位榜樣如何把自己產品化</span></div>
+        </div>
+        <div class="out">📝 輸出：特定知識宣言 500 字</div>
+      </div>
+      <div class="phase"><div class="ph">DAY 8–14</div><h4>🛡️ 打造當責 — 在自己名字下承擔風險</h4>
+        <div class="chklist" data-key="c21b">
+          <div class="chk"><span class="box">✓</span><span>建立品牌識別（名字／Logo／色調）</span></div>
+          <div class="chk"><span class="box">✓</span><span>選一個平台發布第一篇公開內容</span></div>
+          <div class="chk"><span class="box">✓</span><span>你敢對哪件事負全責？</span></div>
+          <div class="chk"><span class="box">✓</span><span>建立個人資產負債表</span></div>
+          <div class="chk"><span class="box">✓</span><span>設計 MVP 雛形</span></div>
+          <div class="chk"><span class="box">✓</span><span>找到一位當責夥伴（accountability partner）</span></div>
+        </div>
+        <div class="out">📝 輸出：90 天承諾書</div>
+      </div>
+      <div class="phase"><div class="ph">DAY 15–21</div><h4>⚡ 啟動槓桿系統 — 讓系統為你工作</h4>
+        <div class="chklist" data-key="c21c">
+          <div class="chk"><span class="box">✓</span><span>盤點三種槓桿：程式碼／媒體／資本</span></div>
+          <div class="chk"><span class="box">✓</span><span>設計內容系統化流程</span></div>
+          <div class="chk"><span class="box">✓</span><span>建立自動化工具鏈</span></div>
+          <div class="chk"><span class="box">✓</span><span>反過來想：什麼會讓你失敗？</span></div>
+          <div class="chk"><span class="box">✓</span><span>設計你的時間投資組合</span></div>
+          <div class="chk"><span class="box">✓</span><span>建立數位工具槓桿清單</span></div>
+        </div>
+        <div class="out">📝 輸出：個人產品化藍圖 1.0</div>
+      </div>
+      <div class="card" style="text-align:center"><p class="muted" style="margin:0">⏳ 每天 30 分鐘，21 天後你將擁有一份完整的個人產品化藍圖。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 時間槓桿 ================= -->
+<section class="view" id="tl">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">TIME LEVERAGE</div>
+      <h1>時間 <span class="g">槓桿</span></h1>
+      <div class="lead">時間是最被低估的槓桿。<b>正確的方向 ＋ 持續的行動 ＝ 指數增長。</b></div>
+    </div>
+    <div class="block">
+      <div class="card" style="text-align:center">
+        <div class="bignum">37.78<span style="font-size:.5em">x</span></div>
+        <p class="muted" style="margin:8px 0 0">每天進步 1%，一年後的你（1.01³⁶⁵）。<b style="color:var(--gold-soft)">方向 &gt; 速度</b> — Naval 核心法則。</p>
+      </div>
+    </div>
+    <div class="block">
+      <h3>🎯 時間投資組合矩陣</h3>
+      <div class="matrix">
+        <div class="mcell gold"><h4>💎 高價值 × 長期</h4><p>專屬知識、個人品牌、深度閱讀、關係經營</p><div class="act">→ 投入 50%+</div></div>
+        <div class="mcell"><h4>⚡ 高價值 × 短期</h4><p>專案交付、客戶服務、緊急重要任務</p><div class="act">→ 投入 30%，並建立系統</div></div>
+        <div class="mcell"><h4>🔄 低價值 × 長期</h4><p>無目標社群瀏覽、低效會議</p><div class="act">→ 果斷刪除</div></div>
+        <div class="mcell"><h4>🗑️ 低價值 × 短期</h4><p>無意義爭論、完美主義陷阱</p><div class="act">→ 自動化或外包</div></div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>📐 時間槓桿三層思考</h3>
+      <div class="steps">
+        <div class="step"><div class="sc"><h4>判斷力 — 選擇正確的方向</h4><p>窮查理：反過來想，先問「什麼會導致失敗」。</p></div></div>
+        <div class="step"><div class="sc"><h4>系統化 — 讓每一分鐘產生複利</h4><p>寫一篇文章是線性；建立一套寫作系統是指數。</p></div></div>
+        <div class="step"><div class="sc"><h4>耐心 — 等待指數曲線的轉折點</h4><p>哪件事，十年後回頭看絕對值得？</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 圖書館 ================= -->
+<section class="view" id="lib">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">LIBRARY</div>
+      <h1>圖書館</h1>
+      <div class="lead">這場工作坊參考的<b>全部書單</b>——23 本經典、四大類，每本整理書、YouTube、Podcast、網頁等延伸資源。</div>
+    </div>
+    <div class="block">
+      <div id="libgrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 使用手冊 ================= -->
+<section class="view" id="man">
+  <div class="wrap">
+    <div class="parthead">
+      <div class="pno">MANUAL</div>
+      <h1>使用 <span class="g">手冊</span></h1>
+      <div class="lead">個人產品化行動清單。逐一完成，把工作坊的覺察變成真正落地的動作。進度自動存在這台裝置。</div>
+    </div>
+    <div class="block">
+      <div class="phase"><div class="ph">階段一</div><h4>🧬 挖掘特定知識</h4>
+        <div class="chklist" data-key="m1">
+          <div class="chk"><span class="box">✓</span><span>完成「做什麼像在玩」探索清單</span></div>
+          <div class="chk"><span class="box">✓</span><span>畫出興趣 × 優勢 × 市場三圈交集圖</span></div>
+          <div class="chk"><span class="box">✓</span><span>寫出一句話定位</span></div>
+          <div class="chk"><span class="box">✓</span><span>確認你的底層邏輯公式</span></div>
+          <div class="chk"><span class="box">✓</span><span>完成 500 字特定知識宣言</span></div>
+        </div>
+      </div>
+      <div class="phase"><div class="ph">階段二</div><h4>🛡️ 打造當責</h4>
+        <div class="chklist" data-key="m2">
+          <div class="chk"><span class="box">✓</span><span>建立個人品牌識別</span></div>
+          <div class="chk"><span class="box">✓</span><span>發布第一篇公開內容</span></div>
+          <div class="chk"><span class="box">✓</span><span>建立個人資產負債表</span></div>
+          <div class="chk"><span class="box">✓</span><span>公開 90 天目標承諾書</span></div>
+          <div class="chk"><span class="box">✓</span><span>找到一位當責夥伴</span></div>
+          <div class="chk"><span class="box">✓</span><span>設計 MVP 雛形</span></div>
+        </div>
+      </div>
+      <div class="phase"><div class="ph">階段三</div><h4>⚡ 啟動槓桿放大</h4>
+        <div class="chklist" data-key="m3">
+          <div class="chk"><span class="box">✓</span><span>盤點三種槓桿工具</span></div>
+          <div class="chk"><span class="box">✓</span><span>建立內容系統化流程</span></div>
+          <div class="chk"><span class="box">✓</span><span>設置自動化工具鏈</span></div>
+          <div class="chk"><span class="box">✓</span><span>完成「反過來想」失敗清單</span></div>
+          <div class="chk"><span class="box">✓</span><span>設計時間投資組合</span></div>
+          <div class="chk"><span class="box">✓</span><span>完成個人產品化藍圖 1.0</span></div>
+        </div>
+      </div>
+      <div class="phase"><div class="ph">貫穿全程</div><h4>⏳ 時間複利心態</h4>
+        <div class="chklist" data-key="m4">
+          <div class="chk"><span class="box">✓</span><span>確認你的十年賽道</span></div>
+          <div class="chk"><span class="box">✓</span><span>建立每日 1% 追蹤系統</span></div>
+          <div class="chk"><span class="box">✓</span><span>定義你的能力圈邊界</span></div>
+          <div class="chk"><span class="box">✓</span><span>建立月度回顧機制</span></div>
+          <div class="chk"><span class="box">✓</span><span>找到一個長期主義者社群</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODAL ================= -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeQ()">
+  <div class="mcard" id="mcard"></div>
+</div>
+
+<div class="footer">
+  <div class="wrap">
+    <div class="f">個人商品力 ＝ ［(獨特性 × 特定知識) × 當責 × 槓桿］<sup>時間複利 × 造運引擎</sup></div>
+    納瓦爾工作坊 · 將個人商品化 · 做自己生命的設計師　|　給扛霸子的致富之道　|　v2.0 · 2026-06-09<br>
+    底座：造運引擎 × 納瓦爾 39 條 × 生命設計師 × 斯多葛內在主權 × 劉潤／樊登／Housel
+  </div>
+</div>
+
+<script>
+/* ---------- view switching ---------- */
+function show(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id));
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===id));
+  closeQ();
+  window.scrollTo({top:0});
+}
+
+/* ---------- 39 quotes ---------- */
+const GROUPS=[
+ {name:"財富觀·股權",range:[1,5]},
+ {name:"幸運·長期複利",range:[6,8]},
+ {name:"夥伴·銷售",range:[9,11]},
+ {name:"專屬知識",range:[12,17]},
+ {name:"當責·槓桿",range:[18,27]},
+ {name:"判斷·時間·努力",range:[28,36]},
+ {name:"財富終局",range:[37,39]},
+];
+const D=[
+{n:1,t:"追求財富，而非金錢或地位",en:"Seek wealth, not money or status. Wealth is having assets that earn while you sleep.",zh:"追求財富，而非金錢或地位。財富是「在你睡覺時仍替你賺錢的資產」；金錢是轉移時間與財富的媒介；地位是你在社會階層中的位置。",site:"nav.al/seek-wealth",lib:[["Morgan Housel","致富心態","金錢最大的價值是掌控時間；睡著時資產替你工作才是真自由。"],["JL Collins","簡單致富","被動收入才是真財富，工作收入不會致富，要靠資產複利。"],["Scott Galloway","蓋洛威教授的人生財富課","財務自由＝被動收入 > 燒錢率。"]],web:[["Warren Buffett","","找不到睡覺時賺錢的方法，就會工作到死。","https://www.goodreads.com/quotes/8760232"],["Jim Rohn","7 Strategies for Wealth & Happiness","工資讓你謀生，利潤讓你致富。","https://www.jimrohn.com/wisdom/articles/philosophy-of-wealth"],["Marcus Aurelius","沉思錄","真正的財富在於有能力幫助他人。","https://www.dailystoic.com/this-is-real-wealth/"]]},
+{n:2,t:"合乎道德的財富創造是可能的",en:"Understand that ethical wealth creation is possible. If you secretly despise wealth, it will elude you.",zh:"要理解——合乎道德的財富創造是可能的。如果你內心暗暗鄙視財富，財富就會躲著你。",site:"nav.al/ethical-wealth",lib:[["Scott Galloway","人生財富課","追求財富並非不道德；貶低財富的心態反而阻礙累積。"],["Morgan Housel","致富心態","接納而非否定金錢的價值時，行為與決策才能一致。"]],web:[["Andrew Carnegie","財富的福音","商業領袖有道德責任用財富造福共同利益。","https://www.carnegie.org/about/our-history/gospelofwealth/"],["Seneca","斯多葛書信","財富本身中立，鄙視財富常出於匱乏心理。","https://thestoicgym.com/the-stoic-magazine/article/633"]]},
+{n:3,t:"忽略玩「地位遊戲」的人",en:"Ignore people playing status games. They gain status by attacking people playing wealth creation games.",zh:"別理會那些玩「地位遊戲」的人。他們是靠攻擊正在創造財富的人，來取得自己的地位。",site:"nav.al/seek-wealth",lib:[["Naval","納瓦爾寶典","財富是正和遊戲、地位是零和遊戲；地位玩家靠攻擊財富創造者取得地位。"],["Morgan Housel","致富心態","媒體偏好傳播悲觀以吸睛，批評者比建設者更易被聽見。"]],web:[["Nassim Taleb","Skin in the Game","沒下行風險的人可自由冒過度風險；激勵對齊才是真誠基礎。","https://grahammann.net/book-notes/skin-in-the-game-nassim-nicholas-taleb"]]},
+{n:4,t:"出租時間不會致富，要擁有股權",en:"You're not going to get rich renting out your time. You must own equity—a piece of a business—to gain your financial freedom.",zh:"出租你的時間，是不會致富的。你必須擁有股權——一間事業的一部分——才能換得財務自由。",site:"nav.al/renting-time",chen:"師父商學院《賺錢的方法只有三種》——別只販賣自己的時間（有上限），往「重複販賣／買別人時間」走。",lib:[["JL Collins","簡單致富","終極目標是被動收入 > 生活支出，讓錢自動為你工作。"],["Paul Jarvis","一人公司","出賣時間換薪水最沒效率，要靠專業建立資產與槓桿。"],["Morgan Housel","致富心態","真正的財富在於留住多少，而非賺多少。"]],web:[["Tim Ferriss","一週工作 4 小時","用業務所有權與權益投資建立被動收入。","https://tim.blog/2025/02/14/the-end-of-time-management/"],["Ray Dalio","原則","原則本身就是槓桿，用以理解每次決策的複利。","https://www.principles.com/"]]},
+{n:5,t:"給社會它想要、卻還不知如何取得的東西（規模化）",en:"You will get rich by giving society what it wants but does not yet know how to get. At scale.",zh:"你會因為「給社會它想要、卻還不知道如何取得的東西」而致富。而且要規模化。",site:"nav.al/rich",chen:"師父商學院《創業沒賺到錢，下一步怎麼辦》——找大市場、縮小人群，大市場才有暴擊可能。",lib:[["Jeff Bezos","親愛的股東","企業根本在於持續滿足顧客需求，透過規模化創造長期價值。"],["Darren Hardy","複利效應","提供他人想要卻不知如何取得的東西，再以複利擴大。"]],web:[["Paul Graham","Do Things that Don't Scale","先手動深入理解需求，規模化源於先解決真實問題。","https://www.paulgraham.com/ds.html"],["Kevin Kelly","1000 True Fans","不需百萬觀眾，1000 個忠實粉絲即可維持創作生涯。","https://a16z.com/1000-true-fans-try-100/"]]},
+{n:6,t:"挑能跟長期的人玩長期遊戲的產業",en:"Pick an industry where you can play long term games with long term people.",zh:"挑一個能讓你跟「長期的人」一起玩「長期遊戲」的產業。",site:"nav.al/long-term",chen:"師父商學院《如何培養貴人體質》——要遇到貴人，先成為別人的貴人；長期關係是信任的複利。",lib:[["Paul Jarvis","一人公司","找到小眾社群後用心照顧，建立長期穩定事業。"],["Morgan Housel","致富心態","長期成功來自「夠了」的心態，而非無止盡追逐。"]],web:[["Charlie Munger","窮查理的普通常識","與聰慧、正直的人建立長期關係是累積財富的關鍵。","https://www.poorcharliesalmanack.com/"],["Warren Buffett","致股東信","長期商業成功來自與志同道合者建立持久關係。","https://www.berkshirehathaway.com/letters/letters.html"]]},
+{n:7,t:"網路大幅拓寬了職涯可能",en:"The Internet has massively broadened the possible space of careers. Most people haven't figured this out yet.",zh:"網際網路已經大幅拓寬了職涯的可能空間，只是多數人還沒想通這一點。",site:"nav.al/possible-careers",chen:"師父商學院《上一層思維》——網路時代用垂直內容吸引客戶，打破單一專業框架。",lib:[["Paul Jarvis","一人公司","一個設計師可靠部落格、課程、播客、自有軟體獨立維生。"],["樊登","低風險創業","網路時代創業不需巨資，靠 MVP 與非對稱交易即可起步。"]],web:[["Paul Graham","The Age of the Essay","網路讓創作者繞過守門人，直達全球受眾。","http://www.paulgraham.com/essay.html"]]},
+{n:8,t:"玩迭代遊戲，回報來自複利",en:"Play iterated games. All the returns in life, whether in wealth, relationships, or knowledge, come from compound interest.",zh:"玩會重複迭代的遊戲。人生所有的回報——無論是財富、關係還是知識——都來自複利。",site:"nav.al/long-term",chen:"師父《複利系統》——找一件喜歡的事重複做一百遍。陳修平 44 重點 #33「一萬次迭代，比一萬個小時無腦重複更重要」。",lib:[["Warren Buffett","巴菲特的投資原則","複利是最強財富力量，「最喜歡的持有期是永遠」。"],["Nick Maggiulli","持續買進","定期投資勝過擇時，複利核心是紀律而非智力。"],["Morgan Housel","致富心態","長尾效應——少數年份決定終身結果，不能中途退場。"]],web:[["Robert Axelrod","合作的演化","重複賽局中合作策略勝過短期利己。","https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation"]]},
+{n:9,t:"挑智慧、能量、正直的夥伴",en:"Pick business partners with high intelligence, energy, and, above all, integrity.",zh:"挑選具備高智慧、高能量，尤其是高正直的事業夥伴。",site:"nav.al/intelligence-energy-integrity",chen:"師父《貴人體質》——貴人更願幫助善用機會、能反饋價值的人。",lib:[["瑞・達利歐","原則","找對做事的人比做什麼事更重要，重視品格一致性與聲譽。"],["Naval","HTGR","三角篩選器——高智力、高能量、高正直，正直最重要。"]],web:[["Jim Rohn","","你的表現是身邊五人的平均；夥伴選擇決定人生軌跡。","https://www.jimrohn.com/"],["James Clear","原子習慣","選環境比意志力更重要。","https://jamesclear.com/atomic-habits"]]},
+{n:10,t:"別跟悲觀者合夥（信念會自我實現）",en:"Don't partner with cynics and pessimists. Their beliefs are self-fulfilling.",zh:"別跟憤世嫉俗者和悲觀主義者合夥。他們的信念會自我實現。",site:"nav.al/rational-optimists",lib:[["卡蘿・杜維克","心態致勝","成長 vs 固定心態塑造行為，信念會自我實現。"],["Morgan Housel","一如既往","人只看到他人優越面，造成錯誤認知與悲觀預期。"]],web:[["Carol Dweck","Mindset","信念直接影響學習與成就，悲觀創造對應現實。","https://mindsetonline.com/"]]},
+{n:11,t:"學會銷售，學會打造",en:"Learn to sell. Learn to build. If you can do both, you will be unstoppable.",zh:"學會銷售，學會打造。兩者兼備，你將無可阻擋。",site:"nav.al/build-sell",chen:"師父《模仿是致勝關鍵》《越專業講得越簡單》——把價值講到客戶聽得懂就是銷售。",lib:[["Paul Jarvis","一人公司","銷售與打造兼備，個人也能撐起小而美的事業。"]],web:[["Peter Thiel","從 0 到 1","能獨立思考（賣創意）並執行遠景（造產品）才有競爭優勢。","https://zerotoonebook.com/"]]},
+{n:12,t:"用專屬知識、當責、槓桿武裝自己",en:"Arm yourself with specific knowledge, accountability, and leverage.",zh:"用三樣東西武裝自己：專屬知識、當責、槓桿。",site:"nav.al/specific-knowledge",chen:"師父《投報率最高 6 件事・投資自己》——花錢學習、跟高手交流，回報超過 10 倍。",lib:[["Paul Jarvis","一人公司","真實個性無法被複製，是專屬知識的另一種形式與護城河。"]],web:[["Charlie Munger","","當「學習機器」，每晚比早上更聰明一點；知識如複利累積。","https://fs.blog/the-buffett-formula/"],["Cal Newport","Deep Work","在無干擾下開發稀有而有價值的專業能力。","https://www.goodreads.com/book/show/25744928-deep-work"]]},
+{n:13,t:"專屬知識無法被訓練",en:"Specific knowledge is knowledge that you cannot be trained for. If society can train you, it can train someone else, and replace you.",zh:"專屬知識，是你無法被「訓練」出來的知識。如果社會能訓練你，就能訓練別人來取代你。",site:"nav.al/specific-knowledge",lib:[["Anders Ericsson","刻意練習","能標準化訓練的就能被取代；無法標準化的判斷才不可訓練。"],["Scott Galloway","人生財富課","「深度工作力」在自動化時代成為無法被取代的新技能。"]],web:[["Michael Polanyi","The Tacit Dimension","隱性知識「我們知道的遠超過能說出的」，無法靠手冊傳授。","https://pmc.ncbi.nlm.nih.gov/articles/PMC12927663/"]]},
+{n:14,t:"專屬知識靠追隨好奇與熱情",en:"Specific knowledge is found by pursuing your genuine curiosity and passion rather than whatever is hot right now.",zh:"專屬知識，是靠追隨你真正的好奇與熱情找到的，而不是追逐當下最熱門的東西。",site:"nav.al/specific-knowledge",chen:"師父《上一層思維》——從你真正感興趣的垂直內容延伸，而非追逐熱門。",lib:[["Mihaly Csikszentmihalyi","心流","能力與挑戰匹配時進入心流，於你像玩、於人像工作。"],["Bill Burnett & Dave Evans","做自己生命的設計師","用設計思考與小原型逐步發現真誠的好奇。"]],web:[["Richard Feynman","","知識來自好奇驅動的獨立學習，用費曼技巧追求真懂。","https://fs.blog/feynman-learning-technique/"]]},
+{n:15,t:"建立專屬知識，於你像玩、於人像工作",en:"Building specific knowledge will feel like play to you but will look like work to others.",zh:"建立專屬知識時，你會覺得像在玩，別人看起來卻像在工作。",site:"nav.al/specific-knowledge",chen:"陳修平（強對應）：納瓦爾 44 重點 #24「找像遊戲的工作——對你是遊戲、對別人是苦工，你就輕鬆獲勝」。",lib:[["Ali Abdaal","高效原力","把工作變「像玩樂」靠愉悅心態與自信，心流帶來高效。"]],web:[["Robert Greene","Mastery","建立專屬知識像遊戲般自然，享受觀察與實驗的過程。","https://www.nateliason.com/notes/mastery-robert-greene"]]},
+{n:16,t:"專屬知識靠師徒制傳授，而非學校",en:"When specific knowledge is taught, it's through apprenticeships, not schools.",zh:"專屬知識若要傳授，是透過師徒制，而非學校。",site:"nav.al/creative-technical",lib:[["羅振宇等","軟技能","硬技能可被考試驗證故易取代；軟技能須實戰與歷練，近似師徒傳承。"]],web:[["Robert Greene","Mastery","學徒制是必經之路——觀察、習得、實驗三階段，無法快轉。","https://www.thepowermoves.com/mastery-robert-greene/"]]},
+{n:17,t:"專屬知識高度技術或創造、無法外包自動化",en:"Specific knowledge is often highly technical or creative. It cannot be outsourced or automated.",zh:"專屬知識往往高度技術性或高度創造性，無法被外包或自動化。",site:"nav.al/creative-technical",lib:[["Paul Jarvis","一人公司","個性化、高技術的工作無法外包，AI 無法複製個人品牌與創意。"],["Cal Newport","深度工作力","深度工作是稀有的創造／技術能力，越來越有價值。"]],web:[["Malcolm Gladwell","異數","成為專家需約一萬小時刻意練習，無法速成或自動化。","https://nextbigideaclub.com/magazine/"]]},
+{n:18,t:"擁抱當責、以己之名承擔風險",en:"Embrace accountability, and take business risks under your own name. Society will reward you with responsibility, equity, and leverage.",zh:"擁抱當責，以自己的名義承擔商業風險。社會會用責任、股權與槓桿來回報你。",site:"nav.al/accountability-leverage",lib:[["納西姆・塔雷伯","反脆弱","有當責的人須為決定付出對應代價；不承擔後果者的建議不可信。"],["大衛・高金斯","我，刀槍不入","當責始於內部——面鏡自省、對自己承諾。"]],web:[["Warren Buffett","","聲譽需 20 年建立、5 分鐘毀滅；以己名擔保時責任感最深。","https://www.corporatecomplianceinsights.com/warren-buffett-newspaper-test/"],["Epictetus","","在你權力範圍內的是判斷、選擇與行動，應為此負責。","https://philosophybreak.com/articles/dichotomy-of-control-a-stoic-device-for-a-tranquil-mind/"]]},
+{n:19,t:"最有當責的人，品牌單一、公開、高風險",en:"The most accountable people have singular, public, and risky brands: Oprah, Trump, Kanye, Elon.",zh:"最有當責的人，都擁有單一、公開且高風險的個人品牌：歐普拉、川普、肯伊、馬斯克。",site:"nav.al/accountability-equity",lib:[["Naval","納瓦爾寶典","以己名擔險建立信用；名聲複利隨時間倍增。"],["Morgan Housel","致富心態","誠信建立的名聲，比學識更決定財務成功。"]],web:[["Warren Buffett","","在 Berkshire 保護聲譽勝過利潤。","https://www.reputationdefender.com/blog/orm/reputation-lessons-warren-buffett"]]},
+{n:20,t:"阿基米德的槓桿",en:'"Give me a lever long enough, and a place to stand, and I will move the earth." —Archimedes',zh:"「給我一根夠長的槓桿和一個支點，我就能撬動整個地球。」——阿基米德",site:"nav.al/labor-capital",lib:[["阿基米德","納瓦爾寶典","給足夠支點與槓桿就能撬動地球——喻槓桿之無限力量。"]],web:[["Archimedes","","「給我一個支點與夠長的槓桿，我就能撬動地球。」","https://www.goodreads.com/quotes/319670"]]},
+{n:21,t:"財富需要槓桿（資本／人力／程式媒體）",en:"Fortunes require leverage. Business leverage comes from capital, people, and products with no marginal cost of replication (code and media).",zh:"財富的累積需要槓桿。商業槓桿來自三種：資本、人力，以及「複製邊際成本為零」的產品（程式與媒體）。",site:"nav.al/labor-capital",chen:"師父《一人公司》《賺錢的方法只有三種》——核心最小化、協作最大化，用槓桿放大一人產能。",lib:[["Joe Pulizzi","內容電力公司","先養最小可行觀眾再變現，零邊際成本內容是新富之道。"],["Nassim Taleb","反脆弱","槓鈴策略（90% 極安全＋10% 極冒險）分散槓桿風險。"]],web:[["Alex Hormozi","","財富擴張需四種槓桿——人力、資本、程式碼、媒體。","https://thinkdmg.com/"]]},
+{n:22,t:"資本：用專屬知識＋當責＋判斷去募",en:"Capital means money. To raise money, apply your specific knowledge, with accountability, and show resulting good judgment.",zh:"資本就是錢。要募到錢，就運用你的專屬知識、展現當責，並拿出隨之而來的好判斷。",site:"nav.al/labor-capital",lib:[["Naval","納瓦爾寶典","用獨特知識、當責與判斷力募資；信用本身就是槓桿。"]],web:[["Sam Altman","How to Be Successful","判斷力是募資基礎，一致的交付建立投資人信心。","https://blog.samaltman.com/how-to-be-successful"]]},
+{n:23,t:"人力：最古老、最多人爭奪的槓桿",en:"Labor means people working for you. It's the oldest and most fought-over form of leverage. Labor leverage will impress your parents, but don't waste your life chasing it.",zh:"人力，是指替你工作的人。這是最古老、最多人爭奪的槓桿。人力槓桿能讓你父母刮目相看，但別把人生浪費在追逐它。",site:"nav.al/labor-capital",chen:"師父《管理是做生意的關鍵》——不越級管理、靠制度，因為永遠不要考驗人性。",lib:[["Naval","納瓦爾寶典","人力槓桿需管理且風險高，別浪費生命爬人力槓桿的階梯。"]],web:[["Tim Ferriss","一週工作 4 小時","自動化與委派才是時間自由之路。","https://www.hireharbour.com/blog/tim-ferriss-executive-assistants"]]},
+{n:24,t:"資本與人力是「需要許可」的槓桿",en:"Capital and labor are permissioned leverage. Everyone is chasing capital, but someone has to give it to you. Everyone is trying to lead, but someone has to follow you.",zh:"資本與人力是「需要許可」的槓桿。人人都在追資本，但總得有人給你；人人都想領導，但總得有人追隨你。",site:"nav.al/labor-capital",lib:[["Naval","納瓦爾寶典","資本與人力都需他人許可（募資或追隨），是傳統致富的瓶頸。"]],web:[["Robert Kiyosaki","OPM","資本槓桿需許可方，但善用他人資本能加速致富。","https://www.gobankingrates.com/money/wealth/"]]},
+{n:25,t:"程式與媒體是「不需許可」的槓桿",en:"Code and media are permissionless leverage. They're the leverage behind the newly rich. You can create software and media that works for you while you sleep.",zh:"程式與媒體是「不需許可」的槓桿。它們是新富階級背後的槓桿。你可以打造在你睡覺時仍替你工作的軟體與媒體。",site:"nav.al/product-media",chen:"師父《三種複利・流量》——拍短影音導流，一支影片睡覺時仍帶來客戶。陳修平 #26「把自己產品化」。",lib:[["Naval","納瓦爾寶典","寫程式、寫書、錄播客完全無需許可，零邊際成本的平等力量。"]],web:[["Naval","The Almanack","程式碼與媒體是無許可槓桿。","https://nav.al/product-media"]]},
+{n:26,t:"一支免費的機器人大軍（資料中心）",en:"An army of robots is freely available—it's just packed in data centers for heat and space efficiency. Use it.",zh:"一支機器人大軍正免費供你使用——它們只是被塞進資料中心裡以節省散熱與空間。善用它。",site:"nav.al/product-media",lib:[["Naval","納瓦爾寶典","每個優秀程式設計師背後都有機器人大軍，寫完程式後晝夜替他工作。"]],web:[["Kevin Kelly","The Technium","工具與自動化系統是免費的機器人軍隊，持續替你工作。","https://www.edge.org/conversation/kevin_kelly-the-technium"]]},
+{n:27,t:"不會寫程式，就寫作、錄影音",en:"If you can't code, write books and blogs, record videos and podcasts.",zh:"如果你不會寫程式，那就寫書、寫部落格，錄影片、錄 podcast。",site:"nav.al/product-media",chen:"師父《三種複利・流量》——不會寫程式就拍短影音、發限動，長期帶來巨大紅利。",lib:[["Ali Abdaal","高效原力","靠部落格、影片、Podcast 建立媒體槓桿，關鍵在持續創造與曝光。"],["James Clear","原子習慣","每天 1% 的複利應用於內容，靠每日寫作／錄音累積媒體槓桿。"]],web:[["Gary Vaynerchuk","","寫作、錄音、錄影是最民主化的槓桿，無需許可即達全球規模。","https://www.inc.com/gary-vaynerchuk/"]]},
+{n:28,t:"槓桿是判斷力的力量倍增器",en:"Leverage is a force multiplier for your judgement.",zh:"槓桿，是你判斷力的「力量倍增器」。",site:"nav.al/judgment",lib:[["查理・蒙格","窮查理的普通常識","用 80-90 個跨領域思維模型組成格網，讓判斷力成為解題工具。"]],web:[["Charlie Munger","","心智模型是簡化複雜、避免認知錯誤的槓桿。","https://www.nasdaq.com/articles/charlie-munger-why-we-need-more-multidisciplinary-skills-2016-01-14"]]},
+{n:29,t:"判斷力需要經驗，可靠基礎學科加速",en:"Judgement requires experience, but can be built faster by learning foundational skills.",zh:"判斷力需要經驗，但可以靠學習基礎學科來加速建立。",site:"nav.al/judgment",lib:[["查理・蒙格","窮查理的普通常識","從數學、物理、心理、經濟等基礎提煉核心模型，加速判斷力養成。"]],web:[["Aristotle","尼各馬可倫理學","實踐智慧只能透過經驗獲得，非規則可傳授。","https://monadnock.net/aristotle/ethics-6.html"]]},
+{n:30,t:"沒有一種技能叫「商業」",en:'There is no skill called "business." Avoid business magazines and business classes.',zh:"世上沒有一種技能叫「商業」。避開商業雜誌和商業課程。",site:"nav.al/skill-business",chen:"師父《先工作還是先唸 MBA》——絕對先工作；連員工都沒當過，MBA 學的接不上未來。",lib:[["Rob Moore","生活槓桿","只有懂槓桿（外包、自動化、媒體）才能逃離線性時間交換。"]],web:[["Naval","","「商業」太籠統，改學賽局、心理、倫理等具體學科。","https://nav.al/skill-business"]]},
+{n:31,t:"該研究的基礎學科清單",en:"Study microeconomics, game theory, psychology, persuasion, ethics, mathematics, and computers.",zh:"去研究：個體經濟學、賽局理論、心理學、說服、倫理學、數學，以及電腦。",site:"nav.al/math-logic",lib:[["Dixit & Nalebuff","賽局意識","博弈論教你在競爭互動中改變規則。"],["Levitt & Dubner","蘋果橘子經濟學","經濟學是解讀隱藏誘因的工具。"]],web:[["Robert Cialdini","影響力","說服的科學基礎在心理學原理（互惠、承諾、社會認同、權威）。","https://www.cognitigence.com/blog/cialdini-7-principles-of-persuasion"]]},
+{n:32,t:"閱讀比聽快，動手比看快",en:"Reading is faster than listening. Doing is faster than watching.",zh:"閱讀比聽講快，動手做比看別人做快。",site:"nav.al/read",chen:"師父《投報率最高 6 件事》——深度閱讀（花三四百塊得大師畢生精華）＋習慣輸出（動手做）。",lib:[["Ali Abdaal","高效原力","從做中學比被動聽講有效，實踐才是最好的老師。"],["Anders Ericsson","刻意練習","邊做邊調整的刻意練習，遠優於被動學習。"]],web:[["Richard Feynman","","理解勝於記憶；讀後講授、找缺口、回源簡化。","https://fs.blog/feynman-learning-technique/"]]},
+{n:33,t:"忙到沒空喝咖啡，但行事曆清爽",en:'You should be too busy to "do coffee," while still keeping an uncluttered calendar.',zh:"你應該忙到沒空「喝咖啡聊天」，但同時保持行事曆的清爽。",site:"nav.al/meetings",lib:[["Cal Newport","深度工作力","行事曆清爽是深度工作的前提，主動拒絕淺薄事務、預留完整時段。"]],web:[["Warren Buffett","","真正成功者幾乎對所有事說不，只追求卓越機會。","https://calnewport.com/warren-buffett-on-goals/"]]},
+{n:34,t:"設定並執行「理想個人時薪」",en:"Set and enforce an aspirational personal hourly rate. If outsourcing a task will cost less than your hourly rate, outsource it.",zh:"設定並嚴格執行一個「理想個人時薪」。若外包一件事的成本低於你的時薪，就外包它。",site:"nav.al/hourly-rate",chen:"師父《投報率最高 6 件事・買回時間》——算出時薪，低於它的事堅決外包或不做。",lib:[["JL Collins","簡單致富","設個人時薪底線，低於它的工作應外包或忽視。"]],web:[["Tim Ferriss","","先定理想生活成本換算目標日收入，逆向工程目標。","https://tim.blog/lifestyle-costing/"]]},
+{n:35,t:"盡力工作，但「跟誰、做什麼」更重要",en:"Work as hard as you can. Even though who you work with and what you work on are more important than how hard you work.",zh:"盡你所能努力工作。儘管「跟誰工作、做什麼」比「多努力」更重要。",site:"nav.al/work-hard",lib:[["James Clear","原子習慣","身份認同與環境設計比努力量更重要，選對環境與人自動強化行為。"],["Ray Dalio","原則","找對人協作比個人蠻幹重要。"]],web:[["Steve Jobs","史丹佛演講","滿足感來自做偉大工作；選擇做什麼比和誰做更根本。","https://www.inc.com/marcel-schwantes/"]]},
+{n:36,t:"成為世界第一，並不斷重新定義你做的事",en:"Become the best in the world at what you do. Keep redefining what you do until this is true.",zh:"成為你所做之事的世界第一。並且不斷重新定義你做的事，直到這成為事實。",site:"nav.al/redefining",chen:"師父《複利系統》——重複做、反覆做，把一件事做到世界級。",lib:[["Bill Burnett","做自己生命的設計師","別被單一標準綁架，用奧德賽計畫探索多個人生版本。"]],web:[["Paul Graham","How to Do Great Work","偉大工作靠多版本迭代而成；不追求最好連好都做不到。","https://www.paulgraham.com/greatwork.html"]]},
+{n:37,t:"沒有快速致富的撇步",en:"There are no get rich quick schemes. That's just someone else getting rich off you.",zh:"世上沒有快速致富的撇步。那只是別人在從你身上致富。",site:"nav.al/rich-quick",lib:[["Morgan Housel","致富心態","知足比年收入更決定真正的富有；真富有是低調而非高調炫耀。"],["Scott Galloway","人生財富課","終極目標不是死時錢最多，而是豐富的人際關係與自由。"]],web:[["Charlie Munger","","致富＝知足＋支出少於收入＋時間；快速致富的慾望很危險。","https://fs.blog/charlie-munger-wisdom/"]]},
+{n:38,t:"運用專屬知識＋槓桿，終得你應得的",en:"Apply specific knowledge, with leverage, and eventually you will get what you deserve.",zh:"運用專屬知識，加上槓桿，最終你會得到你應得的。",site:"nav.al/eventually",lib:[["Naval","納瓦爾寶典","用專屬知識、槓桿、判斷力致富；沒有槓桿只是在出租時間。"],["Morgan Housel","致富心態","複利是時間與紀律的乘積，堅持者最終遠勝三天打魚者。"]],web:[["Paul Graham","How to Make Wealth","技術槓桿放大個人貢獻，優秀工程師數週可創數百萬價值。","https://www.paulgraham.com/wealth.html"]]},
+{n:39,t:"當你終於富有，會發現那不是你真正追求的",en:"When you're finally wealthy, you'll realize that it wasn't what you were seeking in the first place. But that's for another day.",zh:"當你終於變得富有，你會發現這從來不是你真正追求的東西。但那是改天的話題了。（→ 通往「幸福」篇）",site:"nav.al/finally-wealthy",chen:"師父《高手看淡成敗》——放下成敗執念、享受當下。陳修平 #1「幸福是對擁有的滿足」——此條是從致富通往幸福的橋。",lib:[["Morgan Housel","致富心態","對人生的掌控感，是預測幸福最可靠的指標，勝過收入或職位。"],["Paul Jarvis","一人公司","定義「足夠」而非無限擴張，創造你想要的生活方式。"]],web:[["Epictetus","","真正的財富不在擁有多，而在欲望少；內在滿足才是永恆財富。","https://dailystoic.com/the-source-of-true-wealth/"],["Arthur Schopenhauer","人生的智慧","財富如海水，喝得越多越渴。","https://www.azquotes.com/author/13133-Arthur_Schopenhauer/"]]},
+];
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function groupOf(n){return GROUPS.findIndex(g=>n>=g.range[0]&&n<=g.range[1])}
+let curG=-1;
+function renderFilter(){
+  const box=document.getElementById('qfilter');
+  let h=`<button class="${curG===-1?'on':''}" onclick="setG(-1)">全部 39 條</button>`;
+  GROUPS.forEach((g,i)=>{h+=`<button class="${curG===i?'on':''}" onclick="setG(${i})">${g.name}</button>`;});
+  box.innerHTML=h;
+}
+function setG(i){curG=i;renderFilter();renderGrid();}
+function renderGrid(){
+  const box=document.getElementById('qgrid');
+  const list=curG===-1?D:D.filter(d=>groupOf(d.n)===curG);
+  box.innerHTML=list.map(d=>`<div class="qc" onclick="openQ(${d.n})"><span class="num">${String(d.n).padStart(2,'0')}</span><span class="gp">${GROUPS[groupOf(d.n)].name}</span><div class="qt">${esc(d.t)}</div><span class="more">點開看中英＋註解 ＋</span></div>`).join('');
+}
+function openQ(n){
+  const d=D.find(x=>x.n===n); if(!d)return;
+  let h=`<button class="x" onclick="closeQ()">×</button><div class="mno">${d.n}</div>`;
+  h+=`<div class="men">${esc(d.en)}</div><div class="mzh">${esc(d.zh)}</div>`;
+  h+=`<div class="msrc">🎙 <b>Podcast</b> nav.al/rich　｜　🌐 <b>${esc(d.site)}</b>　｜　📕 <b>Almanack</b>·Wealth　｜　📗 <b>納瓦爾寶典</b>·財富篇</div>`;
+  if(d.chen){h+=`<span class="tag t3">YT金句 · 師父商學院</span><div class="mitem">${esc(d.chen)}</div>`;}
+  if(d.lib&&d.lib.length){h+=`<span class="tag t4">④ 你的書庫</span>`;d.lib.forEach(x=>{h+=`<div class="mitem"><span class="who">${esc(x[0])}</span> <span class="bk">《${esc(x[1])}》</span>：${esc(x[2])}</div>`;});}
+  if(d.web&&d.web.length){h+=`<span class="tag t5">⑤ 網路名人・經典</span>`;d.web.forEach(x=>{const u=x[3]?` <a href="${x[3]}" target="_blank">↗</a>`:'';h+=`<div class="mitem"><span class="who">${esc(x[0])}</span>${x[1]?` <span class="bk">《${esc(x[1])}》</span>`:''}：${esc(x[2])}${u}</div>`;});}
+  document.getElementById('mcard').innerHTML=h;
+  document.getElementById('modal').classList.add('on');
+}
+function closeQ(){const m=document.getElementById('modal');if(m)m.classList.remove('on');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeQ();});
+
+/* ---------- library ---------- */
+const BK="https://search.books.com.tw/search/query/key/";
+const YT="https://www.youtube.com/results?search_query=";
+const LIB=[
+ // ===== 核心底座 =====
+ {c:"核心底座",ic:"📘",t:"納瓦爾寶典",au:"Naval Ravikant / Eric Jorgenson",ds:"主方程式的源頭。財富與幸福兩大主軸、How to Get Rich 39 條。",res:[["📖 navalmanack.com 免費電子書","https://www.navalmanack.com"],["🎬 How to Get Rich","https://nav.al/rich"],["🎧 Naval Podcast","https://nav.al/podcast"],["🌐 Productize Yourself","https://nav.al/productize-yourself"],["🎬 Joe Rogan #1309","https://www.youtube.com/watch?v=3qHkcs3kG44"]]},
+ {c:"核心底座",ic:"📗",t:"做自己的生命設計師",au:"Bill Burnett & Dave Evans",ds:"工作坊鷹架。人生儀表板、好時光日誌、奧德賽計畫、重新框定。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/做自己的生命設計師"],["🌐 designingyour.life","https://designingyour.life"],["🎬 史丹佛設計人生","https://www.youtube.com/results?search_query=designing+your+life+stanford"]]},
+ {c:"核心底座",ic:"📕",t:"致富心態",au:"Morgan Housel",ds:"睡眠測試、Enough Line、長尾效應。理財是行為的考試。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/致富心態"],["🎬 Swedish Investor 摘要","https://www.youtube.com/results?search_query=psychology+of+money+swedish+investor"],["🌐 Collab Fund Blog","https://www.collabfund.com/blog/"]]},
+ {c:"核心底座",ic:"📙",t:"底層邏輯",au:"劉潤",ds:"個人價值＝能力×效率×槓桿；創業成功率公式。萬變中的不變。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/底層邏輯"],["🌐 閱讀前哨站","https://readingoutpost.com"]]},
+ {c:"核心底座",ic:"📒",t:"低風險創業",au:"樊登",ds:"反脆弱 × 槓鈴 × MVP——把創業設計成損失有底、收益無頂。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/低風險創業"],["🎬 樊登讀書導讀","https://www.youtube.com/results?search_query=低風險創業+樊登"]]},
+ {c:"核心底座",ic:"📔",t:"一人公司",au:"Paul Jarvis",ds:"與其更大、不如更好。設定營收上限，把自己活成小而美的事業。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/一人公司"],["🌐 pjrvs.com","https://pjrvs.com"]]},
+ {c:"核心底座",ic:"📓",t:"反脆弱",au:"Nassim Taleb",ds:"脆弱像玻璃、反脆弱像乒乓球。槓鈴策略、Skin in the Game。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/反脆弱"],["🌐 fs.blog Taleb","https://fs.blog/intellectual-giants/nassim-taleb/"],["🎬 YT 導讀","https://www.youtube.com/results?search_query=antifragile+taleb+summary"]]},
+ // ===== 財富心態 · FIRE =====
+ {c:"財富心態 · FIRE",ic:"💵",t:"簡單致富",au:"JL Collins",ds:"被動收入 > 生活支出才是真財富。高儲蓄率＋指數投資。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/簡單致富"],["🌐 jlcollinsnh 股票系列","https://jlcollinsnh.com/stock-series/"]]},
+ {c:"財富心態 · FIRE",ic:"⏳",t:"別把你的錢留到死",au:"Bill Perkins",ds:"Die with Zero——在對的年紀花在對的體驗，淨值歸零、回憶最大化。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/別把你的錢留到死"],["🌐 diewithzerobook.com","https://www.diewithzerobook.com"]]},
+ {c:"財富心態 · FIRE",ic:"📈",t:"持續買進",au:"Nick Maggiulli",ds:"定期投資勝過擇時，複利核心是紀律不是智力。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/持續買進"],["🌐 ofdollarsanddata.com","https://ofdollarsanddata.com"]]},
+ {c:"財富心態 · FIRE",ic:"🔁",t:"一如既往",au:"Morgan Housel",ds:"歷史最好的教訓，是告訴你什麼永遠不會改變。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/一如既往"],["🎧 Tim Ferriss Show","https://tim.blog/podcast/"]]},
+ {c:"財富心態 · FIRE",ic:"🎓",t:"蓋洛威教授的人生財富課",au:"Scott Galloway",ds:"財務自由＝被動收入 > 燒錢率。年輕時的時間最值錢。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/蓋洛威教授的人生財富課"],["🌐 profgalloway.com","https://www.profgalloway.com"],["🎬 YT","https://www.youtube.com/results?search_query=scott+galloway+the+algebra+of+wealth"]]},
+ // ===== 學習 · 判斷 · 心態 =====
+ {c:"學習 · 判斷 · 心態",ic:"🧠",t:"窮查理的普通常識",au:"Charlie Munger",ds:"反過來想，永遠反過來想。80-90 個跨學科思維模型格網。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/窮查理的普通常識"],["🎬 USC 畢業演講","https://www.youtube.com/results?search_query=charlie+munger+usc+commencement+中字"],["🌐 fs.blog 心智模型","https://fs.blog/mental-models/"]]},
+ {c:"學習 · 判斷 · 心態",ic:"🌱",t:"心態致勝",au:"Carol Dweck",ds:"成長心態 vs 固定心態——信念會自我實現。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/心態致勝"],["🌐 mindsetonline.com","https://mindsetonline.com"],["🎬 TED Dweck","https://www.youtube.com/results?search_query=carol+dweck+TED+power+of+yet"]]},
+ {c:"學習 · 判斷 · 心態",ic:"📔",t:"執行長日記",au:"Steven Bartlett",ds:"五個水桶：知識／技能／人脈／資源／聲望。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/執行長日記"],["🎧 Diary of a CEO","https://www.youtube.com/results?search_query=diary+of+a+ceo+steven+bartlett"]]},
+ {c:"學習 · 判斷 · 心態",ic:"🎯",t:"刻意練習",au:"Anders Ericsson",ds:"能標準化訓練的就能被取代；心智表徵才是專家的祕密。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/刻意練習"],["🎬 YT 導讀","https://www.youtube.com/results?search_query=peak+anders+ericsson+summary"]]},
+ {c:"學習 · 判斷 · 心態",ic:"🛠",t:"深度工作力",au:"Cal Newport",ds:"在無干擾下開發稀有而有價值的能力——行事曆清爽是前提。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/深度工作力"],["🌐 calnewport.com","https://calnewport.com"]]},
+ {c:"學習 · 判斷 · 心態",ic:"⚛️",t:"原子習慣",au:"James Clear",ds:"每天 1% 的複利；身份認同與環境設計比意志力重要。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/原子習慣"],["🌐 jamesclear.com","https://jamesclear.com/atomic-habits"]]},
+ {c:"學習 · 判斷 · 心態",ic:"🌊",t:"心流",au:"Mihaly Csikszentmihalyi",ds:"能力與挑戰相匹配時的忘我狀態——特定知識的礦脈。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/心流"],["🎬 TED Flow","https://www.youtube.com/results?search_query=csikszentmihalyi+flow+TED"]]},
+ {c:"學習 · 判斷 · 心態",ic:"⚡",t:"高效原力",au:"Ali Abdaal",ds:"把工作變得像玩樂；媒體槓桿放大判斷力。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/高效原力"],["🎬 Ali Abdaal YT","https://www.youtube.com/@aliabdaal"]]},
+ // ===== 造運 · 韌性 =====
+ {c:"造運 · 韌性",ic:"🍀",t:"幸運的配方 The Luck Factor",au:"Richard Wiseman",ds:"造運引擎的科學軸。四大幸運行為原則、報紙照片實驗。",res:[["🌐 richardwiseman.com","https://richardwiseman.com"],["🎬 YT 導讀","https://www.youtube.com/results?search_query=richard+wiseman+luck+factor"]]},
+ {c:"造運 · 韌性",ic:"📐",t:"原則",au:"Ray Dalio",ds:"痛苦＋反思＝進步；找對做事的人比做什麼事更重要。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/原則+達利歐"],["🌐 principles.com","https://www.principles.com"],["🎬 Principles for Success","https://www.youtube.com/results?search_query=ray+dalio+principles+for+success"]]},
+ {c:"造運 · 韌性",ic:"🦅",t:"人生勝利聖經 / How to Fail",au:"Scott Adams",ds:"技能疊加 Talent Stack——2-3 個前 25% 技能相疊＝唯一。",res:[["📖 博客來","https://search.books.com.tw/search/query/key/人生勝利聖經+亞當斯"],["🌐 Talent Stack 解說","https://www.youtube.com/results?search_query=scott+adams+talent+stack"]]},
+];
+function renderLib(){
+  const cats=[];LIB.forEach(b=>{if(!cats.includes(b.c))cats.push(b.c);});
+  const wrap=document.getElementById('libgrid');
+  wrap.innerHTML=cats.map(c=>`<div class="libcat">${c}</div><div class="libgrid">`+
+    LIB.filter(b=>b.c===c).map(b=>`<div class="libcard"><div class="bt">${b.ic} ${b.t}</div><div class="au">${b.au}</div><div class="ds">${b.ds}</div><div class="res">${b.res.map(r=>`<a href="${r[1]}" target="_blank">${r[0]} ↗</a>`).join('')}</div></div>`).join('')+`</div>`
+  ).join('');
+}
+
+/* ---------- checklists (persist) ---------- */
+function initChecks(){
+  document.querySelectorAll('.chklist').forEach(list=>{
+    const key='nvw_'+list.dataset.key;
+    let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+    [...list.querySelectorAll('.chk')].forEach((c,i)=>{
+      if(saved[i])c.classList.add('done');
+      c.onclick=()=>{c.classList.toggle('done');
+        const st={};[...list.querySelectorAll('.chk')].forEach((x,j)=>st[j]=x.classList.contains('done'));
+        localStorage.setItem(key,JSON.stringify(st));
+      };
+    });
+  });
+}
+
+renderFilter();renderGrid();renderLib();initChecks();
+</script>
+</body>
+</html>

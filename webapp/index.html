@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>個人商品化使用說明書 · 互動工作簿｜納瓦爾讀書會 × 生命設計師</title>
+<meta name="description" content="保險經紀處經理專屬：將自己產品化 × 做自己生命的設計師。互動填寫、自動存檔、產出你的個人使用說明書。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#082743; --bg2:#0b3057; --card:#0c3258; --card2:#0f3a68;
+  --inset:#06243f; --chip:#0a2c4d;
+  --gold:#E9B627; --gold-soft:#f4d76a; --gold-deep:#b98a16;
+  --ink:#ffffff; --muted:#aebccb; --faint:#7e93a8;
+  --line:#16395e; --line2:#1f4a78;
+  --ok:#5fb87a; --warn:#e0a93a; --bad:#e0706e;
+  --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif; --play:"Playfair Display",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.78;font-size:17.5px}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(900px 520px at 80% -5%,rgba(233,182,39,.13),transparent 60%),
+  radial-gradient(720px 520px at 0% 110%,rgba(233,182,39,.08),transparent 55%);}
+a{color:var(--gold-soft)}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3}
+.en{font-family:var(--play)}
+.wrap{max-width:940px;margin:0 auto;padding:0 18px}
+
+/* ===== top nav ===== */
+.topbar{position:sticky;top:0;z-index:40;background:rgba(6,28,49,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:10px;height:58px}
+.brand{font-family:var(--play);font-weight:700;color:var(--gold);font-size:16px;letter-spacing:.5px;white-space:nowrap}
+.brand small{display:block;font-family:var(--sans);font-weight:300;color:var(--faint);font-size:10.5px;letter-spacing:0}
+.formulabar{margin-left:auto;display:flex;gap:6px;align-items:center}
+.fchip{height:31px;min-width:31px;padding:0 7px;border-radius:7px;border:1px solid var(--line2);display:grid;place-items:center;font-family:var(--play);font-weight:700;font-size:13.5px;color:var(--faint);background:var(--chip);transition:.3s}
+.fchip.on{color:#082743;background:linear-gradient(180deg,var(--gold-soft),var(--gold));border-color:var(--gold);box-shadow:0 0 14px rgba(233,182,39,.45)}
+.fchip.luck{font-size:12px}
+.progresswrap{height:3px;background:#0a2742}
+.progressbar{height:100%;width:0;background:linear-gradient(90deg,var(--gold-deep),var(--gold-soft));transition:width .4s}
+
+/* ===== hero ===== */
+.hero{padding:56px 0 32px;text-align:center;border-bottom:1px solid var(--line)}
+.kicker{color:var(--gold);letter-spacing:6px;font-size:13px;font-weight:500}
+.hero h1{font-size:clamp(30px,5.4vw,48px);margin:16px 0 6px;color:#fff}
+.hero h1 .g{color:var(--gold)}
+.hero .sub{color:var(--muted);font-size:16.5px;max-width:640px;margin:12px auto 0}
+.eq{margin:28px auto 6px;max-width:720px;background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:20px 18px}
+.eq .formula{font-family:var(--play);font-size:clamp(20px,4vw,30px);color:var(--gold);font-weight:700}
+.eq .formula .luck{color:var(--gold-soft)}
+.eq .legend{color:var(--muted);font-size:13.5px;margin-top:10px}
+.eq .luckline{color:var(--gold-soft);font-size:13px;margin-top:6px}
+.tag{display:inline-block;margin:3px;padding:5px 12px;border:1px solid var(--line2);border-radius:999px;color:var(--muted);font-size:13px}
+.tag.lk{border-color:var(--gold-deep);color:var(--gold-soft)}
+
+/* ===== identity strip ===== */
+.idcard{margin:26px 0;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line2);border-radius:16px;padding:22px}
+.idcard h3{color:var(--gold);font-size:16px;margin:0 0 4px}
+.idgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:12px}
+
+/* ===== module nav ===== */
+.modnav{position:sticky;top:58px;z-index:30;background:rgba(8,39,67,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-bottom:8px}
+.modnav .wrap{display:flex;gap:6px;overflow-x:auto;padding:9px 18px}
+.modnav button{flex:0 0 auto;background:var(--chip);border:1px solid var(--line2);color:var(--muted);border-radius:999px;padding:7px 14px;font-family:var(--sans);font-size:13.5px;cursor:pointer;transition:.2s;white-space:nowrap}
+.modnav button:hover{color:var(--gold-soft);border-color:var(--gold-deep)}
+.modnav button.part{color:var(--faint);border-style:dashed;pointer-events:none}
+
+/* ===== section / module card ===== */
+.partbanner{margin:36px 0 8px;display:flex;align-items:center;gap:14px}
+.partbanner .line{flex:1;height:1px;background:var(--line2)}
+.partbanner .label{font-family:var(--play);color:var(--gold);letter-spacing:3px;font-size:14px;font-weight:700}
+.module{margin:18px 0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;scroll-margin-top:122px}
+.mhead{padding:22px 24px 15px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(233,182,39,.07),transparent)}
+.mhead .mno{font-family:var(--play);color:var(--gold-soft);font-size:13.5px;letter-spacing:2px;font-weight:700}
+.mhead h2{font-size:clamp(22px,3.8vw,30px);margin:4px 0 6px;color:#fff}
+.mhead .goal{color:var(--muted);font-size:15px}
+.mhead .pp{display:inline-block;margin-top:8px;font-size:12px;color:var(--gold);border:1px solid var(--gold-deep);border-radius:6px;padding:3px 9px}
+.mbody{padding:20px 24px 26px}
+
+/* knowledge blocks */
+.kb{margin:14px 0;border-left:3px solid var(--gold);padding:2px 0 2px 14px}
+.kb .lbl{font-family:var(--play);font-size:11.5px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase}
+.kb b{color:#fff}
+.formulaBox{margin:14px 0;background:var(--inset);border:1px solid var(--line2);border-radius:12px;padding:15px 16px;text-align:center}
+.formulaBox .f{font-family:var(--play);font-size:clamp(16px,3.2vw,22px);color:var(--gold);font-weight:700}
+.formulaBox .n{color:var(--muted);font-size:13px;margin-top:6px}
+.src{margin-top:8px;font-size:13px;color:var(--faint)}
+.src b{color:var(--muted);font-weight:500}
+.srcchip{display:inline-block;background:var(--chip);border:1px solid var(--line2);border-radius:6px;padding:3px 9px;margin:2px 4px 2px 0;font-size:12px;color:var(--muted)}
+
+/* fields */
+.field{margin:17px 0}
+.field>label{display:block;font-weight:500;color:#eef4fb;margin-bottom:6px;font-size:15.5px}
+.field .hint{color:var(--faint);font-size:13px;margin:-2px 0 7px}
+input[type=text],input[type=number],textarea,select{
+  width:100%;background:var(--inset);border:1px solid var(--line2);border-radius:10px;color:#fff;
+  font-family:var(--sans);font-size:16.5px;padding:12px 14px;transition:.2s}
+textarea{min-height:78px;resize:vertical;line-height:1.7}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(233,182,39,.2)}
+input::placeholder,textarea::placeholder{color:#5f7a93}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:640px){.cols2,.cols3{grid-template-columns:1fr}}
+table.dyl{width:100%;border-collapse:collapse;margin:8px 0;font-size:14.5px}
+table.dyl th{text-align:left;color:#eef4fb;font-weight:500;padding:8px 10px;border:1px solid var(--line2);background:var(--chip);vertical-align:middle}
+table.dyl th small{color:var(--faint);font-weight:300;font-size:11.5px}
+table.dyl td{padding:5px 8px;border:1px solid var(--line2);vertical-align:middle}
+table.dyl input[type=text],table.dyl textarea{border:none;background:transparent;padding:7px 6px;font-size:15.5px;width:100%}
+table.dyl textarea{min-height:52px}
+table.dyl td.g{white-space:nowrap;width:210px}
+table.dyl .val{color:var(--gold);font-family:var(--play);margin-left:8px;font-size:14px}
+@media(max-width:640px){table.dyl,table.dyl tbody,table.dyl tr,table.dyl th,table.dyl td{display:block;width:auto!important;border:none}table.dyl tr{border:1px solid var(--line2);border-radius:10px;margin-bottom:10px;padding:5px}table.dyl td.g{width:auto}}
+
+/* dashboard sliders */
+.gauge{margin:11px 0}
+.gauge .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
+.gauge .row b{font-weight:500;font-size:15px}
+.gauge .val{font-family:var(--play);color:var(--gold);font-size:16px;font-weight:700}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;background:#123a5f;outline:none;border:1px solid var(--line2);padding:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:23px;height:23px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--gold-soft),var(--gold-deep));cursor:pointer;border:2px solid #082743;box-shadow:0 0 8px rgba(233,182,39,.55)}
+input[type=range]::-moz-range-thumb{width:21px;height:21px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid #082743}
+
+/* live preview boxes */
+.live{margin-top:10px;background:linear-gradient(180deg,rgba(233,182,39,.12),rgba(233,182,39,.04));border:1px dashed var(--gold-deep);border-radius:12px;padding:15px;color:#f4eedd;font-size:16px;line-height:1.85}
+.live .ph{color:var(--gold-soft);font-weight:700}
+.calc{font-family:var(--play);color:var(--gold);font-size:24px;font-weight:700}
+
+/* game/teach callouts */
+.callout{margin:14px 0;border-radius:12px;padding:14px 16px;font-size:14.5px}
+.game{background:var(--inset);border:1px solid var(--line2)}
+.game .t{color:var(--gold);font-weight:700;font-size:14px;margin-bottom:3px}
+.case{background:#0d3147;border:1px solid #1c4e6b;color:#c8dced}
+.case .t{color:#7cc4ee;font-weight:700;font-size:14px;margin-bottom:3px}
+
+/* takeaway */
+.takeaway{margin-top:16px;background:var(--inset);border:1px solid var(--line2);border-radius:12px;padding:13px 16px;font-size:14px;color:var(--muted)}
+.takeaway b{color:var(--gold-soft)}
+
+/* summary / actions */
+.summary{margin:34px 0;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--gold-deep);border-radius:18px;padding:26px}
+.summary h2{color:var(--gold);font-size:24px;margin:0 0 4px}
+.sumline{margin:10px 0;padding:10px 0;border-bottom:1px dotted var(--line2)}
+.sumline .k{color:var(--faint);font-size:12.5px}
+.sumline .v{color:#fff;font-size:16px;min-height:22px}
+
+.actionbar{position:sticky;bottom:0;z-index:35;background:rgba(6,28,49,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line2);padding:11px 0}
+.actionbar .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.savestate{color:var(--faint);font-size:12.5px;margin-right:auto}
+.btn{font-family:var(--sans);font-weight:500;font-size:14.5px;border-radius:10px;padding:12px 17px;cursor:pointer;border:1px solid var(--line2);background:var(--chip);color:var(--gold-soft);transition:.2s;white-space:nowrap}
+.btn:hover{border-color:var(--gold)}
+.btn.primary{background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:#082743;border-color:var(--gold);font-weight:700}
+.btn.ghost{background:transparent;color:var(--muted)}
+@media(max-width:640px){.btn{flex:1;text-align:center;padding:12px 8px;font-size:13.5px}.savestate{flex-basis:100%;margin-bottom:4px}}
+
+/* toast */
+#toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%) translateY(20px);background:#0c3258;border:1px solid var(--gold-deep);color:#f4eedd;padding:12px 19px;border-radius:10px;font-size:14.5px;opacity:0;pointer-events:none;transition:.3s;z-index:60;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.ok{border-color:var(--ok)} #toast.bad{border-color:var(--bad)}
+
+.footer{padding:42px 0 64px;text-align:center;color:var(--faint);font-size:12.5px;border-top:1px solid var(--line);margin-top:30px}
+.notice{margin:14px 0;background:#13314a;border:1px solid var(--warn);border-radius:10px;padding:11px 15px;color:#f1d79a;font-size:13px}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">PRODUCTIZE YOURSELF<small>納瓦爾讀書會 · 處經理個人使用說明書</small></div>
+    <div class="formulabar" title="完成模組，逐字母點亮你的個人商品力公式 B=[(U×SK)×A×L]^T × Luck">
+      <div class="fchip" data-letter="U">U</div>
+      <div class="fchip" data-letter="SK">SK</div>
+      <div class="fchip" data-letter="A">A</div>
+      <div class="fchip" data-letter="L">L</div>
+      <div class="fchip" data-letter="T">T</div>
+      <div class="fchip luck" data-letter="Luck">Luck</div>
+    </div>
+  </div>
+  <div class="progresswrap"><div class="progressbar" id="progressbar"></div></div>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">將自己產品化 · 做自己生命的設計師</div>
+    <h1>打造你的<span class="g">個人使用說明書</span></h1>
+    <div class="sub">保險不是你的身分，是你的商業模式。這份互動工作簿會帶你把「你自己」變成市場上唯一的產品——然後用它去增員。邊讀公式與出處，邊填，系統自動幫你存檔，最後產出一份專屬於你的使用說明書。</div>
+    <div class="eq">
+      <div class="formula">B = [ (U × SK) × A × L ] <sup>T <span class="luck">× Luck</span></sup></div>
+      <div class="legend">個人商品力 = [(獨特性 × 特定知識) × 當責 × 槓桿] ^ 時間複利 × 造運引擎</div>
+      <div class="luckline">Luck｜造運引擎 = 你的第一部：四種幸運（盲運 · 動量運 · 識別運 · 獨特運）</div>
+      <div style="margin-top:10px">
+        <span class="tag">U 獨特性</span><span class="tag">SK 特定知識</span><span class="tag">A 當責</span><span class="tag">L 槓桿</span><span class="tag">T 時間</span><span class="tag lk">Luck 造運引擎</span>
+      </div>
+    </div>
+    <div class="src" style="text-align:center">出處：納瓦爾 Naval Ravikant「Productize Yourself」(nav.al/rich；《納瓦爾寶典》)；時間指數＝推文 8「一切回報來自複利」；Luck ＝ Dr. James Austin 四種幸運 × 你的造運引擎。</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 報到欄已移到最後「送出區」，不擋在最前面 -->
+
+  <!-- ===== MODULE NAV ===== -->
+  <nav class="modnav">
+    <div class="wrap">
+      <button class="part">第一次上課 ▸</button>
+      <button onclick="jump('m1')">1 診斷</button>
+      <button onclick="jump('m2')">2 發覺天賦</button>
+      <button onclick="jump('m3')">3 定位</button>
+      <button class="part">第二次上課 ▸</button>
+      <button onclick="jump('m4')">4 產品化</button>
+      <button onclick="jump('m5')">5 增員</button>
+      <button onclick="jump('m6')">6 永續</button>
+      <button onclick="jump('summary')">📋 我的說明書</button>
+    </div>
+  </nav>
+
+  <!-- ====================== PART 1 ====================== -->
+  <div class="partbanner"><span class="label">PART I · 找到自己</span><span class="line"></span></div>
+
+  <!-- MODULE 1 -->
+  <section class="module" id="m1" data-letter="T">
+    <div class="mhead"><div class="mno">MODULE 01 · 診斷</div><h2>你為什麼有錢卻沒了熱情？</h2>
+      <div class="goal">把「中年倦怠」變成一個可拆解的結構問題：你贏的是地位遊戲，輸的是內在主權。</div>
+      <span class="pp">對應痛點 3 · 經營管理／自我</span></div>
+    <div class="mbody">
+      <div class="kb"><div class="lbl">解釋 · 財富 vs 地位</div>
+        <b>財富</b>＝睡覺時仍替你賺錢的資產，是正和遊戲；<b>地位</b>＝你在社會的排名，是零和遊戲、一台跑不完的倉鼠滾輪。你過去 20 年贏的多半是地位遊戲（業績冠軍、晉升），所以贏了還焦慮——不是你不夠努力，是遊戲設計如此。</div>
+      <div class="src"><b>出處：</b><span class="srcchip">納瓦爾 推文 1、3 · nav.al/rich</span><span class="srcchip">愛比克泰德 控制二分法</span><span class="srcchip">阿德勒 認可陷阱</span><span class="srcchip">《做自己的生命設計師》第1章 四燈號儀表板</span></div>
+
+      <div class="formulaBox"><div class="f">焦慮 = 現在的你 − 你想成為的你</div><div class="n">納瓦爾／The Sovereign Life Blueprint：你越想成為「別人眼中更高地位的你」，真正的你被減得越少。</div></div>
+
+      <div class="callout game"><div class="t">🎲 現場遊戲：地位拍賣會</div>用籌碼競標「響亮頭銜 / 名車 / 十萬粉絲」對上「睡後收入 / 週三下午自由 / 永遠挺你的團隊」，看你把人生押在地位還是財富。（紙本同款，見帶回家教具）</div>
+
+      <div class="field"><label>① 人生儀表板（DYL 第 1 章）— 四格各寫現況＋拉滿意度</label><div class="hint">處經理常見：工作滿格，「遊戲」見底——熱情枯竭的真相＝純粹為快樂而做的事歸零。</div>
+        <table class="dyl"><tbody>
+          <tr><th>健康 Health</th><td><input type="text" id="m1_note_health" data-field placeholder="現況一句話"></td><td class="g"><input type="range" id="m1_health" data-field data-gauge min="0" max="100" value="50"><span class="val"><span id="v_health">50</span>%</span></td></tr>
+          <tr><th>工作 Work</th><td><input type="text" id="m1_note_work" data-field placeholder="現況一句話"></td><td class="g"><input type="range" id="m1_work" data-field data-gauge min="0" max="100" value="50"><span class="val"><span id="v_work">50</span>%</span></td></tr>
+          <tr><th>遊戲 Play</th><td><input type="text" id="m1_note_play" data-field placeholder="現況一句話"></td><td class="g"><input type="range" id="m1_play" data-field data-gauge min="0" max="100" value="50"><span class="val"><span id="v_play">50</span>%</span></td></tr>
+          <tr><th>愛 Love</th><td><input type="text" id="m1_note_love" data-field placeholder="現況一句話"></td><td class="g"><input type="range" id="m1_love" data-field data-gauge min="0" max="100" value="50"><span class="val"><span id="v_love">50</span>%</span></td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="field"><label>② 羅盤／指南針（DYL 第 2 章）— 工作觀 × 人生觀，找方向不是找地點</label><div class="hint">三題答完，檢查彼此一致嗎（一致性＝你是誰、你信什麼、你做什麼三者連貫）。</div>
+        <table class="dyl"><tbody>
+          <tr><th>你是誰？<br><small>人生觀·身分</small></th><td><textarea id="m1_compass_who" data-field placeholder="你為何而活？什麼讓人生有意義？什麼最滿足你？"></textarea></td></tr>
+          <tr><th>你在追求什麼？<br><small>工作觀·目的</small></th><td><textarea id="m1_compass_pursue" data-field placeholder="工作對你的意義？為何而做？什麼讓它值得？"></textarea></td></tr>
+          <tr><th>自由飛翔的燕子飛多快？<br><small>你想活的速度/節奏</small></th><td><textarea id="m1_compass_pace" data-field placeholder="你想用什麼步調、什麼自由度，過這一生？"></textarea></td></tr>
+        </tbody></table>
+        <input type="text" id="m1_compass_coherence" data-field placeholder="一致性檢查：上面三題跟你每天在做的事，哪裡一致、哪裡矛盾？" style="margin-top:8px">
+      </div>
+
+      <div class="field"><label>③ 周哈里窗（Johari Window）— 小組互相討論，看見盲點</label>
+        <div class="hint">操作：① 從下方挑 5–6 個你覺得最像自己的形容詞 ② 同組夥伴各幫你挑 5–6 個 ③ 對照填入四格——目標是把「開放我」變大。出處：Luft &amp; Ingham 1955。</div>
+        <div style="margin:4px 0 8px;font-size:13px;color:var(--muted)">形容詞參考：自律 · 熱情 · 可靠 · 幽默 · 有遠見 · 善傾聽 · 果斷 · 細心 · 慷慨 · 冷靜 · 好奇 · 堅毅 · 體貼 · 直接 · 樂觀 · 領導 · 謙虛 · 創意 · 務實 · 有耐心</div>
+        <table class="dyl"><tbody>
+          <tr><th>開放我<br><small>我知＋夥伴也知</small></th><td><input type="text" id="m1_johari_open" data-field placeholder="你和夥伴都圈到的"></td></tr>
+          <tr><th>盲目我<br><small>我不知·夥伴知（最珍貴）</small></th><td><input type="text" id="m1_johari_blind" data-field placeholder="只有夥伴圈到的——你的盲點"></td></tr>
+          <tr><th>隱藏我<br><small>我知·夥伴不知</small></th><td><input type="text" id="m1_johari_hidden" data-field placeholder="只有你自己圈到的"></td></tr>
+          <tr><th>未知我<br><small>都還沒看到的潛能</small></th><td><input type="text" id="m1_johari_unknown" data-field placeholder="想探索/開發的潛在特質"></td></tr>
+        </tbody></table>
+      </div>
+      <div class="field"><label>④ 我最暗的一盞燈是＿＿，因為＿＿</label><input type="text" id="m1_dimmest" data-field placeholder="例如：遊戲，因為我已經三年沒做一件純粹為了快樂的事"></div>
+      <div class="cols2">
+        <div class="field"><label>⑤ 我一直在玩的「地位遊戲」叫</label><input type="text" id="m1_status_game" data-field placeholder="例如：每月跟同業比排名"></div>
+        <div class="field"><label>⑥ 我想換成的「財富／貢獻遊戲」是</label><input type="text" id="m1_wealth_game" data-field placeholder="例如：今年讓 3 個新人月入破 10 萬"></div>
+      </div>
+
+      <div class="takeaway"><b>帶得走｜</b>工具：四燈號儀表板（每週日自評）　·　可教夥伴：別玩零和地位遊戲，玩正和貢獻遊戲　·　延伸問題：我帶團隊的 KPI，是在逼大家比排名，還是一起成長？</div>
+    </div>
+  </section>
+
+  <!-- MODULE 2 -->
+  <section class="module" id="m2" data-letter="U,SK">
+    <div class="mhead"><div class="mno">MODULE 02 · 發覺天賦</div><h2>找出你的特定知識與天賦</h2>
+      <div class="goal">從你的人生礦脈，挖出 3 條別人複製不了的「特定知識」，交集出一句「全市場可能只有我」。</div>
+      <span class="pp">對應痛點 1 · 個人不可替代性（增員的底）</span></div>
+    <div class="mbody">
+      <div class="kb"><div class="lbl">解釋 · 特定知識</div>別人無法複製、教不來、學校不教、只能從你個人經歷與好奇心長出來的能力。三個辨識標準：①<b>於你像玩、於人像工作</b>（你願意週末免費做的事）②教不出來（只能實作犯錯習得）③無法外包（AI 取代不了）。</div>
+      <div class="src"><b>出處：</b><span class="srcchip">納瓦爾 推文 13–17 · nav.al/specific-knowledge</span><span class="srcchip">《做自己的生命設計師》好時光日誌＋AEIOU</span><span class="srcchip">Scott Adams 技能疊加 Talent Stack</span><span class="srcchip">契克森米哈伊《心流》</span></div>
+
+      <div class="formulaBox"><div class="f">唯一性 = A前25% × B前25% × C前25%</div><div class="n">不必當單一領域世界第一；3 個熱愛領域各達前 25%，相乘後競爭者趨近零（Scott Adams 鼯鼠策略）。</div></div>
+
+      <div class="callout game"><div class="t">🎲 好時光日誌 · AEIOU 反思</div>把課前兩週日誌畫成折線，圈出心流＋充能的重疊點，用 AEIOU 解剖：做什麼(A) / 什麼環境(E) / 跟誰互動(I) / 用什麼工具(O) / 旁邊還有誰(U)。</div>
+
+      <div class="field"><label>① 好時光日誌 · 活動紀錄（DYL 第 3 章）— 三個「忘記時間、做完還充電」的時刻</label>
+        <div class="cols3">
+          <input type="text" id="m2_flow_1" data-field placeholder="心流時刻 1">
+          <input type="text" id="m2_flow_2" data-field placeholder="心流時刻 2">
+          <input type="text" id="m2_flow_3" data-field placeholder="心流時刻 3">
+        </div>
+      </div>
+      <div class="field"><label>② AEIOU 反思 — 挑能量最高那件，五問解剖（找出它「為什麼」讓你充電）</label>
+        <table class="dyl"><tbody>
+          <tr><th>A 活動 Activities</th><td><input type="text" id="m2_aeiou_a" data-field placeholder="你實際在做什麼？主動還是被動？"></td></tr>
+          <tr><th>E 環境 Environments</th><td><input type="text" id="m2_aeiou_e" data-field placeholder="在什麼場域？室內外？氛圍？"></td></tr>
+          <tr><th>I 互動 Interactions</th><td><input type="text" id="m2_aeiou_i" data-field placeholder="跟誰？新或熟？人還是機器？"></td></tr>
+          <tr><th>O 物件 Objects</th><td><input type="text" id="m2_aeiou_o" data-field placeholder="用什麼工具/裝置/物件？"></td></tr>
+          <tr><th>U 使用者 Users</th><td><input type="text" id="m2_aeiou_u" data-field placeholder="現場還有誰？他們的角色？"></td></tr>
+        </tbody></table>
+      </div>
+      <div class="field"><label>③ 最耗能、做完虛脫的事（之後要外包或系統化）</label><input type="text" id="m2_drain" data-field placeholder="例如：做行政報表、陌生開發"></div>
+      <div class="field"><label>④ 我的三圈交集（把心流提煉成 3 個領域）</label>
+        <div class="cols3">
+          <input type="text" id="m2_circle_a" data-field placeholder="領域 A（如 保險專業）">
+          <input type="text" id="m2_circle_b" data-field placeholder="領域 B（如 三鐵/登山）">
+          <input type="text" id="m2_circle_c" data-field placeholder="領域 C（如 說書/演講）">
+        </div>
+      </div>
+      <div class="field"><label>⑤ 把三圈合成一句定位</label><input type="text" id="m2_intersection" data-field placeholder="例如：給中壯年運動人的退休與保險規劃顧問">
+        <div class="live">我的特定知識交集 ＝ <span class="ph" id="pv_circle">＿ × ＿ × ＿</span><br>→ 一句話：<span class="ph" id="pv_inter">＿＿＿</span></div>
+      </div>
+
+      <div class="callout case"><div class="t">📁 我的三鐵舉例</div>我做日誌發現，能量最高的不是談保單，而是「清晨練車跟車友邊騎邊聊人生卡關」。三圈交集＝三鐵 × 保險 × 陪伴傾聽，於是我把增員場景改成「破風團騎＋早餐會」——邊騎邊談財務配速，談保單變成談人生補給。結果報名額滿、留存率最高，因為這是「於我像玩、於人像工作」的事。</div>
+
+      <div class="takeaway"><b>帶得走｜</b>工具：好時光日誌＋三圈交集圖　·　可教夥伴：你的價值不在很懂保單，在你獨一無二的人生交集　·　延伸問題：我團隊每個人的三圈交集，我說得出來嗎？</div>
+    </div>
+  </section>
+
+  <!-- MODULE 3 -->
+  <section class="module" id="m3" data-letter="SK">
+    <div class="mhead"><div class="mno">MODULE 03 · 定位</div><h2>把天賦嫁接到保險經紀業</h2>
+      <div class="goal">天賦跟保險「無關」？學會橋接——把無關的熱情，變成保險業裡 0 競爭者的護城河。</div>
+      <span class="pp">對應痛點 2 · 市場飽和（用非標品跳出紅海）</span></div>
+    <div class="mbody">
+      <div class="kb"><div class="lbl">解釋 · 重新框定 + 橋接</div>把「扛業績的處經理」重新框定為「一家<b>人生設計孵化器</b>的 CEO，用保險做變現引擎」。三鐵→紀律/長期主義；說書→把硬知識降維、建立智者人設；演講→一對多影響力槓桿。</div>
+      <div class="src"><b>出處：</b><span class="srcchip">《做自己的生命設計師》第8章 重新框定 · 第5章 奧德賽計畫</span><span class="srcchip">納瓦爾 推文 36 不斷重新定義你做的事</span></div>
+
+      <div class="formulaBox"><div class="f">非標品定位 = 跨界標籤(U) × 保險專業(SK)</div><div class="n">「幫你比保單」競爭者幾十萬；「專為三鐵玩家規劃風險護城河」競爭者趨近 0。</div></div>
+
+      <div class="field"><label>① 奧德賽三計畫（DYL 第 5 章）— 三個五年版本，各填標題/劇情/探索問題＋四儀表</label><div class="hint">重點不是選哪個，是看見自己不只一條路。四儀表（0–5）：資源(夠不夠)、喜歡度(你多愛)、自信(敢不敢)、一致性(合不合你的羅盤)。</div>
+        <table class="dyl"><thead><tr><th></th><th>A 延續優化</th><th>B 若保險消失</th><th>C 不缺錢不怕面子</th></tr></thead><tbody>
+          <tr><th>六字標題</th><td><input type="text" id="m3_oa_title" data-field placeholder="一句 headline"></td><td><input type="text" id="m3_ob_title" data-field placeholder="一句 headline"></td><td><input type="text" id="m3_oc_title" data-field placeholder="一句 headline"></td></tr>
+          <tr><th>五年劇情</th><td><textarea id="m3_odyssey_a" data-field placeholder="把現在的路走到極致"></textarea></td><td><textarea id="m3_odyssey_b" data-field placeholder="保險消失你會做什麼"></textarea></td><td><textarea id="m3_odyssey_c" data-field placeholder="不缺錢不怕面子想做什麼"></textarea></td></tr>
+          <tr><th>探索的問題</th><td><input type="text" id="m3_oa_q" data-field placeholder="這條路想滿足你哪個好奇？"></td><td><input type="text" id="m3_ob_q" data-field placeholder="想探索什麼？"></td><td><input type="text" id="m3_oc_q" data-field placeholder="想探索什麼？"></td></tr>
+          <tr><th>四儀表<br><small>資源/喜歡/自信/一致</small></th><td><input type="text" id="m3_oa_gauge" data-field placeholder="如 4/5/3/4"></td><td><input type="text" id="m3_ob_gauge" data-field placeholder="如 3/4/3/5"></td><td><input type="text" id="m3_oc_gauge" data-field placeholder="如 2/5/2/5"></td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="field"><label>② 一句話電梯簡報（填空，下面即時組成）</label>
+        <div class="cols2">
+          <input type="text" id="m3_ev_audience" data-field placeholder="特定客群（如 三鐵玩家）">
+          <input type="text" id="m3_ev_obstacle" data-field placeholder="他們的障礙（如 人生財務撞牆期）">
+          <input type="text" id="m3_ev_persona" data-field placeholder="你的跨界人設（如 財富鐵人教練）">
+          <input type="text" id="m3_ev_channel" data-field placeholder="你的渠道（如 說書與演講）">
+          <input type="text" id="m3_ev_complex" data-field placeholder="複雜的東西（如 生硬的風險規劃）">
+          <input type="text" id="m3_ev_simple" data-field placeholder="變成什麼（如 像配速一樣的常識）">
+        </div>
+        <div class="live">我是帶領 <span class="ph" id="pv_aud">＿</span> 跨越 <span class="ph" id="pv_obs">＿</span> 的 <span class="ph" id="pv_per">＿</span>。我透過 <span class="ph" id="pv_cha">＿</span>，幫你把 <span class="ph" id="pv_cpx">＿</span> 變成 <span class="ph" id="pv_smp">＿</span>。</div>
+      </div>
+
+      <div class="callout game"><div class="t">🎲 人設混搭卡</div>隨機抽「跨界標籤 × 保險場景」掰一個荒謬但獨特的顧問人設——越荒謬，競爭者越接近零。</div>
+      <div class="takeaway"><b>帶得走｜</b>工具：奧德賽畫布＋一句話定位　·　可教夥伴：別當標準品，當非標品　·　延伸問題：我的招募文宣在賣「來我們公司」還是「來打造你的非標品」？</div>
+    </div>
+  </section>
+
+  <!-- ====================== PART 2 ====================== -->
+  <div class="partbanner"><span class="label">PART II · 把自己變成系統</span><span class="line"></span></div>
+  <div class="notice">第二次上課從這裡開始。你第一次填的內容已自動存在這台裝置，回來會自動帶出。</div>
+
+  <!-- MODULE 4 -->
+  <section class="module" id="m4" data-letter="L">
+    <div class="mhead"><div class="mno">MODULE 04 · 產品化</div><h2>打造產品漏斗、MVP 與槓桿</h2>
+      <div class="goal">停止零售你的時間，把知識打包成「睡覺時也運轉」的系統。</div>
+      <span class="pp">對應痛點 2 / 3 · 從賣時間到賣系統</span></div>
+    <div class="mbody">
+      <div class="kb"><div class="lbl">解釋 · 四種槓桿</div>勞動（管人，需許可）/ 資本（用錢生錢，需許可）/ <b>程式碼</b>（寫一次無限執行，免許可）/ <b>媒體</b>（寫一次無限觀看，免許可）。50 歲後勞動槓桿的痛苦邊際成本越來越高——未來成長必須來自程式碼＋媒體。</div>
+      <div class="src"><b>出處：</b><span class="srcchip">納瓦爾 推文 20–27 · nav.al/labor-capital · product-media</span><span class="srcchip">樊登《低風險創業》反脆弱/槓鈴</span><span class="srcchip">《一人公司》Paul Jarvis</span><span class="srcchip">劉潤《底層邏輯》</span></div>
+
+      <div class="formulaBox"><div class="f">整體成功率 = 100% − (100% − 基礎成功率)<sup>嘗試次數</sup></div><div class="n">劉潤《底層邏輯》：基礎成功率 20% 不學習要試 21 次；靠認知進化只需 10 次——專業把成功成本減半。</div></div>
+
+      <div class="field"><label>① 我的三層產品漏斗</label>
+        <div class="field" style="margin:8px 0"><span class="hint">前端·引流（免費/媒體，只談認知不談保險）</span><input type="text" id="m4_funnel_front" data-field placeholder="例如：Podcast《鐵人處經理的讀書會》"></div>
+        <div class="field" style="margin:8px 0"><span class="hint">中端·信任（低價/體驗，篩精準名單）</span><input type="text" id="m4_funnel_mid" data-field placeholder="例如：500 元生命設計工作坊"></div>
+        <div class="field" style="margin:8px 0"><span class="hint">後端·變現（本業：客戶保險規劃 / 增員孵化）</span><input type="text" id="m4_funnel_back" data-field placeholder="例如：家庭護城河規劃 + 一人公司孵化"></div>
+      </div>
+      <div class="field"><label>② 我未來 10 年要押的免許可槓桿</label>
+        <select id="m4_leverage_focus" data-field>
+          <option value="">請選擇</option><option>媒體（影片/Podcast/寫作）</option><option>程式碼（工具/APP/自動化）</option><option>媒體＋程式碼雙押</option>
+        </select>
+      </div>
+      <div class="callout game"><div class="t">🎲 30 天 MVP 賭桌（槓鈴：損失有底、收益無頂）</div>設計一個 30 天能跑完的最小實驗，先用最低成本測市場。規則：損失欄若超過「我輸得起」，重設計到輸得起為止。</div>
+      <div class="cols3">
+        <div class="field"><label>③ 我的 30 天 MVP</label><input type="text" id="m4_mvp_action" data-field placeholder="如：5 人免費微演講"></div>
+        <div class="field"><label>最壞損失（上限）</label><input type="text" id="m4_mvp_loss" data-field placeholder="如：2 小時+一點面子"></div>
+        <div class="field"><label>最好收益（無頂）</label><input type="text" id="m4_mvp_gain" data-field placeholder="如：5 名單+1 支可剪10條的母帶"></div>
+      </div>
+      <div class="takeaway"><b>帶得走｜</b>工具：三層漏斗＋30 天 MVP　·　可教夥伴：別零售時間，打包成系統　·　延伸問題：我的招募開發有幾成還在純勞動硬幹？</div>
+    </div>
+  </section>
+
+  <!-- MODULE 5 -->
+  <section class="module" id="m5" data-letter="A,Luck">
+    <div class="mhead"><div class="mno">MODULE 05 · 增員（全場靶心）</div><h2>把個人商品變成造星系統</h2>
+      <div class="goal">把個人商品化能力，從「自己用」升級成「幫別人造星」，並啟動你的造運引擎（Luck）。增員話術從「你想賺大錢？」進化成「我幫你打造你的一人公司」。</div>
+      <span class="pp">對應痛點 1 · 增員難＋組織停滯（本場核心）</span></div>
+    <div class="mbody">
+      <div class="kb"><div class="lbl">解釋 · 四種幸運（造運引擎 Luck）</div>① 盲運（天上掉）② 動量運（你瞎拚攪動，塵土飛揚總有好事）③ 識別運（夠專業才看得見的機會）④ <b>獨特運</b>（你打造獨一無二人設，幸運主動來找你）。你要增的不是會跑動量運的人，是幫他長出<b>獨特運</b>；而你這個處經理本身，就要活成第四種幸運的範本，讓優秀的人「想跟你」——這就是公式裡的 <b>×Luck 造運引擎</b>。</div>
+      <div class="src"><b>出處：</b><span class="srcchip">Dr. James Austin《Chase, Chance, and Creativity》1978</span><span class="srcchip">納瓦爾 nav.al/luck · How to Get Lucky</span><span class="srcchip">納瓦爾 推文 9 選人：智慧×能量×正直</span><span class="srcchip">《一人公司》</span></div>
+
+      <div class="formulaBox"><div class="f">增員價值 = 系統(L) × 造星力 × 選對人 × 造運引擎(Luck)</div><div class="n">傳統增員是把人塞進「我的」系統（加法、高流失）；造星增員是用我的系統幫他長出「他的」獨特運（乘法）。</div></div>
+
+      <div class="callout game"><div class="t">🎲 心流破冰面試（角色扮演）</div>全程不談佣金、不談公司多好，只問准增員：「過去一個月，讓你精力耗盡的 3 件事 / 讓你忘記時間的 3 件事？」再把他的收入跟「解決別人問題的價值」掛鉤。</div>
+      <div class="cols2">
+        <div class="field"><label>① 下週我要約談的 1 位准增員</label><input type="text" id="m5_recruit_target" data-field placeholder="姓名/代號"></div>
+        <div class="field"><label>② 我要用的破冰問句</label><input type="text" id="m5_icebreak_q" data-field placeholder="不談保險，只挖他的心流"></div>
+      </div>
+      <div class="field"><label>③ 把團隊成員分到四種幸運（找各自施力點）</label>
+        <div class="cols2">
+          <input type="text" id="m5_luck_motion" data-field placeholder="目前靠『動量運』瞎拚的人（最易過勞）">
+          <input type="text" id="m5_luck_awareness" data-field placeholder="該推往『識別運』（給他專業）的人">
+          <input type="text" id="m5_luck_unique" data-field placeholder="該推往『獨特運』（給他人設）的人">
+          <input type="text" id="m5_star_ip" data-field placeholder="一位准增員的專屬 IP 點子（如『帶著保單喝咖啡』）">
+        </div>
+      </div>
+
+      <div class="callout case"><div class="t">📁 講師親授段（現場補三大痛點實戰）</div>增員難＋組織停滯 / 市場飽和 / 帶人管理——三段真實案例由講師現場分享（手冊 5.6，講師獨家經驗）。</div>
+      <div class="takeaway"><b>帶得走｜</b>工具：心流破冰面試＋准增員 IP 卡＋選人計分卡（智慧/能量/正直）　·　可教夥伴：增員不是塞人進系統，是用系統幫他長出個人商品　·　延伸問題：我上一個增員失敗的人，是不是只因為我用「你想賺大錢嗎」開場？</div>
+    </div>
+  </section>
+
+  <!-- MODULE 6 -->
+  <section class="module" id="m6" data-letter="A,T">
+    <div class="mhead"><div class="mno">MODULE 06 · 永續</div><h2>當責、複利與內在主權</h2>
+      <div class="goal">把今天的覺察變成一套會自己複利下去的長期遊戲，並交還你最重要的東西——內在主權。</div>
+      <span class="pp">對應痛點 3＋回扣模組一的熱情</span></div>
+    <div class="mbody">
+      <div class="kb"><div class="lbl">解釋 · 當責 + 複利 + 內在主權</div>當責＝以真名承擔風險，社會用責任/股權/槓桿回報你（你已有 18 年信譽，把臉露出來）。複利＝一切回報來自複利，巴菲特 99% 財富在 50 歲後——你正站在奇異點上。內在主權＝用「貢獻」定義價值，不再活在忌妒者眼光裡。</div>
+      <div class="src"><b>出處：</b><span class="srcchip">納瓦爾 推文 8、18–19、37–38</span><span class="srcchip">斯多葛 四美德 · 控制二分法</span><span class="srcchip">The Sovereign Life Blueprint（內在主權/Enough Line）</span><span class="srcchip">Housel《致富心態》睡眠測試</span></div>
+
+      <div class="formulaBox"><div class="f">足夠數字 = 年支出 ÷ 4% = 年支出 × 25</div><div class="n">財務自由不是一個數字，是一個階段：依賴→平衡→穩定→保障→獨立→豐盛。</div></div>
+
+      <div class="field"><label>① 算我的「足夠數字」（Enough Number）</label><div class="hint">輸入你的年支出（萬元），即時算出你的自由門檻。</div>
+        <input type="number" id="m6_annual_expense" data-field placeholder="年支出（萬元），例如 180" inputmode="numeric">
+        <div class="live">你的足夠數字 ≈ <span class="calc" id="pv_enough">—</span> 萬元（被動收入達此即財務獨立）</div>
+      </div>
+      <div class="cols2">
+        <div class="field"><label>② 我現在落在六階段第幾級</label>
+          <select id="m6_stage" data-field><option value="">請選擇</option><option>1 依賴（收<支）</option><option>2 平衡（收=支）</option><option>3 穩定（半年備）</option><option>4 保障（2-3年）</option><option>5 獨立（被動=支）</option><option>6 豐盛（被動>>支）</option></select>
+        </div>
+        <div class="field"><label>③ 睡眠測試：現在的財務結構會讓我半夜驚醒嗎？</label>
+          <select id="m6_sleep_test" data-field><option value="">請選擇</option><option>會（要調整）</option><option>不會（睡得著）</option></select>
+        </div>
+      </div>
+      <div class="callout game"><div class="t">🎲 慾望合約撕毀儀式</div>「慾望，是一紙你跟自己簽下的『得到之前都不快樂』的合約。」寫下一個你要撕掉的——念出來、撕掉、把快樂的主權收回來。</div>
+      <div class="field"><label>④ 我要撕掉的一紙慾望合約</label><input type="text" id="m6_desire_contract" data-field placeholder="例如：在拿到○○排名之前，我不准自己快樂"></div>
+      <div class="field"><label>⑤ 主權誓言</label>
+        <label style="display:flex;gap:10px;align-items:flex-start;font-weight:300;color:var(--muted);font-size:14.5px;cursor:pointer">
+          <input type="checkbox" id="m6_oath_agree" data-field style="width:21px;height:21px;margin-top:3px;accent-color:var(--gold)">
+          <span>我是我內在基礎建設的唯一建築師；我拒絕再為追逐地位簽下讓自己不快樂的合約；我用「貢獻」定義價值，跟長期的人玩長期的遊戲。</span>
+        </label>
+      </div>
+      <div class="takeaway"><b>帶得走｜</b>工具：Enough Line＋睡眠測試＋主權誓言　·　可教夥伴：所有回報來自複利，你正站在奇異點上，別中途下車　·　延伸問題：我帶團隊，是在幫人簽更多慾望合約，還是幫人找回主權？</div>
+    </div>
+  </section>
+
+  <!-- ===== SUMMARY ===== -->
+  <section class="summary" id="summary">
+    <h2>📋 我的個人使用說明書</h2>
+    <div class="src" style="margin-bottom:6px">這是你今天親手打造的版本，會隨你填寫即時更新。按下方「下載我的使用說明書」可存成 PDF 帶走。</div>
+    <div class="sumline"><div class="k">我是誰（一句話定位 · M3）</div><div class="v" id="s_pitch">—</div></div>
+    <div class="sumline"><div class="k">我的特定知識交集（M2）</div><div class="v" id="s_inter">—</div></div>
+    <div class="sumline"><div class="k">我要換掉的地位遊戲 → 換成（M1）</div><div class="v" id="s_game">—</div></div>
+    <div class="sumline"><div class="k">我的產品漏斗（M4）</div><div class="v" id="s_funnel">—</div></div>
+    <div class="sumline"><div class="k">我的 30 天 MVP（M4）</div><div class="v" id="s_mvp">—</div></div>
+    <div class="sumline"><div class="k">下週要約談的准增員 + 破冰問句（M5）</div><div class="v" id="s_recruit">—</div></div>
+    <div class="sumline"><div class="k">我的自由門檻（M6）</div><div class="v" id="s_enough">—</div></div>
+    <div class="cols2" style="margin-top:14px">
+      <div class="field" style="margin:6px 0"><label>姓名 / 代號（給講師統計用）</label><input type="text" id="name" data-field placeholder="可用代號，例如 A-林"></div>
+      <div class="field" style="margin:6px 0"><label>單位 / 通訊處</label><input type="text" id="unit" data-field placeholder="例如 ○○ 通訊處"></div>
+    </div>
+    <div class="cols2">
+      <div class="field" style="margin:6px 0"><label>保險年資</label><input type="text" id="years" data-field placeholder="例如 18 年"></div>
+      <div class="field" style="margin:6px 0"><label>年齡層</label><select id="age_band" data-field><option value="">請選擇</option><option>30-39</option><option>40-49</option><option>50-59</option><option>60+</option></select></div>
+    </div>
+    <div class="field" style="margin-top:14px"><label>✍️ 我給 30 天後自己的一句承諾</label><input type="text" id="final_one_liner" data-field placeholder="我是＿＿，30 天內我會跑完＿＿"></div>
+    <div class="field"><label>其他想對講師說的話（選填）</label><textarea id="notes" data-field placeholder="任何回饋、想深入的主題、卡關的地方"></textarea></div>
+  </section>
+
+  <div class="notice" id="backendNotice">⚙️ <b>給講師：</b>目前尚未設定後台端點。打開原始碼最上方 <code>CONFIG</code>，貼上 Google Apps Script 網址與／或 Supabase 設定，學員按「送出」才會傳到你的後台。未設定時，學員仍可用「下載我的使用說明書」帶走成果。</div>
+
+</main>
+
+<!-- ===== ACTION BAR ===== -->
+<div class="actionbar">
+  <div class="wrap">
+    <span class="savestate" id="savestate">尚未儲存</span>
+    <button class="btn ghost" onclick="resetAll()">清空重填</button>
+    <button class="btn" onclick="exportManual()">下載我的使用說明書</button>
+    <button class="btn primary" onclick="submitData()">送出給講師統計</button>
+  </div>
+</div>
+
+<div class="footer">
+  納瓦爾讀書會 · 將個人商品化 · 做自己生命的設計師　|　處經理專屬 v1.1 · 2026-06-08<br>
+  底座：造運引擎 × 納瓦爾 39 條 × 生命設計師 × 斯多葛內在主權 × 劉潤/樊登/Housel
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ============================================================
+   CONFIG —— 講師只要改這裡（兩個後台都可填，會同時送）
+   ① Google 試算表：部署 backend/apps-script.gs 後貼上「網頁應用程式」網址
+   ② Supabase：貼上 專案 URL + anon(publishable) key + 資料表名
+   兩個都留空 = 純前端，學員用「下載我的使用說明書」帶走
+   ============================================================ */
+const CONFIG = {
+  appsScriptUrl: "",                 // 例：https://script.google.com/macros/s/AKfyc.../exec
+  supabase: {
+    url:    "",                      // 例：https://abcd1234.supabase.co
+    anonKey:"",                      // anon / publishable key（公開可用，搭配 RLS insert policy）
+    table:  "submissions"
+  },
+  appVersion: "web-1.1"
+};
+
+/* ---------- helpers ---------- */
+const $  = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const STORE = "naval_pm_v1";
+let saveTimer=null;
+
+function toast(msg,type=""){const t=$("#toast");t.textContent=msg;t.className="show "+type;clearTimeout(t._h);t._h=setTimeout(()=>t.className="",2600);}
+function jump(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});}
+
+/* ---------- collect / restore ---------- */
+function collect(){
+  const o={};
+  $$("[data-field]").forEach(el=>{
+    if(el.type==="checkbox") o[el.id]=el.checked;
+    else o[el.id]=el.value;
+  });
+  return o;
+}
+function restore(){
+  let data; try{data=JSON.parse(localStorage.getItem(STORE)||"{}");}catch(e){data={};}
+  $$("[data-field]").forEach(el=>{
+    if(!(el.id in data))return;
+    if(el.type==="checkbox") el.checked=!!data[el.id];
+    else el.value=data[el.id];
+  });
+  refreshAll();
+  if(localStorage.getItem(STORE+"_t")) $("#savestate").textContent="已自動存檔 · "+localStorage.getItem(STORE+"_t");
+}
+function save(){
+  localStorage.setItem(STORE,JSON.stringify(collect()));
+  const t=new Date().toLocaleTimeString("zh-TW",{hour:"2-digit",minute:"2-digit"});
+  localStorage.setItem(STORE+"_t",t);
+  $("#savestate").textContent="已自動存檔 · "+t;
+}
+
+/* ---------- live widgets ---------- */
+function refreshGauges(){
+  [["m1_health","v_health"],["m1_work","v_work"],["m1_play","v_play"],["m1_love","v_love"]].forEach(([a,b])=>{
+    const el=$("#"+a); if(el) $("#"+b).textContent=el.value;
+  });
+}
+function refreshIntersection(){
+  const a=$("#m2_circle_a").value||"＿",b=$("#m2_circle_b").value||"＿",c=$("#m2_circle_c").value||"＿";
+  $("#pv_circle").textContent=`${a} × ${b} × ${c}`;
+  $("#pv_inter").textContent=$("#m2_intersection").value||"＿＿＿";
+}
+function refreshElevator(){
+  const map={pv_aud:"m3_ev_audience",pv_obs:"m3_ev_obstacle",pv_per:"m3_ev_persona",pv_cha:"m3_ev_channel",pv_cpx:"m3_ev_complex",pv_smp:"m3_ev_simple"};
+  for(const k in map){const v=$("#"+map[k]).value;$("#"+k).textContent=v||"＿";}
+}
+function refreshEnough(){
+  const x=parseFloat($("#m6_annual_expense").value);
+  $("#pv_enough").textContent=(x>0)?Math.round(x*25).toLocaleString("zh-TW"):"—";
+}
+function refreshProgress(){
+  const letters={U:false,SK:false,A:false,L:false,T:false,Luck:false};
+  const filled=id=>{const e=$("#"+id);if(!e)return false;return e.type==="checkbox"?e.checked:(e.value||"").trim()!=="";};
+  if(filled("m2_circle_a")||filled("m2_intersection"))letters.U=true;
+  if(filled("m2_flow_1")||filled("m2_intersection"))letters.SK=true;
+  if(filled("m5_recruit_target")||filled("m6_oath_agree"))letters.A=true;
+  if(filled("m4_funnel_front")||filled("m4_leverage_focus"))letters.L=true;
+  if(filled("m6_annual_expense")||filled("m6_stage")||filled("m1_dimmest"))letters.T=true;
+  if(filled("m5_luck_unique")||filled("m5_luck_awareness")||filled("m5_star_ip"))letters.Luck=true;
+  $$(".fchip").forEach(c=>c.classList.toggle("on",letters[c.dataset.letter]));
+  const all=$$("[data-field]");const done=all.filter(e=>e.type==="checkbox"?e.checked:(e.value||"").trim()!=="").length;
+  $("#progressbar").style.width=Math.round(done/all.length*100)+"%";
+}
+function refreshSummary(){
+  const g=id=>($("#"+id).value||"").trim();
+  const pitch=(g("m3_ev_audience")||g("m3_ev_persona"))?
+    `我是帶領 ${g("m3_ev_audience")||"＿"} 跨越 ${g("m3_ev_obstacle")||"＿"} 的 ${g("m3_ev_persona")||"＿"}。`:"—";
+  $("#s_pitch").textContent=pitch;
+  $("#s_inter").textContent=g("m2_intersection")||[g("m2_circle_a"),g("m2_circle_b"),g("m2_circle_c")].filter(Boolean).join(" × ")||"—";
+  $("#s_game").textContent=(g("m1_status_game")||g("m1_wealth_game"))?`${g("m1_status_game")||"＿"} → ${g("m1_wealth_game")||"＿"}`:"—";
+  $("#s_funnel").textContent=[g("m4_funnel_front"),g("m4_funnel_mid"),g("m4_funnel_back")].filter(Boolean).join(" ／ ")||"—";
+  $("#s_mvp").textContent=g("m4_mvp_action")?`${g("m4_mvp_action")}（損失上限：${g("m4_mvp_loss")||"—"}）`:"—";
+  $("#s_recruit").textContent=(g("m5_recruit_target")||g("m5_icebreak_q"))?`${g("m5_recruit_target")||"＿"}｜${g("m5_icebreak_q")||"＿"}`:"—";
+  const x=parseFloat(g("m6_annual_expense"));
+  $("#s_enough").textContent=(x>0)?`約 ${Math.round(x*25).toLocaleString("zh-TW")} 萬（年支出 ${x} 萬 ×25）｜現在第 ${g("m6_stage")||"—"}`:"—";
+}
+function refreshAll(){refreshGauges();refreshIntersection();refreshElevator();refreshEnough();refreshProgress();refreshSummary();}
+
+/* ---------- events ---------- */
+document.addEventListener("input",e=>{
+  if(!e.target.matches("[data-field]"))return;
+  refreshAll();
+  clearTimeout(saveTimer);saveTimer=setTimeout(save,500);
+});
+document.addEventListener("change",e=>{if(e.target.matches("[data-field]")){refreshAll();save();}});
+
+/* ---------- reset ---------- */
+function resetAll(){
+  if(!confirm("確定清空所有填寫內容？此動作無法復原。"))return;
+  localStorage.removeItem(STORE);localStorage.removeItem(STORE+"_t");
+  $$("[data-field]").forEach(el=>{if(el.type==="checkbox")el.checked=false;else if(el.tagName==="SELECT")el.selectedIndex=0;else el.value="";});
+  $$('input[type=range]').forEach(r=>r.value=50);
+  refreshAll();$("#savestate").textContent="已清空";toast("已清空，可重新填寫");
+}
+
+/* ---------- export personal manual (printable) ---------- */
+function exportManual(){
+  const g=id=>{const e=$("#"+id);if(!e)return"";return e.type==="checkbox"?(e.checked?"✓ 已宣誓":""):(e.value||"");};
+  const x=parseFloat(g("m6_annual_expense"));
+  const enough=(x>0)?`約 ${Math.round(x*25).toLocaleString("zh-TW")} 萬`:"—";
+  const pitch=`我是帶領 <b>${g("m3_ev_audience")||"＿＿"}</b> 跨越 <b>${g("m3_ev_obstacle")||"＿＿"}</b> 的 <b>${g("m3_ev_persona")||"＿＿"}</b>。我透過 ${g("m3_ev_channel")||"＿"}，幫你把 ${g("m3_ev_complex")||"＿"} 變成 ${g("m3_ev_simple")||"＿"}。`;
+  const row=(k,v)=>`<tr><td class="k">${k}</td><td class="v">${v||"—"}</td></tr>`;
+  const w=window.open("","_blank");
+  w.document.write(`<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><title>我的個人使用說明書</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Serif+TC:wght@600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    @page{size:A4;margin:16mm}
+    *{box-sizing:border-box} body{font-family:"Noto Sans TC",sans-serif;color:#0e2335;line-height:1.7;margin:0;padding:24px;max-width:780px;margin:0 auto}
+    .head{border-bottom:3px solid #b98a16;padding-bottom:12px;margin-bottom:18px}
+    .kick{font-family:"Playfair Display",serif;letter-spacing:3px;color:#b98a16;font-size:12px}
+    h1{font-family:"Noto Serif TC",serif;font-size:26px;margin:6px 0;color:#082743}
+    .meta{color:#5a7184;font-size:13px}
+    .eqp{background:#082743;border:1px solid #b98a16;border-radius:10px;padding:13px;text-align:center;margin:14px 0;font-family:"Playfair Display",serif;color:#E9B627;font-size:19px;font-weight:700}
+    h2{font-family:"Noto Serif TC",serif;font-size:16px;color:#0c3258;border-left:4px solid #E9B627;padding-left:9px;margin:20px 0 8px}
+    table{width:100%;border-collapse:collapse;margin:6px 0}
+    td{border-bottom:1px solid #e6ecf2;padding:8px 6px;vertical-align:top;font-size:14px}
+    td.k{color:#5a7184;width:38%;font-size:12.5px}
+    td.v{color:#0e2335;font-weight:500}
+    .pitch{background:#f3f7fb;border:1px dashed #9fc0db;border-radius:10px;padding:14px;font-size:16px;margin:8px 0}
+    .ft{margin-top:24px;border-top:1px solid #dde6ee;padding-top:10px;color:#8295a6;font-size:11px;text-align:center}
+    @media print{.noprint{display:none}}
+    .noprint{text-align:center;margin:18px 0}
+    .pbtn{background:#082743;color:#E9B627;border:none;border-radius:8px;padding:10px 22px;font-size:15px;cursor:pointer;font-family:"Noto Sans TC"}
+  </style></head><body>
+  <div class="noprint"><button class="pbtn" onclick="window.print()">🖨 列印 / 存成 PDF</button></div>
+  <div class="head"><div class="kick">PRODUCTIZE YOURSELF · 個人使用說明書</div>
+    <h1>${g("name")||"我"}的個人商品化使用說明書</h1>
+    <div class="meta">${g("unit")||""}　·　保險年資 ${g("years")||"—"}　·　${new Date().toLocaleDateString("zh-TW")}</div></div>
+  <div class="eqp">B = [ (U × SK) × A × L ] <sup>T × Luck</sup></div>
+  <h2>我是誰（一句話定位）</h2><div class="pitch">${pitch}</div>
+  <h2>① 診斷 · 內在主權</h2><table>
+    ${row("四燈號最暗的燈",g("m1_dimmest"))}
+    ${row("換掉的地位遊戲 → 換成",`${g("m1_status_game")||"＿"} → ${g("m1_wealth_game")||"＿"}`)}
+    ${row("健康/工作/遊戲/愛",`${g("m1_health")} / ${g("m1_work")} / ${g("m1_play")} / ${g("m1_love")}`)}</table>
+  <h2>② 我的特定知識（U × SK）</h2><table>
+    ${row("三圈交集",`${g("m2_circle_a")||"＿"} × ${g("m2_circle_b")||"＿"} × ${g("m2_circle_c")||"＿"}`)}
+    ${row("一句定位",g("m2_intersection"))}
+    ${row("三個心流時刻",[g("m2_flow_1"),g("m2_flow_2"),g("m2_flow_3")].filter(Boolean).join("／"))}
+    ${row("要外包/系統化的耗能事",g("m2_drain"))}</table>
+  <h2>③ 奧德賽三計畫</h2><table>
+    ${row("A 延續優化",g("m3_odyssey_a"))}${row("B 若保險消失",g("m3_odyssey_b"))}${row("C 不缺錢不怕面子",g("m3_odyssey_c"))}</table>
+  <h2>④ 產品化（L）</h2><table>
+    ${row("三層漏斗",[g("m4_funnel_front"),g("m4_funnel_mid"),g("m4_funnel_back")].filter(Boolean).join(" ／ "))}
+    ${row("要押的免許可槓桿",g("m4_leverage_focus"))}
+    ${row("30 天 MVP",`${g("m4_mvp_action")||"—"}（損失上限 ${g("m4_mvp_loss")||"—"}；收益 ${g("m4_mvp_gain")||"—"}）`)}</table>
+  <h2>⑤ 增員造星 × 造運引擎（A · Luck）</h2><table>
+    ${row("下週要約談的准增員",g("m5_recruit_target"))}
+    ${row("破冰問句",g("m5_icebreak_q"))}
+    ${row("准增員 IP 點子",g("m5_star_ip"))}
+    ${row("該推往識別運/獨特運的人",`${g("m5_luck_awareness")||"—"} ／ ${g("m5_luck_unique")||"—"}`)}</table>
+  <h2>⑥ 永續 · 內在主權（T）</h2><table>
+    ${row("足夠數字（年支出×25）",`${enough}（現在第 ${g("m6_stage")||"—"}；睡眠測試：${g("m6_sleep_test")||"—"}）`)}
+    ${row("撕掉的慾望合約",g("m6_desire_contract"))}
+    ${row("主權誓言",g("m6_oath_agree"))}</table>
+  <h2>✍️ 給 30 天後自己的承諾</h2><div class="pitch">${g("final_one_liner")||"＿＿＿"}</div>
+  <div class="ft">納瓦爾讀書會 · 將個人商品化 · 做自己生命的設計師　|　保險經紀處經理專屬工作坊</div>
+  </body></html>`);
+  w.document.close();
+  toast("已開啟你的使用說明書，按列印即可存 PDF","ok");
+}
+
+/* ---------- submit to backends ---------- */
+function payload(){
+  const data=collect();
+  const x=parseFloat(data.m6_annual_expense);
+  data.m6_enough_number=(x>0)?Math.round(x*25):"";
+  return Object.assign({
+    submission_id:"PM-"+Date.now(),
+    submitted_at:new Date().toISOString(),
+    app_version:CONFIG.appVersion,
+    part:"all"
+  },data);
+}
+async function sendSupabase(p){
+  const s=CONFIG.supabase; if(!s.url||!s.anonKey)return null;
+  const meta={submission_id:p.submission_id,submitted_at:p.submitted_at,name:p.name||"",unit:p.unit||"",age_band:p.age_band||"",app_version:p.app_version,payload:p};
+  const res=await fetch(`${s.url}/rest/v1/${s.table}`,{
+    method:"POST",
+    headers:{"apikey":s.anonKey,"Authorization":"Bearer "+s.anonKey,"Content-Type":"application/json","Prefer":"return=minimal"},
+    body:JSON.stringify(meta)
+  });
+  return res.ok;
+}
+async function sendAppsScript(p){
+  if(!CONFIG.appsScriptUrl)return null;
+  await fetch(CONFIG.appsScriptUrl,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)});
+  return true;
+}
+async function submitData(){
+  const p=payload();
+  if(!CONFIG.appsScriptUrl && !CONFIG.supabase.url){
+    toast("尚未設定後台，已改為下載你的說明書","");exportManual();return;
+  }
+  toast("送出中…");
+  let okCount=0,fail=[];
+  try{ if(CONFIG.appsScriptUrl){await sendAppsScript(p);okCount++;} }catch(e){fail.push("Google 試算表");}
+  try{ const r=await sendSupabase(p); if(r===true)okCount++; else if(r===false)fail.push("Supabase"); }catch(e){fail.push("Supabase");}
+  try{const arr=JSON.parse(localStorage.getItem(STORE+"_sent")||"[]");arr.push(p);localStorage.setItem(STORE+"_sent",JSON.stringify(arr));}catch(e){}
+  if(okCount>0 && fail.length===0) toast("✅ 已送出給講師，謝謝你！","ok");
+  else if(okCount>0) toast("已送出（"+fail.join("、")+" 未成功，但資料已存）","ok");
+  else { toast("送出失敗："+fail.join("、")+"。已自動下載備份","bad"); exportManual(); }
+}
+
+/* ---------- backend notice ---------- */
+function backendNotice(){
+  if(CONFIG.appsScriptUrl||CONFIG.supabase.url) $("#backendNotice").style.display="none";
+}
+
+/* init */
+restore();backendNotice();refreshAll();
+</script>
+</body>
+</html>

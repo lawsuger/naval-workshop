@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>孟修讀書法 · 建構我的第二大腦 — 工作坊開場</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#082743;--card:#0c3258;--gold:#E9B627;--gold-soft:#f4d76a;--gold-deep:#b98a16;
+  --ink:#fff;--muted:#aebccb;--faint:#7e93a8;--line:#16395e;
+  --serif:"Noto Serif TC",serif;--sans:"Noto Sans TC",sans-serif;--play:"Playfair Display",serif;--mono:"JetBrains Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(1100px 700px at 84% -10%,rgba(233,182,39,.12),transparent 60%),
+  radial-gradient(900px 700px at -8% 112%,rgba(233,182,39,.07),transparent 55%);}
+
+/* ===== deck / scenes ===== */
+.deck{position:fixed;inset:0;z-index:1}
+.scene{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:8vh 8vw;opacity:0;transition:opacity .5s ease}
+.scene.active{display:flex;opacity:1}
+
+/* reveal stagger */
+.rv{opacity:0;transform:translateY(22px)}
+.scene.active .rv{animation:fadeUp .8s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* typography */
+.kick{font-family:var(--play);letter-spacing:7px;color:var(--gold);font-size:clamp(11px,1.5vw,15px);font-weight:700;text-transform:uppercase;margin-bottom:20px}
+.mno{font-family:var(--play);color:var(--gold-deep);letter-spacing:4px;font-size:clamp(12px,1.6vw,16px);font-weight:700;text-transform:uppercase;margin-bottom:14px}
+.step-badge{display:inline-flex;align-items:baseline;gap:10px;font-family:var(--play);color:var(--gold);font-weight:700;letter-spacing:3px;font-size:clamp(12px,1.6vw,16px);margin-bottom:16px}
+.step-badge .n{font-size:clamp(34px,6vw,60px);line-height:.8;color:var(--gold-soft)}
+h1{font-family:var(--serif);font-weight:900;line-height:1.22;font-size:clamp(32px,6.4vw,68px);color:#fff;margin:6px 0}
+h2{font-family:var(--serif);font-weight:700;line-height:1.25;font-size:clamp(26px,4.8vw,48px);color:#fff;margin:8px 0}
+.g{color:var(--gold)}
+.gs{color:var(--gold-soft)}
+.lead{color:var(--muted);font-size:clamp(15px,2.15vw,22px);max-width:58ch;margin:18px auto 0;line-height:1.75;font-weight:300}
+.lead b{color:var(--gold-soft);font-weight:500}
+.tiny{color:var(--faint);font-size:clamp(11px,1.4vw,14px);letter-spacing:1px;margin-top:26px}
+
+/* formula */
+.formula{font-family:var(--play);font-weight:700;color:var(--gold);font-size:clamp(19px,3.6vw,40px);line-height:1.4;margin:8px auto;max-width:90vw}
+.formula .eq{color:var(--gold-soft)}
+.formula .plus{color:var(--faint);margin:0 .12em;font-weight:500}
+.formula .tool{color:#fff;white-space:nowrap}
+
+/* tool cards (scene 1) */
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:78vw;margin:30px auto 0}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 18px;text-align:left;position:relative;overflow:hidden}
+.tcard::after{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold-soft))}
+.tcard .ic{font-size:26px;margin-bottom:10px}
+.tcard .nm{font-family:var(--play);color:var(--gold);font-weight:700;font-size:clamp(14px,1.7vw,19px);letter-spacing:.5px}
+.tcard .ro{color:var(--gold-soft);font-size:clamp(12px,1.4vw,15px);margin:3px 0 8px;font-weight:500}
+.tcard .ds{color:var(--muted);font-size:clamp(12px,1.45vw,15px);line-height:1.6}
+
+/* tags */
+.tags{margin-top:22px;display:flex;flex-wrap:wrap;gap:9px;justify-content:center;max-width:60ch}
+.tag{padding:7px 16px;border:1px solid var(--gold-deep);border-radius:999px;color:var(--gold-soft);font-size:clamp(12px,1.6vw,16px)}
+
+/* generic flow row (scenes 2-4) */
+.flowrow{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,40px);margin-top:34px;flex-wrap:wrap}
+.node-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 26px;min-width:140px}
+.node-box .bi{font-size:30px}
+.node-box .bt{color:#fff;font-family:var(--serif);font-weight:700;margin-top:8px;font-size:clamp(15px,1.9vw,20px)}
+.node-box .bd{color:var(--muted);font-size:clamp(12px,1.4vw,14px);margin-top:4px}
+.arrow{color:var(--gold);font-size:clamp(22px,3vw,32px);font-family:var(--play)}
+
+/* ebook morph (scene 2) */
+.ebook{display:flex;gap:0;align-items:center;justify-content:center;margin-top:30px}
+.bookcard{width:118px;height:158px;border-radius:8px;background:linear-gradient(150deg,#0e3a63,#0b2c4d);border:1px solid var(--gold-deep);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:12px;position:relative;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.bookcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(var(--gold-soft),var(--gold-deep));border-radius:8px 0 0 8px}
+.bookcard .bk-t{font-family:var(--serif);color:var(--gold-soft);font-size:12px;line-height:1.4;font-weight:700;text-align:left}
+.morph-arrow{font-family:var(--play);color:var(--gold);font-size:30px;margin:0 24px}
+.textstream{text-align:left;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.5;max-width:240px}
+.textstream span{display:block;opacity:0;animation:lineIn .5s forwards}
+@keyframes lineIn{to{opacity:1}}
+.textstream .hl{color:var(--gold-soft);background:rgba(233,182,39,.12)}
+
+/* video frame (scenes 5-6) */
+.vstage{display:flex;gap:clamp(18px,3vw,40px);align-items:center;justify-content:center;margin-top:26px;flex-wrap:wrap;width:100%}
+.vidwrap{position:relative;width:min(52vw,640px);aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+  border:1px solid var(--line);background:#06203a;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.opvid{width:100%;height:100%;object-fit:cover;display:none}
+.opvid.show{display:block}
+.vidph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  border:2px dashed var(--gold-deep);border-radius:16px;padding:18px}
+.vidph.hide{display:none}
+.play-ic{width:62px;height:62px;border-radius:50%;border:2px solid var(--gold);color:var(--gold);
+  display:grid;place-items:center;font-size:24px;padding-left:5px;animation:glowPulse 2.4s infinite}
+.ph-t{font-family:var(--play);color:var(--gold-soft);letter-spacing:2px;font-weight:700;font-size:clamp(13px,1.6vw,17px)}
+.ph-d{color:var(--faint);font-size:clamp(11px,1.35vw,13px);line-height:1.6;text-align:center;max-width:42ch}
+.ph-d code{font-family:var(--mono);color:var(--gold-soft);background:rgba(233,182,39,.1);padding:1px 6px;border-radius:5px}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 0 0 rgba(233,182,39,.4)}50%{box-shadow:0 0 0 14px rgba(233,182,39,0)}}
+
+/* mock chat (scene 5 placeholder content) */
+.mock{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:24px 30px;opacity:.96}
+.mock-chat{align-items:stretch}
+.mc-row{max-width:80%;padding:11px 15px;border-radius:14px;font-size:clamp(12px,1.4vw,15px);line-height:1.55;opacity:0}
+.mc-row.user{align-self:flex-end;background:#123e66;color:#eaf1f8;border:1px solid var(--line);border-bottom-right-radius:4px;animation:fadeUp .5s forwards .3s}
+.mc-row.ai{align-self:flex-start;background:rgba(233,182,39,.1);color:var(--gold-soft);border:1px solid var(--gold-deep);border-bottom-left-radius:4px;animation:fadeUp .5s forwards 1.6s}
+.mc-tag{position:absolute;top:12px;left:16px;font-family:var(--play);font-size:11px;letter-spacing:2px;color:var(--faint)}
+.mc-typing{align-self:flex-start;color:var(--gold);letter-spacing:3px;font-size:20px;opacity:0;animation:fadeUp .3s forwards 1s,blink 1s steps(3) infinite 1s}
+@keyframes blink{50%{opacity:.3}}
+
+/* mock terminal (scene 6 placeholder content) */
+.mock-term{justify-content:flex-start;font-family:var(--mono);text-align:left;padding:0}
+.mt-bar{background:#0a2c4d;border-bottom:1px solid var(--line);padding:9px 14px;font-size:11px;color:var(--faint);letter-spacing:1px;display:flex;align-items:center;gap:8px}
+.mt-bar::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.mt-body{padding:16px 18px;font-size:clamp(11px,1.4vw,14px);line-height:1.9}
+.mt-line{white-space:nowrap;overflow:hidden;width:0;animation:typ .7s steps(30) forwards}
+.mt-line.l1{animation-delay:.4s}.mt-line.l2{animation-delay:1.4s}.mt-line.l3{animation-delay:2.4s}.mt-line.l4{animation-delay:3.3s}
+.mt-line .pr{color:var(--gold)}
+.mt-line .ok{color:#7fd1a8}
+.mt-line .dim{color:var(--faint)}
+.mt-line .cd{color:var(--gold-soft)}
+@keyframes typ{to{width:100%}}
+
+/* wiki card (scene 7) */
+.wcard{width:min(62vw,560px);background:var(--card);border:1px solid var(--gold-deep);border-radius:18px;
+  padding:26px 30px;text-align:left;margin:26px auto 0;box-shadow:0 24px 60px rgba(0,0,0,.45);position:relative}
+.wcard .yaml{font-family:var(--mono);font-size:12px;color:var(--faint);line-height:1.7;border-left:2px solid var(--gold-deep);padding-left:12px;margin-bottom:16px}
+.wcard .yaml .k{color:var(--gold-deep)}.wcard .yaml .v{color:var(--muted)}
+.wcard .wt{font-family:var(--serif);color:var(--gold);font-weight:700;font-size:clamp(18px,2.4vw,26px);margin-bottom:10px}
+.wcard .wp{color:#dfe7ef;font-size:clamp(13px,1.6vw,16px);line-height:1.7}
+.wlink{color:var(--gold-soft);border-bottom:1px dashed var(--gold-deep);cursor:default;white-space:nowrap}
+.wlink::before{content:"[[";color:var(--gold-deep)}.wlink::after{content:"]]";color:var(--gold-deep)}
+
+/* graph (scene 8) */
+#gwrap{position:absolute;inset:0;display:none}
+.scene.active #gwrap{display:block}
+#graph{position:absolute;inset:0;width:100%;height:100%}
+.glabel{position:absolute;top:0;left:0;right:0;text-align:center;pointer-events:none;z-index:3;padding:3.2vh 6vw 6vh;background:linear-gradient(180deg,rgba(8,39,67,.96) 52%,rgba(8,39,67,0))}
+.glabel h2{max-width:32ch;margin:6px auto 0}
+.glegend{position:absolute;bottom:0;left:0;right:0;display:flex;gap:22px;justify-content:center;z-index:3;flex-wrap:wrap;padding:5vh 6vw 3.5vh;background:linear-gradient(0deg,rgba(8,39,67,.96) 52%,rgba(8,39,67,0))}
+.lg{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:clamp(12px,1.5vw,15px)}
+.lg .dot{width:13px;height:13px;border-radius:50%}
+
+/* outro */
+.replay{margin-top:30px;background:transparent;border:1px solid var(--gold-deep);color:var(--gold-soft);
+  padding:12px 26px;border-radius:999px;font-family:var(--play);letter-spacing:2px;font-size:15px;cursor:pointer;transition:.25s}
+.replay:hover{border-color:var(--gold);background:rgba(233,182,39,.08)}
+
+/* ===== chrome ===== */
+.bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold-deep),var(--gold-soft));z-index:20}
+.counter{position:fixed;bottom:16px;right:20px;color:var(--faint);font-size:13px;font-family:var(--play);letter-spacing:2px;z-index:20}
+.brand{position:fixed;bottom:16px;left:20px;color:var(--faint);font-size:12px;letter-spacing:2px;z-index:20;font-family:var(--play)}
+.ctrl{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:20}
+.ctrl button{background:#0a2c4d;border:1px solid var(--line);color:var(--gold-soft);width:42px;height:32px;border-radius:9px;cursor:pointer;font-size:15px;transition:.2s}
+.ctrl button:hover{border-color:var(--gold);color:var(--gold)}
+.hint{position:fixed;top:14px;right:20px;color:var(--faint);font-size:11px;letter-spacing:1px;z-index:20}
+
+/* start gate */
+#gate{position:fixed;inset:0;z-index:40;background:radial-gradient(900px 600px at 50% 30%,#0c3258,#061d33 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8vw;cursor:pointer;transition:opacity .6s}
+#gate.gone{opacity:0;pointer-events:none}
+#gate .gk{font-family:var(--play);letter-spacing:8px;color:var(--gold);font-size:clamp(12px,1.6vw,16px);font-weight:700;margin-bottom:22px}
+#gate h1{font-size:clamp(32px,7vw,72px)}
+#gate .gd{color:var(--muted);font-size:clamp(14px,2vw,20px);margin-top:18px;line-height:1.7}
+#gate .gbtn{margin-top:40px;display:inline-flex;align-items:center;gap:12px;color:#061d33;background:linear-gradient(120deg,var(--gold-soft),var(--gold));
+  font-family:var(--play);font-weight:700;letter-spacing:3px;font-size:clamp(15px,2vw,19px);padding:15px 38px;border-radius:999px;animation:glowPulse 2.6s infinite}
+#gate .gh{color:var(--faint);font-size:12px;margin-top:24px;letter-spacing:1px}
+
+@media(max-width:820px){
+  .tools{grid-template-columns:1fr 1fr;max-width:92vw}
+  .vidwrap{width:88vw}
+  .flowrow{gap:12px}.arrow{transform:rotate(90deg)}
+  .ebook{flex-direction:column}.morph-arrow{transform:rotate(90deg);margin:14px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar"></div>
+<div class="hint">空白鍵 暫停 · ← → 翻幕 · F 全螢幕</div>
+
+<div class="deck" id="deck">
+
+  <!-- 0 · COVER -->
+  <section class="scene" data-dur="5400">
+    <div class="kick rv" style="--d:.1s">How I Read · 孟修讀書法</div>
+    <h1 class="rv" style="--d:.35s">我怎麼把一本書<br>讀進我的<span class="g">第二大腦</span></h1>
+    <div class="lead rv" style="--d:.8s">從一本電子書，到一張<b>會自己連結</b>的知識網——<br>這是我每天都在做的事。</div>
+    <div class="formula rv" style="--d:1.3s;font-size:clamp(14px,2.3vw,24px);margin-top:34px">
+      建構孟修 wiki <span class="eq">=</span> Claude Code <span class="plus">+</span> Obsidian <span class="plus">+</span> NotebookLM <span class="plus">+</span> Gemini</div>
+    <div class="tiny rv" style="--d:1.7s">納瓦爾 × 個人商品化 × 生命設計師 · 工作坊開場</div>
+  </section>
+
+  <!-- 1 · THE EQUATION -->
+  <section class="scene" data-dur="7600">
+    <div class="mno rv" style="--d:.1s">The Operating System · 我的讀書作業系統</div>
+    <h2 class="rv" style="--d:.3s">四個工具，<span class="g">一條生產線</span></h2>
+    <div class="formula rv" style="--d:.6s;margin-top:18px">
+      孟修 wiki <span class="eq">=</span> Claude Code <span class="plus">+</span> Obsidian <span class="plus">+</span> NotebookLM <span class="plus">+</span> Gemini</div>
+    <div class="tools">
+      <div class="tcard rv" style="--d:1s"><div class="ic">🤖</div><div class="nm">Claude Code</div><div class="ro">編譯 · 萃取</div><div class="ds">把對話與素材編譯成有來源、有連結的 wiki 卡片</div></div>
+      <div class="tcard rv" style="--d:1.2s"><div class="ic">🔗</div><div class="nm">Obsidian</div><div class="ro">知識網載體</div><div class="ds">每張卡片用 [[雙向連結]] 長成一張會生長的網</div></div>
+      <div class="tcard rv" style="--d:1.4s"><div class="ic">🎧</div><div class="nm">NotebookLM</div><div class="ro">深度研讀</div><div class="ds">把長文本變成雙人對談、心智圖、重點摘要</div></div>
+      <div class="tcard rv" style="--d:1.6s"><div class="ic">🔍</div><div class="nm">Gemini</div><div class="ro">混合查詢</div><div class="ds">跨來源追問、過濾，逼出一本書真正的重點</div></div>
+    </div>
+    <div class="lead rv" style="--d:2s">我不是「<b>讀完</b>」一本書——是把它一道一道工序，<b>煉</b>進大腦。</div>
+  </section>
+
+  <!-- 2 · STEP 1 EBOOK -->
+  <section class="scene" data-dur="5800">
+    <div class="step-badge rv" style="--d:.1s"><span class="n">1</span> STEP ONE</div>
+    <h2 class="rv" style="--d:.3s">先買<span class="g">電子書</span></h2>
+    <div class="ebook">
+      <div class="bookcard rv" style="--d:.7s"><div class="bk-t">納瓦爾<br>寶典</div></div>
+      <div class="morph-arrow rv" style="--d:1.1s">→</div>
+      <div class="textstream rv" style="--d:1.3s">
+        <span style="animation-delay:1.5s">＃ 致富不是運氣，是技術</span>
+        <span class="hl" style="animation-delay:1.9s">＃ 找你的「特定知識」</span>
+        <span style="animation-delay:2.3s">＃ 沒有槓桿，換不到時間</span>
+        <span class="hl" style="animation-delay:2.7s">＃ 玩永久遊戲</span>
+        <span style="animation-delay:3.1s">＃ 可劃線 · 可複製 · 可餵 AI</span>
+      </div>
+    </div>
+    <div class="lead rv" style="--d:.45s">紙本讀起來舒服，卻餵不進 AI。我一律先買電子書——<b>可劃線、可複製、可整本丟給工具</b>。汲取，從「可被選取」開始。</div>
+  </section>
+
+  <!-- 3 · STEP 2 說書 -->
+  <section class="scene" data-dur="5800">
+    <div class="step-badge rv" style="--d:.1s"><span class="n">2</span> STEP TWO</div>
+    <h2 class="rv" style="--d:.3s">看過、聽過相關的<span class="g">說書</span></h2>
+    <div class="lead rv" style="--d:.5s">動手前先建地圖。先用<b>別人的廣度</b>，快速抓到這本書的骨架、金句與爭點，再決定我要深挖哪裡。</div>
+    <div class="tags">
+      <span class="tag rv" style="--d:1s">🎙 文森說書</span>
+      <span class="tag rv" style="--d:1.15s">📚 樊登讀書</span>
+      <span class="tag rv" style="--d:1.3s">▶ YouTube 導讀</span>
+      <span class="tag rv" style="--d:1.45s">🎧 Podcast 對談</span>
+      <span class="tag rv" style="--d:1.6s">✍ 重點書評</span>
+    </div>
+    <div class="lead rv" style="--d:2s;font-size:clamp(14px,1.9vw,18px);color:var(--faint)">廣度先行，深度才有方向。</div>
+  </section>
+
+  <!-- 4 · STEP 3 餵料 -->
+  <section class="scene" data-dur="5800">
+    <div class="step-badge rv" style="--d:.1s"><span class="n">3</span> STEP THREE</div>
+    <h2 class="rv" style="--d:.3s">把素材<span class="g">餵進工具</span></h2>
+    <div class="flowrow">
+      <div class="node-box rv" style="--d:.7s"><div class="bi">📖</div><div class="bt">電子書內文</div><div class="bd">劃線 · 全文</div></div>
+      <div class="node-box rv" style="--d:.85s"><div class="bi">📝</div><div class="bt">說書筆記</div><div class="bd">骨架 · 金句</div></div>
+      <div class="arrow rv" style="--d:1.1s">➜</div>
+      <div class="node-box rv" style="--d:1.3s" data-glow><div class="bi">🔗</div><div class="bt">Obsidian</div><div class="bd">raw 原始層</div></div>
+      <div class="node-box rv" style="--d:1.45s" data-glow><div class="bi">🎧</div><div class="bt">NotebookLM</div><div class="bd">深度研讀源</div></div>
+    </div>
+    <div class="lead rv" style="--d:.45s">全部倒進 <b>raw 原始層</b>——這是我大腦的「進料口」。先進得來，才煉得出去。</div>
+  </section>
+
+  <!-- 5 · STEP 4 對話（影片） -->
+  <section class="scene" data-dur="7400">
+    <div class="step-badge rv" style="--d:.1s"><span class="n">4</span> STEP FOUR</div>
+    <h2 class="rv" style="--d:.3s">跟 AI <span class="g">對話</span>，問出精華</h2>
+    <div class="vstage rv" style="--d:.7s">
+      <div class="vidwrap">
+        <video class="opvid" data-src="step4-gemini-notebooklm.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="vidph">
+          <div class="mock mock-chat">
+            <div class="mc-tag">GEMINI × NOTEBOOKLM</div>
+            <div class="mc-row user">納瓦爾的「特定知識」跟巴菲特的護城河，差在哪？</div>
+            <div class="mc-typing">● ● ●</div>
+            <div class="mc-row ai">特定知識是「個人版」的護城河：不可外包、學校教不來、只能靠興趣長出來……</div>
+          </div>
+          <div class="play-ic" style="position:absolute;bottom:12px;right:14px">▶</div>
+        </div>
+      </div>
+    </div>
+    <div class="lead rv" style="--d:.45s">用 <b>Gemini</b> 跨來源混合查詢、用 <b>NotebookLM</b> 深度對談。我不是被動讀，是主動「審問」這本書。</div>
+    <div class="tiny rv" style="--d:1.2s">▲ 此處放實際操作錄影約 10 秒（命名 <code style="font-family:var(--mono);color:var(--gold-soft)">step4-gemini-notebooklm.mp4</code> 放本資料夾即自動播放）</div>
+  </section>
+
+  <!-- 6 · STEP 5 萃取（影片） -->
+  <section class="scene" data-dur="7400">
+    <div class="step-badge rv" style="--d:.1s"><span class="n">5</span> STEP FIVE</div>
+    <h2 class="rv" style="--d:.3s">用 Claude Code <span class="g">萃取</span>成卡片</h2>
+    <div class="vstage rv" style="--d:.7s">
+      <div class="vidwrap">
+        <video class="opvid" data-src="step5-claudecode-obsidian.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="vidph">
+          <div class="mock mock-term">
+            <div class="mt-bar">claude code — 大腦資料庫</div>
+            <div class="mt-body">
+              <div class="mt-line l1"><span class="pr">▸</span> /wiki-ingest 槓桿</div>
+              <div class="mt-line l2"><span class="dim">＃ 讀 raw／對話精華 → 編譯中…</span></div>
+              <div class="mt-line l3"><span class="ok">✓</span> 生成 <span class="cd">wiki/concepts/槓桿.md</span></div>
+              <div class="mt-line l4"><span class="dim">＃ 4 個 [[連結]] · frontmatter · 來源已標註</span></div>
+            </div>
+          </div>
+          <div class="play-ic" style="position:absolute;bottom:12px;right:14px">▶</div>
+        </div>
+      </div>
+    </div>
+    <div class="lead rv" style="--d:.45s">對話的精華交給 <b>Claude Code</b> 編譯——自動生成有 frontmatter、有來源、有 <b>[[連結]]</b> 的 wiki 卡片，寫進 Obsidian。</div>
+    <div class="tiny rv" style="--d:1.2s">▲ 此處放實際操作錄影約 10 秒（命名 <code style="font-family:var(--mono);color:var(--gold-soft)">step5-claudecode-obsidian.mp4</code> 放本資料夾即自動播放）</div>
+  </section>
+
+  <!-- 7 · STEP 6 跨界（納瓦爾卡片） -->
+  <section class="scene" data-dur="7000">
+    <div class="step-badge rv" style="--d:.1s"><span class="n">6</span> STEP SIX</div>
+    <h2 class="rv" style="--d:.3s">跨界理解 — 以<span class="g">納瓦爾</span>為例</h2>
+    <div class="wcard rv" style="--d:.7s">
+      <div class="yaml"><span class="k">type</span>: <span class="v">concept</span> · <span class="k">domain</span>: <span class="v">finance</span> · <span class="k">source</span>: <span class="v">納瓦爾寶典</span></div>
+      <div class="wt">槓桿 Leverage</div>
+      <div class="wp">納瓦爾說：沒有槓桿，你永遠在用時間換錢。四種槓桿——勞動、資本、<span class="gs">程式碼</span>、<span class="gs">媒體</span>——後兩種零邊際成本。<br><br>
+      但我讀到的不只是納瓦爾。它連到 <span class="wlink">特定知識</span>、連到 <span class="wlink">永久遊戲</span>，更連到我自己的人生：<span class="wlink">SIFUS</span>（程式碼槓桿）、<span class="wlink">寫作 Podcast</span>（媒體槓桿）、還有我的<span class="wlink">保險增員</span>。</div>
+    </div>
+    <div class="lead rv" style="--d:1.3s">同一個概念，我會把它連到<b>別的作者、別的領域、我自己的一生</b>。這就是跨界——讀別人的書，長自己的網。</div>
+  </section>
+
+  <!-- 8 · GRAPH（高潮） -->
+  <section class="scene" data-dur="14500" data-graph>
+    <div id="gwrap">
+      <canvas id="graph"></canvas>
+      <div class="glabel">
+        <div class="mno" style="margin-bottom:6px">跨界 · 我的關聯圖</div>
+        <h2 style="font-size:clamp(20px,3.4vw,34px)">一個概念，連起<span class="g">四個領域、十位作者、和我的一生</span></h2>
+      </div>
+      <div class="glegend">
+        <div class="lg"><span class="dot" style="background:#f4d76a;box-shadow:0 0 12px #f4d76a"></span>納瓦爾（核心）</div>
+        <div class="lg"><span class="dot" style="background:#E9B627"></span>核心概念</div>
+        <div class="lg"><span class="dot" style="background:#9fc0e0"></span>跨界思想 · 作者</div>
+        <div class="lg"><span class="dot" style="background:#6ad6a8"></span>孟修的實踐</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · OUTRO -->
+  <section class="scene" data-dur="99999999">
+    <div class="kick rv" style="--d:.1s">This Is How I Read</div>
+    <h1 class="rv" style="--d:.35s">這，就是我<span class="g">讀書的方法</span></h1>
+    <div class="lead rv" style="--d:.8s">不是讀完就忘，是讀進一張<b>會生長的網</b>。<br>現在——換我們，把「你自己」也讀成一個<b>品牌</b>。</div>
+    <div class="formula rv" style="--d:1.3s;font-size:clamp(13px,2vw,22px);margin-top:30px">
+      建構孟修 wiki <span class="eq">=</span> Claude Code <span class="plus">+</span> Obsidian <span class="plus">+</span> NotebookLM <span class="plus">+</span> Gemini</div>
+    <button class="replay rv" style="--d:1.7s" onclick="restart()">↻ 重新播放</button>
+    <div class="tiny rv" style="--d:2s">納瓦爾 × 個人商品化 × 生命設計師</div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">01 / 10</div>
+<div class="brand">孟修</div>
+<div class="ctrl">
+  <button onclick="prev()" title="上一幕">⏮</button>
+  <button onclick="toggle()" id="pp" title="暫停／播放">⏸</button>
+  <button onclick="next()" title="下一幕">⏭</button>
+</div>
+
+<!-- START GATE -->
+<div id="gate" onclick="startShow()">
+  <div class="gk">How I Read · 孟修讀書法</div>
+  <h1>建構我的<span class="g">第二大腦</span></h1>
+  <div class="gd">Claude Code · Obsidian · NotebookLM · Gemini<br>一支動畫，看我怎麼讀一本書、怎麼跨界。</div>
+  <div class="gbtn">▶ 開始播放</div>
+  <div class="gh">點擊任意處開始 · 約 70 秒 · 空白鍵可暫停</div>
+</div>
+
+<script>
+/* ================= scene controller ================= */
+const scenes=[...document.querySelectorAll('.scene')];
+const bar=document.getElementById('bar'),counter=document.getElementById('counter'),pp=document.getElementById('pp');
+let idx=0,paused=true,t0=0,raf=null,started=false,last=0;
+
+function setScene(i){
+  scenes.forEach(s=>s.classList.remove('active'));
+  idx=(i+scenes.length)%scenes.length;
+  const s=scenes[idx];
+  // restart reveal animations
+  s.querySelectorAll('.rv').forEach(el=>{el.style.animation='none';el.offsetHeight;el.style.animation='';});
+  s.classList.add('active');
+  counter.textContent=String(idx+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');
+  t0=0;
+  if(s.hasAttribute('data-graph')) GR.reset();
+  // restart placeholder mock animations inside this scene
+  s.querySelectorAll('.mock').forEach(m=>{m.style.display='none';m.offsetHeight;m.style.display='';});
+}
+function tick(ts){
+  if(!last)last=ts; let dt=ts-last; last=ts; if(dt>80)dt=80;
+  if(!paused){
+    if(!t0)t0=ts;
+    const dur=+scenes[idx].dataset.dur;
+    const p=Math.min(1,(ts-t0)/dur);
+    bar.style.width=(p*100)+'%';
+    if(scenes[idx].hasAttribute('data-graph')) GR.tick(dt);
+    if(p>=1 && idx<scenes.length-1){ next(); }
+  }
+  raf=requestAnimationFrame(tick);
+}
+function go(i){ setScene(i); bar.style.width='0%'; }
+function next(){ if(idx<scenes.length-1) go(idx+1); }
+function prev(){ go(idx-1); }
+function toggle(){ paused=!paused; pp.textContent=paused?'▶':'⏸'; if(!paused)t0=0; }
+function restart(){ go(0); paused=false; pp.textContent='⏸'; }
+function startShow(){
+  if(started)return; started=true;
+  document.getElementById('gate').classList.add('gone');
+  paused=false; pp.textContent='⏸';
+  go(0);
+  raf=requestAnimationFrame(tick);
+}
+
+/* keyboard */
+addEventListener('keydown',e=>{
+  if(!started){ if(e.key===' '||e.key==='Enter'){e.preventDefault();startShow();} return; }
+  if(e.key==='ArrowRight'){e.preventDefault();next();}
+  else if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  else if(e.key===' '){e.preventDefault();toggle();}
+  else if(e.key.toLowerCase()==='f'){ if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen(); }
+});
+
+/* video auto-detect: show real mp4 if it loads, else keep placeholder */
+document.querySelectorAll('.opvid').forEach(v=>{
+  const src=v.dataset.src;
+  const test=document.createElement('video');
+  test.muted=true; test.preload='metadata';
+  test.onloadeddata=()=>{ v.src=src; v.classList.add('show'); v.play().catch(()=>{}); const ph=v.parentElement.querySelector('.vidph'); if(ph)ph.classList.add('hide'); };
+  test.onerror=()=>{}; // no file → placeholder stays
+  test.src=src;
+});
+
+/* ================= force-directed graph ================= */
+const GR=(function(){
+  const cv=document.getElementById('graph'); const ctx=cv.getContext('2d');
+  let W=0,H=0,DPR=1,cx=0,cy=0,scale=1,running=false,elapsed=0;
+  // groups: center / core / cross / mine
+  const COL={center:'#f4d76a',core:'#E9B627',cross:'#9fc0e0',mine:'#6ad6a8'};
+  const N=[
+    {id:'naval',l:'納瓦爾',g:'center',r:30},
+    // core concepts
+    {id:'sk',l:'特定知識',g:'core',r:19},
+    {id:'lev',l:'槓桿',g:'core',r:21},
+    {id:'inf',l:'永久遊戲',g:'core',r:18},
+    {id:'hap',l:'快樂是學習',g:'core',r:18},
+    {id:'acc',l:'當責',g:'core',r:16},
+    {id:'cmp',l:'複利',g:'core',r:17},
+    // cross thinkers / frameworks
+    {id:'buf',l:'巴菲特',g:'cross',r:16},
+    {id:'mun',l:'蒙格 · 多元思維',g:'cross',r:16},
+    {id:'fire',l:'FIRE',g:'cross',r:16},
+    {id:'sto',l:'斯多葛',g:'cross',r:15},
+    {id:'hou',l:'Housel 致富心態',g:'cross',r:15},
+    {id:'flo',l:'心流',g:'cross',r:14},
+    {id:'dyl',l:'生命設計師',g:'cross',r:15},
+    {id:'liu',l:'劉潤 底層邏輯',g:'cross',r:15},
+    // 孟修的實踐
+    {id:'ins',l:'保險增員',g:'mine',r:18},
+    {id:'sif',l:'SIFUS',g:'mine',r:17},
+    {id:'wri',l:'寫作 · Podcast',g:'mine',r:17},
+    {id:'tri',l:'三鐵 · HYROX',g:'mine',r:16},
+    {id:'fam',l:'家庭傳承',g:'mine',r:16},
+    {id:'sov',l:'內在主權',g:'mine',r:15},
+  ];
+  const E=[
+    ['naval','sk'],['naval','lev'],['naval','inf'],['naval','hap'],['naval','acc'],['naval','cmp'],
+    ['lev','sif'],['lev','wri'],
+    ['sk','ins'],['sk','buf'],['sk','mun'],
+    ['cmp','fire'],['cmp','fam'],
+    ['hap','tri'],['hap','flo'],['hap','sto'],
+    ['acc','dyl'],['acc','sov'],
+    ['inf','fam'],
+    ['hou','fire'],['liu','ins'],['dyl','sov'],['buf','cmp'],['sto','sov'],['flo','tri'],
+  ];
+  const byId={}; N.forEach(n=>byId[n.id]=n);
+  E.forEach(e=>{ byId[e[0]].deg=(byId[e[0]].deg||0)+1; byId[e[1]].deg=(byId[e[1]].deg||0)+1; });
+
+  function resize(){
+    DPR=Math.min(2,window.devicePixelRatio||1);
+    W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    cx=W/2;cy=H*0.53;scale=Math.min(W,H)/820;
+  }
+  function reset(){
+    resize();
+    elapsed=0;
+    // seed positions by group ring + spawn order
+    const ringR={center:0,core:138,cross:250,mine:200};
+    const grpCount={},grpIdx={};
+    N.forEach(n=>grpCount[n.g]=(grpCount[n.g]||0)+1);
+    let order=0;
+    N.forEach((n,i)=>{
+      grpIdx[n.g]=(grpIdx[n.g]||0);
+      const cnt=grpCount[n.g],gi=grpIdx[n.g]++;
+      const ang=(gi/cnt)*Math.PI*2 + (n.g==='mine'?0.5:0) - Math.PI/2;
+      const rr=ringR[n.g]*scale;
+      n.x=cx+Math.cos(ang)*rr*(0.7+Math.random()*0.3);
+      n.y=cy+Math.sin(ang)*rr*(0.7+Math.random()*0.3);
+      if(n.g==='center'){n.x=cx;n.y=cy;}
+      n.vx=0;n.vy=0;
+      n.spawn = n.g==='center'?0 : 250 + order*120; order++;
+      n.a=0; // appear progress
+    });
+  }
+  function physics(dt){
+    const k=dt/16.7;
+    // repulsion
+    for(let i=0;i<N.length;i++){for(let j=i+1;j<N.length;j++){
+      const a=N[i],b=N[j];let dx=a.x-b.x,dy=a.y-b.y;let d2=dx*dx+dy*dy;if(d2<1)d2=1;
+      const d=Math.sqrt(d2);const f=(5200*scale*scale)/d2;
+      const fx=dx/d*f,fy=dy/d*f;
+      a.vx+=fx*k;a.vy+=fy*k;b.vx-=fx*k;b.vy-=fy*k;
+    }}
+    // springs
+    E.forEach(e=>{
+      const a=byId[e[0]],b=byId[e[1]];let dx=b.x-a.x,dy=b.y-a.y;const d=Math.sqrt(dx*dx+dy*dy)||1;
+      const rest=(a.g==='center'||b.g==='center')?150*scale:120*scale;
+      const f=(d-rest)*0.012;
+      const fx=dx/d*f,fy=dy/d*f;
+      a.vx+=fx*k;a.vy+=fy*k;b.vx-=fx*k;b.vy-=fy*k;
+    });
+    // gravity to center + damping + 邊界約束(避開頂部標題帶/底部圖例帶)
+    const L=W*0.05,R=W*0.95,T=H*0.215,B=H*0.85;
+    N.forEach(n=>{
+      if(n.g==='center'){n.x=cx;n.y=cy;n.vx=0;n.vy=0;return;}
+      n.vx+=(cx-n.x)*0.0016*k; n.vy+=(cy-n.y)*0.0016*k;
+      n.vx*=0.86; n.vy*=0.86;
+      n.x+=n.vx*k; n.y+=n.vy*k;
+      if(n.x<L){n.x=L;n.vx*=-0.4;} else if(n.x>R){n.x=R;n.vx*=-0.4;}
+      if(n.y<T){n.y=T;n.vy*=-0.4;} else if(n.y>B){n.y=B;n.vy*=-0.4;}
+    });
+  }
+  function tick(dt){
+    if(!W)resize();
+    elapsed+=dt;
+    N.forEach(n=>{ const t=(elapsed-n.spawn)/420; n.a=t<=0?0:t>=1?1:t; });
+    physics(dt);
+    draw();
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // edges
+    E.forEach(e=>{
+      const a=byId[e[0]],b=byId[e[1]];const ea=Math.min(a.a,b.a);if(ea<=0)return;
+      ctx.globalAlpha=ea*0.5;
+      const grad=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+      grad.addColorStop(0,'rgba(233,182,39,.55)');grad.addColorStop(1,'rgba(159,192,224,.35)');
+      ctx.strokeStyle=grad;ctx.lineWidth=1.1;
+      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+    });
+    ctx.globalAlpha=1;
+    // nodes
+    N.forEach(n=>{
+      if(n.a<=0)return;
+      const r=n.r*scale*(0.4+0.6*n.a)*(1+ (n.g==='center'? 0.04*Math.sin(elapsed/450):0));
+      const col=COL[n.g];
+      // glow
+      if(n.g==='center'||n.g==='core'){
+        ctx.globalAlpha=n.a*0.9;
+        const gg=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,r*2.4);
+        gg.addColorStop(0,(n.g==='center'?'rgba(244,215,106,.5)':'rgba(233,182,39,.32)'));
+        gg.addColorStop(1,'rgba(233,182,39,0)');
+        ctx.fillStyle=gg;ctx.beginPath();ctx.arc(n.x,n.y,r*2.4,0,7);ctx.fill();
+      }
+      ctx.globalAlpha=n.a;
+      ctx.beginPath();ctx.arc(n.x,n.y,r,0,7);
+      ctx.fillStyle=n.g==='mine'?'#0c3258':col;
+      ctx.fill();
+      ctx.lineWidth=n.g==='center'?2.4:1.6;ctx.strokeStyle=col;ctx.stroke();
+      // label — 中心放圓內(深字)，其餘放圓下方(依組別亮色)
+      ctx.globalAlpha=n.a;
+      const isC=n.g==='center';
+      const fs=(isC?17:n.g==='core'?13.5:12.5)*Math.max(0.85,scale);
+      ctx.font=`${isC?700:500} ${fs}px "Noto Sans TC",sans-serif`;
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      if(isC){
+        ctx.fillStyle='#06203a';
+        ctx.fillText(n.l,n.x,n.y);
+      }else{
+        ctx.fillStyle=n.g==='core'?'#f4d76a':n.g==='cross'?'#cdddf0':'#9ff0cf';
+        ctx.fillText(n.l,n.x,n.y+r+11*scale);
+      }
+    });
+    ctx.globalAlpha=1;
+  }
+  window.addEventListener('resize',()=>{ if(running)resize(); });
+  return {reset:()=>{running=true;reset();},tick};
+})();
+</script>
+</body>
+</html>
