@@ -197,6 +197,17 @@ table.t td b{color:#fff;font-weight:500}
 .modcard .letter{float:right;font-family:var(--play);font-weight:900;font-size:30px;color:var(--gold-deep);opacity:.6}
 .modcard p{color:var(--muted);font-size:14px;margin:0 0 8px}
 .modcard .take{color:var(--gold-soft);font-size:13px}
+.modcard.clk{cursor:pointer}
+.modcard.clk:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.seePain{display:inline-block;margin-top:9px;color:var(--gold-deep);font-size:12px;font-weight:500}
+.painhd{font-family:var(--serif);font-weight:700;color:var(--gold-soft);font-size:18px;margin:2px 0 3px}
+.painsub{color:var(--muted);font-size:13px;margin-bottom:12px}
+.paincount{float:right;font-size:12px;color:var(--faint)}
+.qwall{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:12px;margin:16px 0}
+.qwcard{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-left:3px solid var(--gold-deep);border-radius:13px;padding:14px 16px}
+.qwcard .qmark{font-family:var(--play);font-weight:900;color:var(--gold-deep);opacity:.45;font-size:24px;line-height:.8}
+.qwcard p{color:#f0e7d2;font-size:15px;font-family:var(--serif);line-height:1.65;margin:3px 0 0}
+.qwcat{display:inline-block;font-size:11px;color:var(--gold-soft);border:1px solid var(--line2);border-radius:5px;padding:1px 8px}
 
 /* luck quadrant + matrix */
 .quad{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
@@ -384,6 +395,32 @@ table.t td b{color:#fff;font-weight:500}
       <div class="qfilter" id="qfilter"></div>
       <div class="qgrid" id="qgrid"></div>
       <p class="muted" style="text-align:center;font-size:13px">完整對照原檔：<code>naval-lab/2026-06-08-naval-htgr39/</code>　·　原文 <a href="https://nav.al/rich" target="_blank">nav.al/rich</a></p>
+    </div>
+
+    <div class="block">
+      <h3>🧱 扛霸子金句牆 <span class="muted" style="font-size:14px;font-weight:400">— Vol-01 課前問卷 22 位學員原話（匿名）</span></h3>
+      <p class="lead" style="font-size:15px">納瓦爾的金句之外，這 22 位學員自己也寫下了一整面牆的金句。你會發現——<b style="color:var(--gold-soft);font-weight:500">熱情明明都在，缺的只是把它嫁接到增員的方法。</b></p>
+      <div class="qwall">
+        <div class="qwcard"><span class="qwcat">增員觀</span><div class="qmark">“</div><p>這些抱怨組織不好發展的人，都是有結果、發展好的人嗎？如果不是，為什麼要去聽信他們的話？</p></div>
+        <div class="qwcard"><span class="qwcat">增員觀</span><div class="qmark">“</div><p>如果用錢能解決的能力，那就不值錢；商場上較勁的，都是用錢解決不了的能力。</p></div>
+        <div class="qwcard"><span class="qwcat">增員觀</span><div class="qmark">“</div><p>你現在有體力做現在的工作，到 50 歲還會有體力嗎？</p></div>
+        <div class="qwcard"><span class="qwcat">天賦·產品化</span><div class="qmark">“</div><p>我是「人」的專業的產品。</p></div>
+        <div class="qwcard"><span class="qwcat">天賦·產品化</span><div class="qmark">“</div><p>我已經橋接起來了——旗下子弟兵每半個月收到我的程式更新檔，變成他們銷售的利器。</p></div>
+        <div class="qwcard"><span class="qwcat">天賦·產品化</span><div class="qmark">“</div><p>公司最強的是軟體——站在客戶的立場。</p></div>
+        <div class="qwcard"><span class="qwcat">覺醒·自省</span><div class="qmark">“</div><p>方向完全錯誤，把太多時間都花在業務上，導致發展遲緩。</p></div>
+        <div class="qwcard"><span class="qwcat">覺醒·自省</span><div class="qmark">“</div><p>團隊的夥伴陸續走到一個都不剩——當時覺得帶人好浪費時間，還不如做個績就好。</p></div>
+        <div class="qwcard"><span class="qwcat">覺醒·自省</span><div class="qmark">“</div><p>開不了路，是因為不夠想要、目標不夠清楚、沒有找到可以著力的點。</p></div>
+        <div class="qwcard"><span class="qwcat">承諾·目標</span><div class="qmark">“</div><p>我願意公開承諾：上任執處，十年內成立三個營業處。</p></div>
+        <div class="qwcard"><span class="qwcat">承諾·目標</span><div class="qmark">“</div><p>3 年分兩處，5 年分四處，人力破千人。</p></div>
+        <div class="qwcard"><span class="qwcat">承諾·目標</span><div class="qmark">“</div><p>沒有賺不到的錢，只有賺不到能力範圍的錢。</p></div>
+        <div class="qwcard"><span class="qwcat">初心·使命</span><div class="qmark">“</div><p>「你們並不有錢」，卻可以讓孩子住進 VIP 病房、給孩子最好的治療。</p></div>
+        <div class="qwcard"><span class="qwcat">初心·使命</span><div class="qmark">“</div><p>保險經紀人是保險醫師、保險律師；事前移轉風險，比事後彌補更有效能。</p></div>
+        <div class="qwcard"><span class="qwcat">初心·使命</span><div class="qmark">“</div><p>也許房子不會失火，也許一輩子不會住院，但人一定會死一次。</p></div>
+        <div class="qwcard"><span class="qwcat">初心·使命</span><div class="qmark">“</div><p>保險是助人豐己的事業，但唯有發生理賠時，才真正看到它的價值。</p></div>
+        <div class="qwcard"><span class="qwcat">給未來的自己</span><div class="qmark">“</div><p>天將降大任於斯人也，老天爺也會給你對等的禮物。</p></div>
+        <div class="qwcard"><span class="qwcat">給未來的自己</span><div class="qmark">“</div><p>真正的自由，不只是外在，更是內在的心靈與靈魂自由。</p></div>
+        <div class="qwcard"><span class="qwcat">給未來的自己</span><div class="qmark">“</div><p>無論現況如何……你做得到！</p></div>
+      </div>
     </div>
 
     <div class="block">
@@ -585,13 +622,14 @@ table.t td b{color:#fff;font-weight:500}
     </div>
     <div class="block">
       <h3>🚀 六模組總覽</h3>
+      <p class="muted" style="margin:-4px 0 8px">👇 點任一模組，看這 22 位扛霸子在這關卡上<b style="color:var(--gold-soft);font-weight:500">實際說的痛點</b>（課前問卷·匿名）。</p>
       <div class="modgrid">
-        <div class="modcard"><span class="letter">T</span><div class="mn">MODULE 01 · 診斷</div><h4>你為何有錢卻沒了熱情</h4><p>財富 vs 地位遊戲、四燈號儀表板、內在主權。把中年倦怠變成可拆解的結構問題。</p><div class="take">帶走：四燈號人生儀表板</div></div>
-        <div class="modcard"><span class="letter">U·SK</span><div class="mn">MODULE 02 · 發覺天賦</div><h4>找出你的特定知識</h4><p>好時光日誌 + AEIOU、三圈交集、唯一性公式。挖出別人複製不了的礦。</p><div class="take">帶走：好時光日誌 + 三圈交集圖</div></div>
-        <div class="modcard"><span class="letter">SK</span><div class="mn">MODULE 03 · 定位</div><h4>把天賦嫁接到保險業</h4><p>重新框定、橋接三法、奧德賽三計畫。把無關的熱情變成 0 競爭者護城河。</p><div class="take">帶走：奧德賽畫布 + 一句話定位</div></div>
-        <div class="modcard"><span class="letter">L</span><div class="mn">MODULE 04 · 產品化</div><h4>漏斗、MVP 與槓桿</h4><p>四種槓桿、三層漏斗、30 天 MVP、反脆弱槓鈴。停止零售時間。</p><div class="take">帶走：三層漏斗 + 30 天 MVP</div></div>
-        <div class="modcard"><span class="letter">A·運</span><div class="mn">MODULE 05 · 增員（靶心）</div><h4>把個人商品變造星系統</h4><p>四種幸運、心流破冰面試、准增員 IP 卡、永久遊戲選人。本場核心。</p><div class="take">帶走：心流破冰面試 + IP 訂製卡</div></div>
-        <div class="modcard"><span class="letter">T</span><div class="mn">MODULE 06 · 永續</div><h4>當責、複利與內在主權</h4><p>Enough Line、慾望合約撕毀、主權誓言。封印整條公式。</p><div class="take">帶走：Enough Line + 主權誓言卡</div></div>
+        <div class="modcard clk" onclick="showPain('m1')"><span class="letter">T</span><div class="mn">MODULE 01 · 診斷</div><h4>你為何有錢卻沒了熱情</h4><p>財富 vs 地位遊戲、四燈號儀表板、內在主權。把中年倦怠變成可拆解的結構問題。</p><div class="take">帶走：四燈號人生儀表板</div><div class="seePain">👆 點看學員痛點</div></div>
+        <div class="modcard clk" onclick="showPain('m2')"><span class="letter">U·SK</span><div class="mn">MODULE 02 · 發覺天賦</div><h4>找出你的特定知識</h4><p>好時光日誌 + AEIOU、三圈交集、唯一性公式。挖出別人複製不了的礦。</p><div class="take">帶走：好時光日誌 + 三圈交集圖</div><div class="seePain">👆 點看學員痛點</div></div>
+        <div class="modcard clk" onclick="showPain('m3')"><span class="letter">SK</span><div class="mn">MODULE 03 · 定位</div><h4>把天賦嫁接到保險業</h4><p>重新框定、橋接三法、奧德賽三計畫。把無關的熱情變成 0 競爭者護城河。</p><div class="take">帶走：奧德賽畫布 + 一句話定位</div><div class="seePain">👆 點看學員痛點</div></div>
+        <div class="modcard clk" onclick="showPain('m4')"><span class="letter">L</span><div class="mn">MODULE 04 · 產品化</div><h4>漏斗、MVP 與槓桿</h4><p>四種槓桿、三層漏斗、30 天 MVP、反脆弱槓鈴。停止零售時間。</p><div class="take">帶走：三層漏斗 + 30 天 MVP</div><div class="seePain">👆 點看學員痛點</div></div>
+        <div class="modcard clk" onclick="showPain('m5')"><span class="letter">A·運</span><div class="mn">MODULE 05 · 增員（靶心）</div><h4>把個人商品變造星系統</h4><p>四種幸運、心流破冰面試、准增員 IP 卡、永久遊戲選人。本場核心。</p><div class="take">帶走：心流破冰面試 + IP 訂製卡</div><div class="seePain">👆 點看學員痛點（最多）</div></div>
+        <div class="modcard clk" onclick="showPain('m6')"><span class="letter">T</span><div class="mn">MODULE 06 · 永續</div><h4>當責、複利與內在主權</h4><p>Enough Line、慾望合約撕毀、主權誓言。封印整條公式。</p><div class="take">帶走：Enough Line + 主權誓言卡</div><div class="seePain">👆 點看學員痛點</div></div>
       </div>
     </div>
     <div class="block">
@@ -607,10 +645,11 @@ table.t td b{color:#fff;font-weight:500}
     <div class="block">
       <h3>🔴 模組五 · 保險業實戰三痛點（扛霸子親授段）</h3>
       <p class="muted">全場含金量最高、最無法被複製的 15 分鐘。骨架由系統搭好，三層具體內容（真實案例／你的判斷／給扛霸子的建議）<b style="color:#fff;font-weight:500">預留給你親自上場，AI 不代寫</b>。</p>
+      <p class="muted" style="margin:-2px 0 8px">👇 三張卡<b style="color:var(--gold-soft);font-weight:500">點下去</b>＝看學員在這痛點上的真實心聲；卡內虛線區＝你親授段預留。</p>
       <div class="grid3">
-        <div class="card" style="border-style:dashed"><h4 style="color:var(--gold)">痛點 1 · 增員難＋組織停滯</h4><p class="muted" style="font-size:13.5px">⚠️ 預留親填：真實案例／你的判斷／下週怎麼開第一句增員對話。</p></div>
-        <div class="card" style="border-style:dashed"><h4 style="color:var(--gold)">痛點 2 · 市場飽和</h4><p class="muted" style="font-size:13.5px">⚠️ 預留親填：用資產配置重開需求／致富心態框架切高端。</p></div>
-        <div class="card" style="border-style:dashed"><h4 style="color:var(--gold)">痛點 3 · 帶人管理</h4><p class="muted" style="font-size:13.5px">⚠️ 預留親填：20 歲衝刺 vs 50 歲複利／分齡設計領先指標。</p></div>
+        <div class="card" style="border-style:dashed;cursor:pointer" onclick="showPain('m5a')"><h4 style="color:var(--gold)">痛點 1 · 增員難＋組織停滯</h4><p class="muted" style="font-size:13.5px">⚠️ 預留親填：真實案例／你的判斷／下週怎麼開第一句增員對話。</p><div class="seePain">👆 點看對應的學員痛點</div></div>
+        <div class="card" style="border-style:dashed;cursor:pointer" onclick="showPain('m5b')"><h4 style="color:var(--gold)">痛點 2 · 市場飽和</h4><p class="muted" style="font-size:13.5px">⚠️ 預留親填：用資產配置重開需求／致富心態框架切高端。</p><div class="seePain">👆 點看對應的學員痛點</div></div>
+        <div class="card" style="border-style:dashed;cursor:pointer" onclick="showPain('m5c')"><h4 style="color:var(--gold)">痛點 3 · 帶人管理</h4><p class="muted" style="font-size:13.5px">⚠️ 預留親填：20 歲衝刺 vs 50 歲複利／分齡設計領先指標。</p><div class="seePain">👆 點看對應的學員痛點</div></div>
       </div>
     </div>
   </div>
@@ -912,6 +951,29 @@ function openQ(n){
 }
 function closeQ(){const m=document.getElementById('modal');if(m)m.classList.remove('on');}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeQ();});
+
+/* ---------- 學員痛點（Vol-01 課前問卷 22 人，匿名原話） ---------- */
+const PAIN={
+ m1:{t:'模組一 · 診斷',s:'有錢卻沒了熱情 — 情緒與方向的痛',items:['目前負面情緒籠罩自己，這個問題不好回答','方向完全錯誤，把太多時間都花在業務上，導致發展遲緩','沒有積極地往組織發展付諸行動','公司願景看不到','記不得了、沒特別感覺（對熱情的淡漠）']},
+ m2:{t:'模組二 · 發覺天賦',s:'增員意願低的根源 — 還沒挖出特定知識',items:['增員的意願起不來','增員意願低是主要問題','沒有增加組員的增員動力','夥伴沒有找到可以著力的點','要找到自己的獨特性']},
+ m3:{t:'模組三 · 定位',s:'差異化與個人品牌',items:['需要建立個人品牌','把專業變成別人複製不了的獨特','主管跟夥伴不知道要做什麼']},
+ m4:{t:'模組四 · 產品化',s:'停止零售時間 — 槓桿與系統複製',items:['能用的人才人選不多，要做的事深度跟程度太高，所以都只能自己來處理','找到更多合適的人才、複製已經成功有效的系統','像消防隊員一樣一直在救火','總公司的任務還是需要自己親自操刀','訓練資源相較薄弱（地理較遠）','還沒有源源不絕的名單']},
+ m5:{t:'模組五 · 增員（靶心）',s:'本場核心 — 全部增員相關痛點',items:['增員意識及有效的做法不足','最希望動起來的是增員','增員最卡、增員意願低','組織發展一直使不上力、單位人少','中階主管不增員','還沒有源源不絕的名單','業務夥伴都太被動']},
+ m5a:{t:'痛點 1 · 增員難＋組織停滯',s:'模組五 — 學員實際說的',items:['增員意識及有效的做法不足','最希望動起來的是增員','增員最卡、增員意願低','沒有增加組員的增員動力','組織發展一直使不上力、單位人少','中階主管不增員']},
+ m5b:{t:'痛點 2 · 市場飽和',s:'模組五 — 學員實際說的（多數人業務端已順，少數提此）',items:['業務夥伴都太被動，沒什麼收入怎麼還能很安逸','組織的增員使不上力','還沒有源源不絕的名單']},
+ m5c:{t:'痛點 3 · 帶人管理',s:'模組五 — 學員實際說的',items:['主管的格局都還沒到位','主管跟夥伴不知道要做什麼、晉升速度慢','定著率不夠','夥伴能力問題比較多','底下主管形象＝當主管很忙，讓人害怕當主管']},
+ m6:{t:'模組六 · 永續',s:'晉升企圖心、複利與內在主權',items:['大家太安逸，沒有一定要晉升的念頭','有些同仁自信不足、有些不夠自律','怕當主管（覺得當主管很忙）','目標不夠清楚、沒有找到著力點','晉升的速度慢','把健康放在十年後的第一位']}
+};
+function showPain(k){
+ const p=PAIN[k]; if(!p)return;
+ let h=`<button class="x" onclick="closeQ()">×</button>`;
+ h+=`<div class="paincount">${p.items.length} 則學員心聲</div>`;
+ h+=`<div class="painhd">${esc(p.t)}</div><div class="painsub">${esc(p.s)}</div>`;
+ h+=`<span class="tag t4">課前問卷 · 22 位扛霸子（匿名原話）</span>`;
+ p.items.forEach(it=>{h+=`<div class="mitem">${esc(it)}</div>`;});
+ document.getElementById('mcard').innerHTML=h;
+ document.getElementById('modal').classList.add('on');
+}
 
 /* ---------- library ---------- */
 const BK="https://search.books.com.tw/search/query/key/";
