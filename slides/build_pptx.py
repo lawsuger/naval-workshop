@@ -24,7 +24,7 @@ prs=Presentation(); prs.slide_width=W; prs.slide_height=H
 BLANK=prs.slide_layouts[6]
 
 TABS={
- 'home':'首頁','p1':'PART I · 39 金句','p2':'PART II · 孟修 WIKI 大腦',
+ 'op':'開場 · 世界杯','home':'首頁','p1':'PART I · 39 金句','p2':'PART II · 孟修 WIKI 大腦',
  'p3':'PART III · 為什麼工作坊','p4':'PART IV · 造運引擎','p5':'PART V · 將自己商品化',
  'p6':'PART VI · 顧問團','c21':'🔥 21 天挑戰','tl':'⏳ 時間槓桿','lib':'📚 圖書館','man':'📋 使用手冊',
 }

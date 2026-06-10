@@ -8,7 +8,7 @@
 import os, re, html, json
 
 TABS={
- 'home':'首頁','p1':'PART I · 39 金句','p2':'PART II · 孟修 WIKI 大腦',
+ 'op':'開場 · 世界杯','home':'首頁','p1':'PART I · 39 金句','p2':'PART II · 孟修 WIKI 大腦',
  'p3':'PART III · 為什麼工作坊','p4':'PART IV · 造運引擎','p5':'PART V · 將自己商品化',
  'p6':'PART VI · 顧問團','c21':'🔥 21 天挑戰','tl':'⏳ 時間槓桿','lib':'📚 圖書館','man':'📋 使用手冊',
 }
@@ -117,8 +117,8 @@ function go(i){i=Math.max(0,Math.min(total-1,i));S[cur].classList.remove('on');c
   document.getElementById('ctr').textContent=(cur+1)+' / '+total;
   if(location.hash!=='#'+(cur+1))history.replaceState(null,'','#'+(cur+1));}
 function toggleOv(){var o=document.getElementById('ov');o.classList.toggle('on');}
-function buildOv(){var o=document.getElementById('ov');var TAB={home:'首頁',p1:'PART I · 39 金句',p2:'PART II · 孟修 WIKI',p3:'PART III · 為什麼工作坊',p4:'PART IV · 造運引擎',p5:'PART V · 將自己商品化',p6:'PART VI · 顧問團',c21:'🔥 21 天挑戰',tl:'⏳ 時間槓桿',lib:'📚 圖書館',man:'📋 使用手冊'};
-  var order=['home','p1','p2','p3','p4','p5','p6','c21','tl','lib','man'],h='';
+function buildOv(){var o=document.getElementById('ov');var TAB={op:'開場 · 世界杯',home:'首頁',p1:'PART I · 39 金句',p2:'PART II · 孟修 WIKI',p3:'PART III · 為什麼工作坊',p4:'PART IV · 造運引擎',p5:'PART V · 將自己商品化',p6:'PART VI · 顧問團',c21:'🔥 21 天挑戰',tl:'⏳ 時間槓桿',lib:'📚 圖書館',man:'📋 使用手冊'};
+  var order=['op','home','p1','p2','p3','p4','p5','p6','c21','tl','lib','man'],h='';
   order.forEach(function(t){var items=TOC.filter(function(x){return x.tab===t});if(!items.length)return;
     h+='<h3>'+TAB[t]+'</h3><div class="gi">';
     items.forEach(function(x){h+='<a onclick="go('+(x.n-1)+');toggleOv()"><span class="n">'+String(x.n).padStart(3,'0')+'</span>'+x.title.replace(/</g,'&lt;')+'</a>'});
