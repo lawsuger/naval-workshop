@@ -290,9 +290,37 @@ table.t td b{color:#fff;font-weight:500}
 .footer{padding:48px 0 80px;text-align:center;color:var(--faint);font-size:12.5px;border-top:1px solid var(--line);margin-top:40px}
 .footer .f{font-family:var(--serif);color:var(--gold-soft);font-size:14px;margin-bottom:8px}
 .footer sup{font-size:.6em;color:var(--gold)}
+/* ===== 課後問卷 gate（全站強制）===== */
+.gate{position:fixed;inset:0;z-index:9999;background:rgba(4,18,36,.97);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px}
+.survey-done .gate{display:none}
+.gate .gcard{max-width:470px;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--gold-deep);border-radius:20px;padding:34px 30px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:pop .35s ease}
+.gate .gicon{font-size:42px}
+.gate h2{font-family:var(--serif);font-weight:900;color:var(--gold-soft);font-size:24px;margin:12px 0 8px}
+.gate p{color:var(--muted);font-size:15px;line-height:1.75;margin:0 0 22px}
+.gate .gbtn{display:inline-block;background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));color:#082743;border-radius:13px;padding:15px 32px;font-size:16px;font-weight:700;font-family:var(--serif);cursor:pointer;text-decoration:none}
+.gate .gbtn:hover{filter:brightness(1.06)}
+.gate .gnote{color:var(--faint);font-size:12.5px;margin-top:16px}
 </style>
+<script>
+/* 課後問卷 gate：沒填過就鎖住全站；?unlock=1 或填完問卷後解鎖 */
+(function(){try{
+  var p=new URLSearchParams(location.search);
+  if(p.get('unlock')==='1') localStorage.setItem('naval_postsurvey_done','1');
+  if(localStorage.getItem('naval_postsurvey_done')==='1') document.documentElement.classList.add('survey-done');
+}catch(e){}})();
+</script>
 </head>
 <body>
+
+<div class="gate" id="gate">
+  <div class="gcard">
+    <div class="gicon">📝</div>
+    <h2>歡迎回來，扛霸子！</h2>
+    <p>使用本站前，請先完成 <b style="color:var(--gold-soft)">3 分鐘課後回饋</b>。<br>你的每一句話，都是下一場更好的養分。</p>
+    <a class="gbtn" href="./post-survey/">填寫課後回饋 →</a>
+    <div class="gnote">填完送出後，本站會自動解鎖 🔓</div>
+  </div>
+</div>
 
 <!-- ================= TOP NAV ================= -->
 <div class="topbar">

@@ -148,6 +148,7 @@ textarea:focus,input:focus{outline:none;border-color:var(--gold-deep)}
 <div class="wrap thanks" id="thanks">
   <div class="big">謝謝你 🙏</div>
   <p id="thanksMsg">你的回饋已送出，這會讓下一場更好。</p>
+  <a class="submit" href="../" style="display:inline-block;text-decoration:none;width:auto;padding:14px 34px;margin-top:20px">🔓 回到工作坊網站</a>
 </div>
 
 <script>
@@ -187,6 +188,7 @@ function collect(){
 }
 
 function showThanks(msg){
+  try{ localStorage.setItem('naval_postsurvey_done','1'); }catch(e){}  // 解鎖工作坊網站
   document.getElementById('form').style.display='none';
   if(msg) document.getElementById('thanksMsg').textContent=msg;
   document.getElementById('thanks').classList.add('on');
