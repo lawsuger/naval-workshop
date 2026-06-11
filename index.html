@@ -301,6 +301,7 @@ table.t td b{color:#fff;font-weight:500}
 .gate input:focus{outline:none;border-color:var(--gold)}
 .gate .gbtn{display:block;width:100%;background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));color:#082743;border:none;border-radius:13px;padding:14px;font-size:16px;font-weight:700;font-family:var(--serif);cursor:pointer;text-decoration:none;margin:8px 0}
 .gate .gbtn2{background:var(--card);border:1px solid var(--line2);color:var(--gold-soft)}
+.gate .gor{color:var(--faint);font-size:13px;margin:16px 0 10px}
 .gate .gbtn:hover{filter:brightness(1.06)}
 .gate .gnote{color:var(--faint);font-size:12.5px;margin-top:16px}
 </style>
@@ -318,11 +319,11 @@ table.t td b{color:#fff;font-weight:500}
 <div class="gate" id="gate">
   <div class="gcard">
     <div class="gicon">🔑</div>
-    <h2>歡迎回來</h2>
+    <h2>扛霸子辛苦了，歡迎回來</h2>
+    <a class="gbtn" href="./post-survey/">① 填寫課後問卷</a>
+    <div class="gor">② 已填過？用 LINE ID 登入</div>
     <input type="text" id="gLine" placeholder="輸入你的 LINE id" autocomplete="off">
-    <button class="gbtn" onclick="gateLogin()">① 用 LINE id 進入</button>
-    <a class="gbtn gbtn2" href="./post-survey/">② 填寫問卷</a>
-    <div class="gnote">第一次來、或沒留 LINE id，請選②填問卷</div>
+    <button class="gbtn gbtn2" onclick="gateLogin()">登入</button>
   </div>
 </div>
 
