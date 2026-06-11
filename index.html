@@ -928,12 +928,23 @@ function renderAdvisor(){
     `存檔／<code>git push</code> 後，這裡就會自動長出顧問團對話視窗。</p></div>`;
 }
 
+/* ---------- 使用追蹤（送到 Sheet 的 events 分頁；後台動態版上線後才生效）---------- */
+const TRACK_URL="https://script.google.com/macros/s/AKfycbwqv1VVPfJcvVL36iSReVy1a6xNziw7x6-BN__RFqJJTV6Pe_x36CfJMFuUi7yMjU2e/exec";
+const VID=(function(){try{var v=localStorage.getItem('naval_vid');if(!v){v=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('naval_vid',v);}return v;}catch(e){return 'na';}})();
+let lastPage='home';
+function track(type,detail){
+  try{ fetch(TRACK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify({_sheet:'events',vid:VID,type:type,detail:detail||'',page:lastPage,ts:new Date().toISOString(),ref:document.referrer||'',ua:(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
+}
+window.addEventListener('load',function(){ track('enter',location.search||''); });
+
 /* ---------- view switching ---------- */
 function show(id){
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id));
   document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===id));
   closeQ();
   window.scrollTo({top:0});
+  lastPage=id; track('view',id);
 }
 
 /* ---------- 39 quotes ---------- */
