@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>納瓦爾工作坊 · 軌跡儀表板</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#082743;--gold:#E9B627;--gold-soft:#f4d76a;--gold-deep:#b98a16;--ink:#eaf1f8;--muted:#aebccb;--faint:#7f95ab;--card:#0c3258;--card2:#0a2c4e;--line:#16395e;--line2:#1f4a78;--serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--play:'Playfair Display',serif;}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(900px 520px at 80% -5%,rgba(233,182,39,.12),transparent 60%),var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:26px 18px 70px}
+.head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:6px}
+h1{font-family:var(--serif);font-weight:900;color:var(--gold-soft);font-size:clamp(22px,4vw,30px);margin:0;letter-spacing:1px}
+.refresh{background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));color:#082743;border:none;border-radius:10px;padding:10px 18px;font-weight:700;font-family:var(--serif);cursor:pointer;font-size:14px}
+.sub{color:var(--faint);font-size:12.5px;margin:0 0 20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 26px}
+@media(max-width:560px){.stats{grid-template-columns:1fr 1fr}}
+.stat{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+.stat .sn{font-family:var(--play);font-weight:900;font-size:30px;color:var(--gold)}
+.stat .sl{color:var(--muted);font-size:13px;margin-top:2px}
+h3{font-family:var(--serif);font-weight:700;color:#fff;font-size:18px;margin:24px 0 10px;border-left:4px solid var(--gold);padding-left:10px}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0}
+.bar .bl{width:96px;flex:0 0 96px;color:var(--gold-soft);font-size:13.5px;text-align:right}
+.bar .bb{flex:1;background:var(--inset,#06203a);border-radius:8px;height:18px;overflow:hidden;border:1px solid var(--line)}
+.bar .bb i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold-soft))}
+.bar .bn{width:34px;color:var(--muted);font-size:13px;font-family:var(--play);font-weight:700}
+.trk{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-left:3px solid var(--gold-deep);border-radius:12px;padding:13px 15px;margin:9px 0}
+.trk .tv{font-family:var(--play);font-weight:700;color:#fff;font-size:14.5px;margin-bottom:5px;word-break:break-all}
+.trk .tp{color:var(--gold-soft);font-size:14px;line-height:1.7}
+.trk .tt{color:var(--faint);font-size:12px;margin-top:5px}
+.muted{color:var(--faint)}
+.note{color:var(--faint);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>📊 軌跡儀表板</h1>
+    <button class="refresh" onclick="load()">↻ 重新整理</button>
+  </div>
+  <p class="sub" id="sub">載入中…</p>
+  <div class="stats" id="stats"></div>
+  <h3>🔥 功能熱度（被看的次數）</h3>
+  <div id="heat"></div>
+  <h3>🧭 訪客軌跡（每人走的動線）</h3>
+  <div id="tracks"></div>
+  <div class="note">🟢＝用 LINE id 登入（認得出是誰）　⚪＝沒登入的匿名訪客。已自動濾掉測試列。資料來自 events 分頁，即時讀取。</div>
+</div>
+<script>
+const EXEC="https://script.google.com/macros/s/AKfycbwqv1VVPfJcvVL36iSReVy1a6xNziw7x6-BN__RFqJJTV6Pe_x36CfJMFuUi7yMjU2e/exec";
+const PG={home:'首頁',p1:'39金句',p2:'孟修WIKI',p3:'為什麼工作坊',p4:'造運引擎',p5:'商品化',p6:'顧問團',c21:'21天挑戰',tl:'時間槓桿',lib:'圖書館',man:'使用手冊'};
+function pg(p){return PG[p]||p||'?';}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function fmt(t){try{var d=new Date(t);return (d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}catch(e){return t;}}
+function isTest(e){var v=String(e.vid||''),d=String(e.detail||'');return v.indexOf('test')>=0||v.indexOf('diag')>=0||v.indexOf('browser')>=0||d.indexOf('?cb=')>=0;}
+function isAnon(v){return v==='na'||/^a[a-z0-9]{6,10}$/.test(v)||/^[a-z0-9]{16,}$/.test(v);}
+function cb(d){ render((d&&d.events)||[]); }
+function load(){
+  document.getElementById('sub').textContent='讀取中…';
+  var old=document.getElementById('_js'); if(old) old.remove();
+  var s=document.createElement('script'); s.id='_js';
+  s.src=EXEC+'?dash=naval2026&callback=cb&_='+Date.now();
+  s.onerror=function(){ document.getElementById('sub').textContent='讀取失敗——後台 dash 端點可能還沒部署。'; };
+  document.body.appendChild(s);
+}
+function render(raw){
+  var evs=raw.filter(function(e){return !isTest(e);});
+  var by={}; evs.forEach(function(e){var v=e.vid||'na';(by[v]=by[v]||[]).push(e);});
+  var heat={}; evs.forEach(function(e){if(e.type==='view'){heat[e.page]=(heat[e.page]||0)+1;}});
+  var views=evs.filter(function(e){return e.type==='view';}).length;
+  var logins=evs.filter(function(e){return e.type==='login';}).length;
+  var vids=Object.keys(by);
+  document.getElementById('sub').textContent='資料截至 '+fmt(new Date().toISOString())+'　·　共 '+evs.length+' 筆事件';
+  document.getElementById('stats').innerHTML=
+    st(vids.length,'訪客')+st(views,'瀏覽次數')+st(logins,'LINE 登入')+st(evs.length,'總事件');
+  var hk=Object.keys(heat).sort(function(a,b){return heat[b]-heat[a];});
+  var max=1; hk.forEach(function(k){if(heat[k]>max)max=heat[k];});
+  document.getElementById('heat').innerHTML=hk.length?hk.map(function(k){
+    return '<div class="bar"><span class="bl">'+esc(pg(k))+'</span><span class="bb"><i style="width:'+(heat[k]/max*100).toFixed(0)+'%"></i></span><span class="bn">'+heat[k]+'</span></div>';
+  }).join(''):'<p class="muted">還沒有人瀏覽功能</p>';
+  vids.sort(function(a,b){return by[b].length-by[a].length;});
+  document.getElementById('tracks').innerHTML=vids.length?vids.map(function(v){
+    var list=by[v].slice().sort(function(a,b){return String(a.ts).localeCompare(String(b.ts));});
+    var path=list.filter(function(e){return e.type==='view';}).map(function(e){return esc(pg(e.page));});
+    var last=list[list.length-1].ts;
+    var icon=isAnon(v)?'⚪':'🟢';
+    return '<div class="trk"><div class="tv">'+icon+' '+esc(v)+'</div><div class="tp">'+(path.length?path.join(' → '):'<span class="muted">（只進站，沒點功能）</span>')+'</div><div class="tt">最近：'+fmt(last)+'　·　'+list.length+' 個動作</div></div>';
+  }).join(''):'<p class="muted">還沒有訪客資料</p>';
+}
+function st(n,l){return '<div class="stat"><div class="sn">'+n+'</div><div class="sl">'+l+'</div></div>';}
+load();
+</script>
+</body>
+</html>
