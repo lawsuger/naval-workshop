@@ -305,8 +305,8 @@ table.t td b{color:#fff;font-weight:500}
 /* 課後問卷 gate：沒填過就鎖住全站；?unlock=1 或填完問卷後解鎖 */
 (function(){try{
   var p=new URLSearchParams(location.search);
-  if(p.get('unlock')==='1') localStorage.setItem('naval_postsurvey_done','1');
-  if(localStorage.getItem('naval_postsurvey_done')==='1') document.documentElement.classList.add('survey-done');
+  if(p.get('unlock')==='1') localStorage.setItem('naval_postsurvey_done_v2','1');
+  if(localStorage.getItem('naval_postsurvey_done_v2')==='1') document.documentElement.classList.add('survey-done');
 }catch(e){}})();
 </script>
 </head>

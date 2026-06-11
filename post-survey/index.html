@@ -217,7 +217,7 @@ function collect(){
 }
 
 function showThanks(msg){
-  try{ localStorage.setItem('naval_postsurvey_done','1'); }catch(e){}  // 解鎖工作坊網站
+  try{ localStorage.setItem('naval_postsurvey_done_v2','1'); }catch(e){}  // 解鎖工作坊網站
   document.getElementById('form').style.display='none';
   if(msg) document.getElementById('thanksMsg').textContent=msg;
   document.getElementById('thanks').classList.add('on');
