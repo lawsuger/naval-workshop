@@ -237,6 +237,7 @@ function partnerSubmit(){ __partner.q8_partner='願意'; __partner.q8_line_id=do
 function doSubmit(){
   document.getElementById('pmodal').classList.remove('on');
   const data=collect();
+  if(data.q8_line_id){ try{ localStorage.setItem('naval_line_id', data.q8_line_id); }catch(e){} }  // 記住 LINE id 當登入碼
   if(!CONFIG.appsScriptUrl){
     downloadJSON(data);
     showThanks('（講師後台尚未啟用，已先把你的回饋存成檔案，可回傳給講師）');

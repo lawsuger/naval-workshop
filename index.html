@@ -297,7 +297,10 @@ table.t td b{color:#fff;font-weight:500}
 .gate .gicon{font-size:42px}
 .gate h2{font-family:var(--serif);font-weight:900;color:var(--gold-soft);font-size:24px;margin:12px 0 8px}
 .gate p{color:var(--muted);font-size:15px;line-height:1.75;margin:0 0 22px}
-.gate .gbtn{display:inline-block;background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));color:#082743;border-radius:13px;padding:15px 32px;font-size:16px;font-weight:700;font-family:var(--serif);cursor:pointer;text-decoration:none}
+.gate input{width:100%;background:var(--card);border:1px solid var(--gold-deep);color:var(--ink);border-radius:11px;padding:13px;font-size:15px;text-align:center;margin-bottom:12px;font-family:var(--sans)}
+.gate input:focus{outline:none;border-color:var(--gold)}
+.gate .gbtn{display:block;width:100%;background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));color:#082743;border:none;border-radius:13px;padding:14px;font-size:16px;font-weight:700;font-family:var(--serif);cursor:pointer;text-decoration:none;margin:8px 0}
+.gate .gbtn2{background:var(--card);border:1px solid var(--line2);color:var(--gold-soft)}
 .gate .gbtn:hover{filter:brightness(1.06)}
 .gate .gnote{color:var(--faint);font-size:12.5px;margin-top:16px}
 </style>
@@ -314,11 +317,12 @@ table.t td b{color:#fff;font-weight:500}
 
 <div class="gate" id="gate">
   <div class="gcard">
-    <div class="gicon">📝</div>
-    <h2>歡迎回來，扛霸子！</h2>
-    <p>使用本站前，請先完成 <b style="color:var(--gold-soft)">3 分鐘課後回饋</b>。<br>你的每一句話，都是下一場更好的養分。</p>
-    <a class="gbtn" href="./post-survey/">填寫課後回饋 →</a>
-    <div class="gnote">填完送出後，本站會自動解鎖 🔓</div>
+    <div class="gicon">🔑</div>
+    <h2>歡迎回來</h2>
+    <input type="text" id="gLine" placeholder="輸入你的 LINE id" autocomplete="off">
+    <button class="gbtn" onclick="gateLogin()">① 用 LINE id 進入</button>
+    <a class="gbtn gbtn2" href="./post-survey/">② 填寫問卷</a>
+    <div class="gnote">第一次來、或沒留 LINE id，請選②填問卷</div>
   </div>
 </div>
 
@@ -930,11 +934,18 @@ function renderAdvisor(){
 
 /* ---------- 使用追蹤（送到 Sheet 的 events 分頁；後台動態版上線後才生效）---------- */
 const TRACK_URL="https://script.google.com/macros/s/AKfycbwqv1VVPfJcvVL36iSReVy1a6xNziw7x6-BN__RFqJJTV6Pe_x36CfJMFuUi7yMjU2e/exec";
-const VID=(function(){try{var v=localStorage.getItem('naval_vid');if(!v){v=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('naval_vid',v);}return v;}catch(e){return 'na';}})();
+function uid(){try{var line=localStorage.getItem('naval_line_id');if(line)return line;var v=localStorage.getItem('naval_vid');if(!v){v='a'+Math.random().toString(36).slice(2,10);localStorage.setItem('naval_vid',v);}return v;}catch(e){return 'na';}}
 let lastPage='home';
 function track(type,detail){
   try{ fetch(TRACK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
-    body:JSON.stringify({_sheet:'events',vid:VID,type:type,detail:detail||'',page:lastPage,ts:new Date().toISOString(),ref:document.referrer||'',ua:(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
+    body:JSON.stringify({_sheet:'events',vid:uid(),type:type,detail:detail||'',page:lastPage,ts:new Date().toISOString(),ref:document.referrer||'',ua:(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
+}
+function gateLogin(){
+  var el=document.getElementById('gLine'); var v=el?el.value.trim():'';
+  if(!v){ if(el) el.focus(); return; }
+  try{ localStorage.setItem('naval_line_id',v); localStorage.setItem('naval_postsurvey_done_v2','1'); }catch(e){}
+  track('login',v);
+  document.documentElement.classList.add('survey-done');
 }
 window.addEventListener('load',function(){ track('enter',location.search||''); });
 
