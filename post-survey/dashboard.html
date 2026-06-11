@@ -45,7 +45,7 @@ h3{font-family:var(--serif);font-weight:700;color:#fff;font-size:18px;margin:24p
   <div id="heat"></div>
   <h3>🧭 訪客軌跡（每人走的動線）</h3>
   <div id="tracks"></div>
-  <div class="note">🟢＝用 LINE id 登入（認得出是誰）　⚪＝沒登入的匿名訪客。已自動濾掉測試列。資料來自 events 分頁，即時讀取。</div>
+  <div class="note">🟢＝用 LINE id 登入（認得出是誰）　⚪＝沒登入的匿名訪客。已自動濾掉測試列＋電腦版（Windows）存取（視為你/開發測試，學員都用手機掃 QR）。資料來自 events 分頁，即時讀取。</div>
 </div>
 <script>
 const EXEC="https://script.google.com/macros/s/AKfycbwqv1VVPfJcvVL36iSReVy1a6xNziw7x6-BN__RFqJJTV6Pe_x36CfJMFuUi7yMjU2e/exec";
@@ -53,7 +53,7 @@ const PG={home:'首頁',p1:'39金句',p2:'孟修WIKI',p3:'為什麼工作坊',p4
 function pg(p){return PG[p]||p||'?';}
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
 function fmt(t){try{var d=new Date(t);return (d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}catch(e){return t;}}
-function isTest(e){var v=String(e.vid||''),d=String(e.detail||'');return v.indexOf('test')>=0||v.indexOf('diag')>=0||v.indexOf('browser')>=0||d.indexOf('?cb=')>=0;}
+function isTest(e){var v=String(e.vid||''),d=String(e.detail||''),u=String(e.ua||'');return v.indexOf('test')>=0||v.indexOf('diag')>=0||v.indexOf('browser')>=0||d.indexOf('?cb=')>=0||u.indexOf('Windows')>=0;}
 function isAnon(v){return v==='na'||/^a[a-z0-9]{6,10}$/.test(v)||/^[a-z0-9]{16,}$/.test(v);}
 function cb(d){ render((d&&d.events)||[]); }
 function load(){
