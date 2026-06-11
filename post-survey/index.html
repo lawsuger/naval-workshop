@@ -52,6 +52,18 @@ textarea:focus,input:focus{outline:none;border-color:var(--gold-deep)}
 .thanks p{color:var(--muted)}
 .foot{text-align:center;color:var(--faint);font-size:12px;margin-top:30px;border-top:1px solid var(--line);padding-top:16px}
 .foot .eq{font-family:var(--play);color:var(--gold-deep);font-size:13px}
+.pmodal{position:fixed;inset:0;z-index:200;background:rgba(2,12,24,.9);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px}
+.pmodal.on{display:flex}
+.pcard{max-width:440px;width:100%;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--gold-deep);border-radius:20px;padding:32px 28px;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.pcard .pic{font-size:40px}
+.pcard h3{font-family:var(--serif);font-weight:900;color:var(--gold-soft);font-size:22px;margin:10px 0 8px}
+.pcard p{color:var(--muted);font-size:15px;line-height:1.7;margin:0 0 20px}
+.pbtn{display:block;width:100%;border:none;border-radius:13px;padding:14px;font-size:16px;font-weight:700;font-family:var(--serif);cursor:pointer;margin:9px 0}
+.pbtn.yes{background:linear-gradient(180deg,var(--gold-soft),var(--gold-deep));color:#082743}
+.pbtn.no{background:var(--card);border:1px solid var(--line2);color:var(--muted)}
+.pbtn:hover{filter:brightness(1.06)}
+#pline input{width:100%;background:var(--card);border:1px solid var(--gold-deep);color:var(--ink);border-radius:11px;padding:13px;font-size:15px;margin-bottom:6px;text-align:center;font-family:var(--sans)}
+#pline input:focus{outline:none;border-color:var(--gold)}
 </style>
 </head>
 <body>
@@ -151,6 +163,22 @@ textarea:focus,input:focus{outline:none;border-color:var(--gold-deep)}
   <a class="submit" href="../" style="display:inline-block;text-decoration:none;width:auto;padding:14px 34px;margin-top:20px">🔓 回到工作坊網站</a>
 </div>
 
+<div class="pmodal" id="pmodal">
+  <div class="pcard">
+    <div class="pic">🤝</div>
+    <h3>最後一個問題</h3>
+    <p>是否願意成為第一批「<b style="color:var(--gold-soft)">完成打造個人品牌</b>」的測試夥伴？<br>名額有限，我會優先帶你做。</p>
+    <div id="pchoice">
+      <button class="pbtn yes" onclick="partnerYes()">我願意！🙋</button>
+      <button class="pbtn no" onclick="partnerNo()">暫時不用</button>
+    </div>
+    <div id="pline" style="display:none">
+      <input type="text" id="q8_line_id" placeholder="留下你的 LINE ID，我私訊你">
+      <button class="pbtn yes" onclick="partnerSubmit()">確認送出 →</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const CONFIG = {
   appsScriptUrl: "https://script.google.com/macros/s/AKfycbwqv1VVPfJcvVL36iSReVy1a6xNziw7x6-BN__RFqJJTV6Pe_x36CfJMFuUi7yMjU2e/exec",
@@ -183,7 +211,8 @@ function collect(){
     q4_luck_score: rate('q4_luck_score'), q4_luck_comment: val('q4_luck_comment'),
     q5_talent_score: rate('q5_talent_score'), q5_talent_comment: val('q5_talent_comment'),
     q6_sk_score: rate('q6_sk_score'), q6_sk_comment: val('q6_sk_comment'),
-    q7_speaker: val('q7_speaker'), q7_other: val('q7_other')
+    q7_speaker: val('q7_speaker'), q7_other: val('q7_other'),
+    q8_partner: __partner.q8_partner, q8_line_id: __partner.q8_line_id
   };
 }
 
@@ -200,7 +229,13 @@ function downloadJSON(data){
   a.download='課後回饋-'+(data.name||'匿名')+'.json'; document.body.appendChild(a); a.click(); a.remove();
 }
 
-function submitSurvey(){
+var __partner={q8_partner:'',q8_line_id:''};
+function submitSurvey(){ document.getElementById('pmodal').classList.add('on'); }   // 點送出 → 先跳測試夥伴問題
+function partnerYes(){ document.getElementById('pchoice').style.display='none'; document.getElementById('pline').style.display='block'; document.getElementById('q8_line_id').focus(); }
+function partnerNo(){ __partner.q8_partner='不願意'; __partner.q8_line_id=''; doSubmit(); }
+function partnerSubmit(){ __partner.q8_partner='願意'; __partner.q8_line_id=document.getElementById('q8_line_id').value.trim(); doSubmit(); }
+function doSubmit(){
+  document.getElementById('pmodal').classList.remove('on');
   const data=collect();
   if(!CONFIG.appsScriptUrl){
     downloadJSON(data);
