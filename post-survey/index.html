@@ -80,6 +80,7 @@ textarea:focus,input:focus{outline:none;border-color:var(--gold-deep)}
       <div class="q"><span class="label">稱呼</span><input type="text" id="name" placeholder="想具名可填，留白＝匿名"></div>
       <div class="q"><span class="label">單位</span><input type="text" id="unit" placeholder="例：中十八"></div>
     </div>
+    <div class="q" style="margin-top:12px"><span class="label">LINE id（建議留）</span><input type="text" id="line_id" placeholder="留了下次換手機／電腦免重填、直接登入進站"></div>
   </div>
 
   <div class="block">
@@ -204,7 +205,7 @@ function collect(){
     submission_id: "POST-"+Date.now(),
     submitted_at: new Date().toISOString(),
     app_version: CONFIG.appVersion,
-    name: val('name'), unit: val('unit'),
+    name: val('name'), unit: val('unit'), line_id: val('line_id'),
     q1_format_score: rate('q1_format_score'), q1_format_improve: val('q1_format_improve'),
     q2_nps: rate('q2_nps'), q2_nps_reason: val('q2_nps_reason'),
     q3_web_score: rate('q3_web_score'), q3_web_comment: val('q3_web_comment'),
@@ -237,7 +238,15 @@ function partnerSubmit(){ __partner.q8_partner='願意'; __partner.q8_line_id=do
 function doSubmit(){
   document.getElementById('pmodal').classList.remove('on');
   const data=collect();
-  if(data.q8_line_id){ try{ localStorage.setItem('naval_line_id', data.q8_line_id); }catch(e){} }  // 記住 LINE id 當登入碼
+  // 填過＝解鎖第一關；留了 id（選填欄或願意當夥伴）就記住，下次換裝置免重填、直接登入
+  var lid = data.line_id || data.q8_line_id || '';
+  try{
+    localStorage.setItem('naval_filled','1');
+    if(lid) localStorage.setItem('naval_line_id', lid);
+    if(data.name) localStorage.setItem('naval_name', data.name);
+    sessionStorage.setItem('naval_sess','1');                 // 填完這次直接放行（看一次）
+    sessionStorage.setItem('naval_last', String(Date.now()));
+  }catch(e){}
   if(!CONFIG.appsScriptUrl){
     downloadJSON(data);
     showThanks('（講師後台尚未啟用，已先把你的回饋存成檔案，可回傳給講師）');

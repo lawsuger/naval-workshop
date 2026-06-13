@@ -309,8 +309,13 @@ table.t td b{color:#fff;font-weight:500}
 /* 課後問卷 gate：沒填過就鎖住全站；?unlock=1 或填完問卷後解鎖 */
 (function(){try{
   var p=new URLSearchParams(location.search);
-  if(p.get('unlock')==='1') localStorage.setItem('naval_postsurvey_done_v2','1');
-  if(localStorage.getItem('naval_postsurvey_done_v2')==='1') document.documentElement.classList.add('survey-done');
+  // 舊記憶遷移：以前填過(done_v2)的，視為「已填過問卷」
+  if(localStorage.getItem('naval_postsurvey_done_v2')==='1' && localStorage.getItem('naval_filled')!=='1') localStorage.setItem('naval_filled','1');
+  // 講師後門：?unlock=1 直接開一個 session
+  if(p.get('unlock')==='1'){ sessionStorage.setItem('naval_sess','1'); sessionStorage.setItem('naval_last',String(Date.now())); }
+  // 進站放行＝session 有效（未關視窗、未閒置逾 5 分鐘）；否則顯示 gate 要重新登入
+  var t=parseInt(sessionStorage.getItem('naval_last')||'0',10);
+  if(sessionStorage.getItem('naval_sess')==='1' && t && (Date.now()-t)<300000) document.documentElement.classList.add('survey-done');
 }catch(e){}})();
 </script>
 </head>
@@ -947,13 +952,40 @@ function gateLogin(){
   var nameEl=document.getElementById('gName'); var nm=nameEl?nameEl.value.trim():'';
   if(!nm){ if(nameEl) nameEl.focus(); return; }   // 姓名必填
   if(!v){ if(el) el.focus(); return; }
-  try{ localStorage.setItem('naval_line_id',v); localStorage.setItem('naval_name',nm); localStorage.setItem('naval_postsurvey_done_v2','1'); }catch(e){}
-  track('login',v);
-  // 另寫一筆到「登入名冊」分頁（中文欄位；後台動態版自動建分頁、自動長欄）
-  try{ fetch(TRACK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
-    body:JSON.stringify({_sheet:'登入名冊','登入時間':new Date().toISOString(),'姓名':nm,'LINE id':v,'裝置':(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
-  document.documentElement.classList.add('survey-done');
+  var filled=false; try{ filled=localStorage.getItem('naval_filled')==='1'; }catch(e){}
+  var btn=document.querySelector('.gate .gbtn2'); if(btn){ btn.disabled=true; btn.textContent='查證中…'; }
+  var cb='__chk'+Date.now(), s=document.createElement('script'), done=false;
+  function finish(ok){
+    if(done) return; done=true;
+    try{ delete window[cb]; }catch(e){}
+    if(s.parentNode) s.parentNode.removeChild(s);
+    if(btn){ btn.disabled=false; btn.textContent='登入'; }
+    if(ok){
+      try{ localStorage.setItem('naval_line_id',v); localStorage.setItem('naval_name',nm); localStorage.setItem('naval_filled','1'); }catch(e){}
+      track('login',v);
+      // 寫登入名冊（同時把 id 存進後台 → 下次 check 就認得，達成「換電腦補存」）
+      try{ fetch(TRACK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({_sheet:'登入名冊','登入時間':new Date().toISOString(),'姓名':nm,'LINE id':v,'裝置':(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
+      startSession();
+    } else {
+      alert('查不到你的填寫紀錄 🤔\n請先點上面「① 填寫課後問卷」，填完就能用 LINE id 進站。');
+    }
+  }
+  // 後台認得這 id（填過且留過）→ 進；後台不認得但這台填過(filled)→ 也進並補存；都不是 → 擋
+  window[cb]=function(res){ finish((res&&res.found)||filled); };
+  s.onerror=function(){ finish(filled); };               // 後台連不上 → 退回看本機填過沒（容錯，不鎖死）
+  s.src=TRACK_URL+'?check='+encodeURIComponent(v)+'&callback='+cb;
+  document.body.appendChild(s);
+  setTimeout(function(){ finish(filled); }, 6000);        // 逾時容錯
 }
+
+/* ---------- 進站 session：關閉視窗／換裝置／閒置 5 分鐘，都要重新登入 ---------- */
+function sessOk(){ try{ if(sessionStorage.getItem('naval_sess')!=='1') return false; var t=parseInt(sessionStorage.getItem('naval_last')||'0',10); return !!t && (Date.now()-t)<300000; }catch(e){ return false; } }
+function startSession(){ try{ sessionStorage.setItem('naval_sess','1'); sessionStorage.setItem('naval_last',String(Date.now())); }catch(e){} document.documentElement.classList.add('survey-done'); }
+function touchSession(){ try{ if(sessionStorage.getItem('naval_sess')==='1') sessionStorage.setItem('naval_last',String(Date.now())); }catch(e){} }
+function lockGate(){ try{ sessionStorage.removeItem('naval_sess'); }catch(e){} document.documentElement.classList.remove('survey-done'); window.scrollTo({top:0}); }
+['click','keydown','scroll','touchstart'].forEach(function(ev){ try{ document.addEventListener(ev,touchSession,{passive:true}); }catch(e){} });
+setInterval(function(){ if(document.documentElement.classList.contains('survey-done') && !sessOk()) lockGate(); }, 20000);
 window.addEventListener('load',function(){ track('enter',location.search||''); });
 
 /* ---------- view switching ---------- */
