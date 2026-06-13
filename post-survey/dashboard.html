@@ -52,7 +52,7 @@ const EXEC="https://script.google.com/macros/s/AKfycbwqv1VVPfJcvVL36iSReVy1a6xNz
 const PG={home:'首頁',p1:'39金句',p2:'孟修WIKI',p3:'為什麼工作坊',p4:'造運引擎',p5:'商品化',p6:'顧問團',c21:'21天挑戰',tl:'時間槓桿',lib:'圖書館',man:'使用手冊'};
 function pg(p){return PG[p]||p||'?';}
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
-function fmt(t){try{var d=new Date(t);return (d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}catch(e){return t;}}
+function fmt(t){try{var s=String(t);if(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}/.test(s))return s.slice(5,16);var d=new Date(s);return (d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}catch(e){return t;}}
 function isTest(e){var v=String(e.vid||''),d=String(e.detail||''),u=String(e.ua||'');return v.indexOf('test')>=0||v.indexOf('diag')>=0||v.indexOf('browser')>=0||d.indexOf('?cb=')>=0||u.indexOf('Windows')>=0;}
 function isAnon(v){return v==='na'||/^a[a-z0-9]{6,10}$/.test(v)||/^[a-z0-9]{16,}$/.test(v);}
 function cb(d){ render((d&&d.events)||[]); }

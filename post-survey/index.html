@@ -200,10 +200,11 @@ document.querySelectorAll('.rate').forEach(box=>{
 function val(id){ const el=document.getElementById(id); return el?el.value.trim():""; }
 function rate(field){ const box=document.querySelector('.rate[data-field="'+field+'"]'); return box&&box.dataset.value?box.dataset.value:""; }
 
+function twNow(){ try{ return new Date(Date.now()+288e5).toISOString().slice(0,19).replace('T',' '); }catch(e){ return ''; } }  // 台灣時間 YYYY-MM-DD HH:mm:ss
 function collect(){
   return {
     submission_id: "POST-"+Date.now(),
-    submitted_at: new Date().toISOString(),
+    submitted_at: twNow(),
     app_version: CONFIG.appVersion,
     name: val('name'), unit: val('unit'), line_id: val('line_id'),
     q1_format_score: rate('q1_format_score'), q1_format_improve: val('q1_format_improve'),

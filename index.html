@@ -943,9 +943,10 @@ function renderAdvisor(){
 const TRACK_URL="https://script.google.com/macros/s/AKfycbwqv1VVPfJcvVL36iSReVy1a6xNziw7x6-BN__RFqJJTV6Pe_x36CfJMFuUi7yMjU2e/exec";
 function uid(){try{var line=localStorage.getItem('naval_line_id');if(line)return line;var v=localStorage.getItem('naval_vid');if(!v){v='a'+Math.random().toString(36).slice(2,10);localStorage.setItem('naval_vid',v);}return v;}catch(e){return 'na';}}
 let lastPage='home';
+function twNow(){ try{ return new Date(Date.now()+288e5).toISOString().slice(0,19).replace('T',' '); }catch(e){ return ''; } }  // 台灣時間 YYYY-MM-DD HH:mm:ss
 function track(type,detail){
   try{ fetch(TRACK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
-    body:JSON.stringify({_sheet:'events',vid:uid(),type:type,detail:detail||'',page:lastPage,ts:new Date().toISOString(),ref:document.referrer||'',ua:(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
+    body:JSON.stringify({_sheet:'events',vid:uid(),type:type,detail:detail||'',page:lastPage,ts:twNow(),ref:document.referrer||'',ua:(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
 }
 function gateLogin(){
   var el=document.getElementById('gLine'); var v=el?el.value.trim():'';
@@ -965,7 +966,7 @@ function gateLogin(){
       track('login',v);
       // 寫登入名冊（同時把 id 存進後台 → 下次 check 就認得，達成「換電腦補存」）
       try{ fetch(TRACK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
-        body:JSON.stringify({_sheet:'登入名冊','登入時間':new Date().toISOString(),'姓名':nm,'LINE id':v,'裝置':(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
+        body:JSON.stringify({_sheet:'登入名冊','登入時間':twNow(),'姓名':nm,'LINE id':v,'裝置':(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
       startSession();
     } else {
       alert('查不到你的填寫紀錄 🤔\n請先點上面「① 填寫課後問卷」，填完就能用 LINE id 進站。');
