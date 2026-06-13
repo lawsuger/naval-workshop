@@ -943,7 +943,7 @@ function renderAdvisor(){
 const TRACK_URL="https://script.google.com/macros/s/AKfycbwqv1VVPfJcvVL36iSReVy1a6xNziw7x6-BN__RFqJJTV6Pe_x36CfJMFuUi7yMjU2e/exec";
 function uid(){try{var line=localStorage.getItem('naval_line_id');if(line)return line;var v=localStorage.getItem('naval_vid');if(!v){v='a'+Math.random().toString(36).slice(2,10);localStorage.setItem('naval_vid',v);}return v;}catch(e){return 'na';}}
 let lastPage='home';
-function twNow(){ try{ return new Date(Date.now()+288e5).toISOString().slice(0,19).replace('T',' '); }catch(e){ return ''; } }  // 台灣時間 YYYY-MM-DD HH:mm:ss
+function twNow(){ try{ return new Date(Date.now()+288e5).toISOString().slice(0,19).replace('T',' ')+' (台灣)'; }catch(e){ return ''; } }  // 純文字台灣時間，後綴(台灣)讓 Google Sheets 不把它當日期、不套錯時區
 function track(type,detail){
   try{ fetch(TRACK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
     body:JSON.stringify({_sheet:'events',vid:uid(),type:type,detail:detail||'',page:lastPage,ts:twNow(),ref:document.referrer||'',ua:(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
