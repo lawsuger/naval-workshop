@@ -322,7 +322,8 @@ table.t td b{color:#fff;font-weight:500}
     <h2>扛霸子辛苦了，歡迎回來</h2>
     <a class="gbtn" href="./post-survey/">① 填寫課後問卷</a>
     <div class="gor">② 已填過？用 LINE ID 登入</div>
-    <input type="text" id="gLine" placeholder="輸入你的 LINE id" autocomplete="off">
+    <input type="text" id="gName" placeholder="你的名字（必填）" autocomplete="off">
+    <input type="text" id="gLine" placeholder="你的 LINE id（必填）" autocomplete="off">
     <button class="gbtn gbtn2" onclick="gateLogin()">登入</button>
   </div>
 </div>
@@ -943,9 +944,14 @@ function track(type,detail){
 }
 function gateLogin(){
   var el=document.getElementById('gLine'); var v=el?el.value.trim():'';
+  var nameEl=document.getElementById('gName'); var nm=nameEl?nameEl.value.trim():'';
+  if(!nm){ if(nameEl) nameEl.focus(); return; }   // 姓名必填
   if(!v){ if(el) el.focus(); return; }
-  try{ localStorage.setItem('naval_line_id',v); localStorage.setItem('naval_postsurvey_done_v2','1'); }catch(e){}
+  try{ localStorage.setItem('naval_line_id',v); localStorage.setItem('naval_name',nm); localStorage.setItem('naval_postsurvey_done_v2','1'); }catch(e){}
   track('login',v);
+  // 另寫一筆到「登入名冊」分頁（中文欄位；後台動態版自動建分頁、自動長欄）
+  try{ fetch(TRACK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify({_sheet:'登入名冊','登入時間':new Date().toISOString(),'姓名':nm,'LINE id':v,'裝置':(navigator.userAgent||'').slice(0,80)})}); }catch(e){}
   document.documentElement.classList.add('survey-done');
 }
 window.addEventListener('load',function(){ track('enter',location.search||''); });
